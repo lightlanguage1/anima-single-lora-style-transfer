@@ -2,7 +2,7 @@
 
 > Reference-Guided Style Transfer with a Single LoRA — an exploratory diagnostic study of style and texture generalization on Anima.
 
-[正式排版的英文论文 PDF](Anima_Single_LoRA_Research.pdf) · [中文论文审阅版](paper_review_zh.md) · [论文 LaTeX 正文](main.tex) · [实验数据说明](data/README.md) · [图片来源记录](data/image_sources.json) · [项目展示页面](index.html)
+[正式排版的英文论文 PDF](Anima_Single_LoRA_Research.pdf) · [中文论文审阅版](paper_review_zh.md) · [论文 LaTeX 正文](main.tex) · [实验数据说明](data/README.md) · [图片来源记录](data/image_sources.json) · [项目展示页面](https://lightlanguage1.github.io/anima-single-lora-style-transfer/)
 
 本项目研究如何在冻结的 Anima 上，通过单个 LoRA，将参考图 A 的画风迁移到内容图 B。当前结果显示参考条件可以改变输出，但笔触和材质的忠实度不稳定。这里同时保留正例、失败案例、训练记录与测量限制；这不是已通过独立基准验证的最终论文。
 
@@ -33,7 +33,7 @@ z_hat_0   = z_t - t v_theta
 L         = λ_flow L_flow + λ_style L_style
 ```
 
-画风项比较预测 latent 与配对目标 C 的多尺度 Gram、通道矩和边缘统计；不直接逐块对齐 A 的笔触。0.15 是加权风格梯度与加权 flow 梯度的范数比控制目标，不是固定的画风 loss 权重。完整定义、示意和实验图请看[项目页面](research_showcase.html#method)。
+画风项比较预测 latent 与配对目标 C 的多尺度 Gram、通道矩和边缘统计；不直接逐块对齐 A 的笔触。0.15 是加权风格梯度与加权 flow 梯度的范数比控制目标，不是固定的画风 loss 权重。完整定义、示意和实验图请看[项目页面](https://lightlanguage1.github.io/anima-single-lora-style-transfer/research_showcase.html#method)。
 
 ## 仓库内容
 
