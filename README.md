@@ -5,7 +5,7 @@
 **Reference-guided style transfer with one LoRA**  
 输入内容图 B 和参考图 A，在冻结的 Anima 上探索画风迁移与内容保持。
 
-[Project Page](https://lightlanguage1.github.io/anima-single-lora-style-transfer/) · [Research PDF](Anima_Single_LoRA_Research.pdf) · [Model / 10788 LoRA](https://github.com/lightlanguage1/anima-single-lora-style-transfer/releases/tag/v0.1.0-10788) · [ComfyUI Workflow](comfyui_node/workflow.json) · [中文说明](comfyui_node/README.md)
+[Project Page](https://lightlanguage1.github.io/anima-single-lora-style-transfer/) · [Research PDF](Anima_Single_LoRA_Research.pdf) · [Model / 10788 LoRA](https://huggingface.co/lightlanguang/Anima-Single-LoRA-Style-Transfer-10788) · [GitHub Release](https://github.com/lightlanguage1/anima-single-lora-style-transfer/releases/tag/v0.1.0-10788) · [ComfyUI Workflow](comfyui_node/workflow.json) · [中文说明](comfyui_node/README.md)
 
 **Built on NVIDIA Cosmos**
 
@@ -44,7 +44,7 @@ python -m pip install -r /path/to/ComfyUI/custom_nodes/AnimaSingleLoRA/requireme
 
 | 文件 | 获取方式 | 节点字段 |
 |---|---|---|
-| 本项目 `lora84_010788.safetensors` | [10788 LoRA Release](https://github.com/lightlanguage1/anima-single-lora-style-transfer/releases/tag/v0.1.0-10788) | `lora_file` |
+| 本项目 `lora84_010788.safetensors` | [Hugging Face](https://huggingface.co/lightlanguang/Anima-Single-LoRA-Style-Transfer-10788) · [GitHub Release](https://github.com/lightlanguage1/anima-single-lora-style-transfer/releases/tag/v0.1.0-10788) | `lora_file` |
 | Anima Base V1.0 | [官方模型目录](https://huggingface.co/circlestone-labs/Anima/tree/main/split_files/diffusion_models) | `base_model` |
 | Qwen Image VAE | [官方 VAE 目录](https://huggingface.co/circlestone-labs/Anima/tree/main/split_files/vae) | `vae_model` |
 | Qwen 0.6B 文本编码器 | [官方文件](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/text_encoders/qwen_3_06b_base.safetensors) | `text_encoder` |
