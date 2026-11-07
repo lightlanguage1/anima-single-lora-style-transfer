@@ -6,7 +6,7 @@
 
 1. 将本目录完整放到 ComfyUI 的 `custom_nodes/AnimaSingleLoRA/`，保留 `runtime/` 和 `native_support/`。重启 ComfyUI 后，在 `Anima/Research` 分类找到 **Anima · 内容 B + 画风 A（单 LoRA）**。
 2. 默认使用随节点提供的 `native_support/` 模型代码和 tokenizer；[来源与许可说明](native_support/SOURCE.md)记录了本地快照与上游来源的证据边界。原有外部项目代码目录仍可在 `project_code_directory` 填写并覆盖默认位置。
-3. 准备兼容的 Anima baseV10、Qwen Image VAE、Qwen 0.6B 文本编码器和项目训练得到的 rank-32 LoRA。权重与原始测试图片不随节点发布。
+3. 准备兼容的 Anima baseV10、Qwen Image VAE、Qwen 0.6B 文本编码器和项目训练得到的 rank-32 LoRA。[下载 10788 LoRA 与许可附件](https://github.com/lightlanguage1/anima-single-lora-style-transfer/releases/tag/v0.1.0-10788)；底模和原始测试图片不随节点发布。
 4. 使用支持 BF16 的 NVIDIA CUDA 设备。项目的模型库还会导入 torchvision、diffusers、einops、OpenCV，文本编码需要 transformers、sentencepiece、accelerate 和 safetensors。节点读取图像使用 Pillow 和 NumPy。在运行 ComfyUI 的 Python 环境中安装 [requirements.txt](requirements.txt) 中缺少的依赖；PyTorch 和 torchvision 应按该 ComfyUI 安装与 CUDA 环境配置，不要盲目替换。
 
 使用 ComfyUI 自带的 Python 执行安装，例如：
@@ -39,7 +39,7 @@
 
 输入目前每路限 1 张图；透明 RGBA 使用中灰合成；输出为 ComfyUI `IMAGE` 和 `run_info`。模型会缓存在当前进程显存中，路径变化或提高 `reload_models` 会卸载本节点的旧实例。模型与推理源码仍为研究版本，视觉质量不作保证。
 
-公开上游文件入口：[Anima base 模型目录](https://huggingface.co/circlestone-labs/Anima/tree/main/split_files/diffusion_models)、[Qwen Image VAE](https://huggingface.co/circlestone-labs/Anima/tree/main/split_files/vae)、[Qwen 0.6B 文本编码器](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/text_encoders/qwen_3_06b_base.safetensors)。使用前请查看对应模型卡、许可证与版本；不同版本不保证和已有 LoRA 兼容。Anima 官方模型及其衍生模型受非商业许可和适用的 NVIDIA 模型许可约束。模型权重（包括本项目 LoRA）没有随代码发布。
+公开上游文件入口：[Anima base 模型目录](https://huggingface.co/circlestone-labs/Anima/tree/main/split_files/diffusion_models)、[Qwen Image VAE](https://huggingface.co/circlestone-labs/Anima/tree/main/split_files/vae)、[Qwen 0.6B 文本编码器](https://huggingface.co/circlestone-labs/Anima/blob/main/split_files/text_encoders/qwen_3_06b_base.safetensors)。使用前请查看对应模型卡、许可证与版本；不同版本不保证和已有 LoRA 兼容。Anima 官方模型及其衍生模型受非商业许可和适用的 NVIDIA 模型许可约束。底模与编码器不随代码发布；本项目 LoRA 可从 [10788 Release](https://github.com/lightlanguage1/anima-single-lora-style-transfer/releases/tag/v0.1.0-10788) 获取。
 ## 路径填写示例
 
 请将以下占位值替换为自己的真实文件路径；模型权重（包括项目 LoRA）不随代码提供：

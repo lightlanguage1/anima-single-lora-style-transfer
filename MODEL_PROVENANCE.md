@@ -11,7 +11,7 @@
 
 前三项是本机现有兼容模型文件，最后一项是本项目保存的单 LoRA。10788 续训记录中的底模及 VAE 摘要记录处于关闭状态，因此上表不能单独证明本地文件就是当时云端加载的同一份字节。确切上游修订、训练时 tokenizer 版本以及已删除的原始数据集归档摘要均未核实。VGG19 与 StyleShot 兼容评测编码器的具体权重文件也尚未确认，因此暂不填写摘要。
 
-参考来源：[Anima 官方模型卡](https://huggingface.co/circlestone-labs/Anima)、[StyleExpert 官方数据集](https://huggingface.co/datasets/HH-LG/StyleExpert)。文件名与上游卡片的对应关系不应被视为具体修订已确认；使用和再分发前请各自核对许可证。仓库不包含底模、训练集或 LoRA 权重。
+参考来源：[Anima 官方模型卡](https://huggingface.co/circlestone-labs/Anima)、[StyleExpert 官方数据集](https://huggingface.co/datasets/HH-LG/StyleExpert)。文件名与上游卡片的对应关系不应被视为具体修订已确认；使用和再分发前请各自核对许可证。Git 仓库不包含底模与训练集；[10788 LoRA Release](https://github.com/lightlanguage1/anima-single-lora-style-transfer/releases/tag/v0.1.0-10788) 提供本项目权重及配套许可。
 
 在 PowerShell 中对自己的文件计算：
 
@@ -19,4 +19,4 @@
 Get-FileHash -Algorithm SHA256 -LiteralPath 'D:\path\to\model.safetensors'
 ```
 
-Linux/macOS 可运行 `sha256sum /path/to/model.safetensors` 或 `shasum -a 256 /path/to/model.safetensors`。若未来公开 LoRA 权重，应重新计算下载文件的摘要，单独写清权重来源和托管地址。
+Linux/macOS 可运行 `sha256sum /path/to/model.safetensors` 或 `shasum -a 256 /path/to/model.safetensors`。10788 发布附件的摘要为上表所列值；下载后可自行计算核对。

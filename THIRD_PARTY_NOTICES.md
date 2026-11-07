@@ -8,11 +8,11 @@ The node uses a compatible snapshot of [kohya-ss/sd-scripts](https://github.com/
 
 ## Models and datasets
 
-- [Anima model card and license](https://huggingface.co/circlestone-labs/Anima#license): CircleStone Labs Non-Commercial License and applicable third-party terms. Its license explicitly includes LoRAs in the definition of derivatives; distribution requires the notices, license copy and other conditions specified by the rights holder. The repository does not contain base weights or the project LoRA. Do not infer commercial or production use rights from this repository's code license.
+- [Anima model card and license](https://huggingface.co/circlestone-labs/Anima#license): CircleStone Labs Non-Commercial License and applicable third-party terms. Its license explicitly includes LoRAs in the definition of derivatives; distribution requires the notices, license copy and other conditions specified by the rights holder. Base weights are not included in the repository. The 10788 LoRA and its specific license notices are provided as a separate Release asset. Do not infer commercial or production use rights from this repository's code license.
 - [StyleExpert dataset](https://huggingface.co/datasets/HH-LG/StyleExpert): its dataset card states CC BY-NC 4.0. The source archive is not included; the exact version of the archive used in the historical run was not verified. Observe source attribution, noncommercial restrictions and any applicable third-party rights.
 - [Qwen3 model card](https://huggingface.co/Qwen/Qwen3-0.6B) and [Qwen-Image model card](https://huggingface.co/Qwen/Qwen-Image): consult upstream model cards and applicable file licenses. Local filenames and SHA-256 values do not establish a particular upstream revision.
 
-The distribution rights and terms applicable to a trained LoRA should be assessed independently from the code. In particular, the applicable CircleStone license describes conditions for distributing derivatives; consult its actual text and any applicable training-data terms before publishing weights.
+The distribution rights and terms applicable to a trained LoRA should be assessed independently from the code. In particular, the applicable CircleStone license describes conditions for distributing derivatives; consult the [10788 notice](model_licenses/NOTICE_10788.md), accompanying license texts and any applicable training-data terms. Built on NVIDIA Cosmos.
 
 ## Illustrations and research examples
 

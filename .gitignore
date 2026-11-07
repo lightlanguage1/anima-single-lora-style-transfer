@@ -58,3 +58,7 @@
 !/comfyui_node/native_support/
 !/comfyui_node/native_support/**
 /figures/dynamic_four_cases.png
+
+!/model_licenses/
+!/model_licenses/*.md
+!/model_licenses/*.pdf
