@@ -1,0 +1,78 @@
+{
+  "conditions": 174,
+  "layers": 28,
+  "slots": 3,
+  "layer_slot_rows": 14616,
+  "total_histogram_values": 122607894528,
+  "outside_count": 0,
+  "max_per_layer_outside": 0.0,
+  "seed_validated": 20261014,
+  "finite_and_baselines_pass": true,
+  "matched_control_summary": {
+    "lora10788 t=0.35": {
+      "A_count": 9,
+      "B_count": 8,
+      "A_layer_0_14_27_median": [
+        0.040606267750263214,
+        0.0958210751414299,
+        0.02280998043715954
+      ],
+      "B_layer_0_14_27_median": [
+        0.03613945096731186,
+        0.19115492701530457,
+        0.010647514835000038
+      ],
+      "A_velocity_median": 0.09472877532243729,
+      "B_velocity_median": 0.044278744608163834
+    },
+    "zero_lora t=0.35": {
+      "A_count": 9,
+      "B_count": 8,
+      "A_layer_0_14_27_median": [
+        0.049310505390167236,
+        0.2667698860168457,
+        0.10269976407289505
+      ],
+      "B_layer_0_14_27_median": [
+        0.05352485924959183,
+        0.5612053871154785,
+        0.13370400667190552
+      ],
+      "A_velocity_median": 0.24654684960842133,
+      "B_velocity_median": 0.38469043374061584
+    },
+    "lora10788 t=0.85": {
+      "A_count": 9,
+      "B_count": 8,
+      "A_layer_0_14_27_median": [
+        0.1444394588470459,
+        0.06429961323738098,
+        0.02726958692073822
+      ],
+      "B_layer_0_14_27_median": [
+        0.18474921584129333,
+        0.18214525282382965,
+        0.03763993829488754
+      ],
+      "A_velocity_median": 0.06045670434832573,
+      "B_velocity_median": 0.137008398771286
+    },
+    "zero_lora t=0.85": {
+      "A_count": 9,
+      "B_count": 8,
+      "A_layer_0_14_27_median": [
+        0.21818807721138,
+        0.2919882833957672,
+        0.21932654082775116
+      ],
+      "B_layer_0_14_27_median": [
+        0.3290252387523651,
+        0.42567765712738037,
+        0.24383409321308136
+      ],
+      "A_velocity_median": 0.23955965042114258,
+      "B_velocity_median": 0.4680833965539932
+    }
+  },
+  "limits": "Pooled hidden and velocity differences use float16; group pairs share B and A inputs. Distribution sums are histograms, not raw tensor storage."
+}

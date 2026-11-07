@@ -1,0 +1,130 @@
+{
+  "sampler_updates": 30,
+  "sample_seconds": 90.53450190000149,
+  "reference_probe_extra_forwards": 1,
+  "candidate_extra_forwards": 9,
+  "selected_modules": 224,
+  "mean_selection_overlap_with_previous_run": 8.0,
+  "adjustment_applies": "chosen coefficients persist until the next fitting step",
+  "content_guard": "coarse B latent MSE <= 1.05 * native-current-state MSE + 1e-8",
+  "texture_proxy": "MSE between normalized multi-scale latent gradient Gram matrices",
+  "trials": [
+    {
+      "step_index": 15,
+      "t": 0.75,
+      "content_limit": 0.055104398296604164,
+      "selected_strength": 0.35,
+      "remainder_strength": 0.35,
+      "candidates": [
+        {
+          "selected": 0.0,
+          "remainder": 0.0,
+          "texture_proxy": 0.0006355090881697834,
+          "content_proxy": 0.05248036980628967,
+          "allowed": true
+        },
+        {
+          "selected": 0.35,
+          "remainder": 0.0,
+          "texture_proxy": 0.0006113009876571596,
+          "content_proxy": 0.053956158459186554,
+          "allowed": true
+        },
+        {
+          "selected": 0.0,
+          "remainder": 0.35,
+          "texture_proxy": 0.0006249548168852925,
+          "content_proxy": 0.052474793046712875,
+          "allowed": true
+        },
+        {
+          "selected": 0.35,
+          "remainder": 0.35,
+          "texture_proxy": 0.0005966089083813131,
+          "content_proxy": 0.05415094643831253,
+          "allowed": true
+        }
+      ]
+    },
+    {
+      "step_index": 21,
+      "t": 0.5625,
+      "content_limit": 0.058425183163414,
+      "selected_strength": 0.35,
+      "remainder_strength": 0.35,
+      "candidates": [
+        {
+          "selected": 0.0,
+          "remainder": 0.0,
+          "texture_proxy": 0.0005579083226621151,
+          "content_proxy": 0.05564302206039429,
+          "allowed": true
+        },
+        {
+          "selected": 0.35,
+          "remainder": 0.0,
+          "texture_proxy": 0.0005487314774654806,
+          "content_proxy": 0.05617474764585495,
+          "allowed": true
+        },
+        {
+          "selected": 0.0,
+          "remainder": 0.35,
+          "texture_proxy": 0.0005532141658477485,
+          "content_proxy": 0.05549146234989166,
+          "allowed": true
+        },
+        {
+          "selected": 0.35,
+          "remainder": 0.35,
+          "texture_proxy": 0.0005433863843791187,
+          "content_proxy": 0.0561358779668808,
+          "allowed": true
+        }
+      ]
+    },
+    {
+      "step_index": 27,
+      "t": 0.25,
+      "content_limit": 0.059889661462435725,
+      "selected_strength": 0.0,
+      "remainder_strength": 0.35,
+      "candidates": [
+        {
+          "selected": 0.0,
+          "remainder": 0.0,
+          "texture_proxy": 0.00048107150360010564,
+          "content_proxy": 0.05703776329755783,
+          "allowed": true
+        },
+        {
+          "selected": 0.35,
+          "remainder": 0.0,
+          "texture_proxy": 0.00048304590745829046,
+          "content_proxy": 0.057319894433021545,
+          "allowed": true
+        },
+        {
+          "selected": 0.0,
+          "remainder": 0.35,
+          "texture_proxy": 0.0004794299020431936,
+          "content_proxy": 0.056963589042425156,
+          "allowed": true
+        },
+        {
+          "selected": 0.35,
+          "remainder": 0.35,
+          "texture_proxy": 0.00048153320676647127,
+          "content_proxy": 0.05723261833190918,
+          "allowed": true
+        }
+      ]
+    }
+  ],
+  "pixel_mae_vs_native_0_255": 7.157824516296387,
+  "limits": [
+    "Only a VAE-latent texture proxy is optimized; it can miss true brushstrokes.",
+    "Input-A activation selection can also respond to content and edges.",
+    "No model weight is trained; this is iterative inference-time selection."
+  ]
+}

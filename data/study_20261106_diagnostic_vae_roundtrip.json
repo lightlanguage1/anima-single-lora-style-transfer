@@ -1,0 +1,55 @@
+{
+  "vae": "qwen_image_vae.safetensors",
+  "path": "posterior.mode -> normalization -> bf16 -> inverse normalization -> decode",
+  "notes": "Not a generation or style-transfer score; measurements only inside valid rectangle.",
+  "records": [
+    {
+      "reference": "police",
+      "source": "reference_police.png",
+      "output": "vae_roundtrip_police_no_stretch.png",
+      "latent_shape": [
+        1,
+        16,
+        1,
+        128,
+        128
+      ],
+      "valid_rectangle": [
+        171,
+        0,
+        852,
+        1024
+      ],
+      "mae_0_255": 1.6488513946533203,
+      "mse_0_255": 7.274555206298828,
+      "psnr_db": 39.512739167983504,
+      "mean_abs_gray_edge_source": 4.0297956466674805,
+      "mean_abs_gray_edge_reconstruction": 3.8819146156311035,
+      "bf16_normalization_vs_direct_decode_mae": 0.13872158527374268
+    },
+    {
+      "reference": "mecha",
+      "source": "reference_mecha.png",
+      "output": "vae_roundtrip_mecha_no_stretch.png",
+      "latent_shape": [
+        1,
+        16,
+        1,
+        128,
+        128
+      ],
+      "valid_rectangle": [
+        163,
+        0,
+        860,
+        1024
+      ],
+      "mae_0_255": 1.9693814516067505,
+      "mse_0_255": 16.68172836303711,
+      "psnr_db": 35.908393157866165,
+      "mean_abs_gray_edge_source": 6.124626159667969,
+      "mean_abs_gray_edge_reconstruction": 5.896170616149902,
+      "bf16_normalization_vs_direct_decode_mae": 0.15413668751716614
+    }
+  ]
+}

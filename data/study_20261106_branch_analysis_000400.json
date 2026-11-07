@@ -1,0 +1,124 @@
+{
+  "latest_downloaded_update": 488,
+  "unique_pair_indices": 7808,
+  "sample_presentations": 7808,
+  "training_styles": 140,
+  "unique_B": 1611,
+  "unique_A": 7088,
+  "original_gradient_tensors_max": 0,
+  "joint_gradient_max": 0.03141159564256668,
+  "recent20_seconds_mean": 29.838998480327426,
+  "anchor_C_already_consumed": {
+    "Pixel": false,
+    "Van_Gogh": true,
+    "Flux-Sketch-Ep-LoRA": false
+  },
+  "fixed_preview_C_feature_distances": {
+    "records": [
+      {
+        "style": "Pixel",
+        "paired_C_spatial_RGB_VGG": {
+          "0": 0.9771421551704407,
+          "100": 1.0503612756729126,
+          "200": 1.1130229234695435,
+          "300": 1.0837310552597046,
+          "400": 1.1122742891311646
+        }
+      },
+      {
+        "style": "Van_Gogh",
+        "paired_C_spatial_RGB_VGG": {
+          "0": 0.657940685749054,
+          "100": 0.6668522357940674,
+          "200": 0.6768332123756409,
+          "300": 0.6776159405708313,
+          "400": 0.6820116639137268
+        }
+      },
+      {
+        "style": "Flux-Sketch-Ep-LoRA",
+        "paired_C_spatial_RGB_VGG": {
+          "0": 0.9640166163444519,
+          "100": 0.9856440424919128,
+          "200": 1.0062063932418823,
+          "300": 0.990399181842804,
+          "400": 1.0048271417617798
+        }
+      }
+    ],
+    "definition": "Same RGB/ImageNet normalized early/low/middle center512 spatial MSE divided by each C feature energy, then mean. Applied to existing native30-step full predictions.",
+    "limit": "Paired C reconstruction proxy; C may contain changed content. Not A brushwork quality, not disentanglement percentage, not the random-t single-step training loss."
+  },
+  "window_means": [
+    {
+      "updates": [
+        1,
+        100
+      ],
+      "total": 0.09980075463186949,
+      "weighted_flow_C": 0.08999131800374016,
+      "unweighted_spatial_RGB_C": 0.560799716943875,
+      "seconds": 31.66243309419602
+    },
+    {
+      "updates": [
+        101,
+        200
+      ],
+      "total": 0.0981268870527856,
+      "weighted_flow_C": 0.0884035707754083,
+      "unweighted_spatial_RGB_C": 0.5558762709633447,
+      "seconds": 30.787613887637853
+    },
+    {
+      "updates": [
+        201,
+        300
+      ],
+      "total": 0.09888751161517575,
+      "weighted_flow_C": 0.08918173562677112,
+      "unweighted_spatial_RGB_C": 0.5548735018912703,
+      "seconds": 30.340658081509172
+    },
+    {
+      "updates": [
+        301,
+        400
+      ],
+      "total": 0.09791101945447736,
+      "weighted_flow_C": 0.08823968418524601,
+      "unweighted_spatial_RGB_C": 0.5529045404028148,
+      "seconds": 30.09652108155191
+    },
+    {
+      "updates": [
+        401,
+        488
+      ],
+      "total": 0.09807908653138755,
+      "weighted_flow_C": 0.08850398868327664,
+      "unweighted_spatial_RGB_C": 0.5474027033725922,
+      "seconds": 29.927740520628337
+    }
+  ],
+  "comparison_conditions": {
+    "baseline": "cloud0 includes previous local300 branch training",
+    "seed": 20261014,
+    "sample_steps": 30,
+    "complete_preview_updates": [
+      0,
+      100,
+      200,
+      300,
+      400
+    ]
+  },
+  "visual_assessment": {
+    "ComfyUI_02300_": "No clear soft CG material gain; red shorts introduced after update100, content drift.",
+    "ComfyUI_03976_": "Dense invented curls on garment after update100; more texture does not match sparse fine line reference.",
+    "ComfyUI_05579_": "Generic anime flat shading persists; no clear broad painterly planes gain.",
+    "training_pool_anchors": "Pixel blocks and Van Gogh swirls already present in cloud0. No clear new reference-specific texture gain; some local cleanup accompanied by content drift.",
+    "independent_QA": "Independent visual QA agrees with these findings."
+  },
+  "status_boundary": "Last successful status RUNNING at486; downloaded metrics extend488. Final SSH refresh failed at banner handshake. No training mutation or extra predictions performed."
+}

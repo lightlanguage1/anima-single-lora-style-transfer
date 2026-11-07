@@ -1,0 +1,101 @@
+{
+  "note": "Source metadata from the recorded experiment manifests; publication rights have not been independently cleared.",
+  "sources": [
+    {
+      "role": "content",
+      "key": "cat",
+      "title": "Kitten photograph",
+      "author": "Pixabay / Pexels",
+      "page": "https://www.pexels.com/photo/white-and-grey-kitten-on-brown-and-black-leopard-print-textile-45201/"
+    },
+    {
+      "role": "content",
+      "key": "city",
+      "title": "City photograph",
+      "author": "Lukas Kloeppel / Pexels",
+      "page": "https://www.pexels.com/photo/empire-state-building-new-york-466685/"
+    },
+    {
+      "role": "style",
+      "key": "woodcut",
+      "title": "Under the Wave off Kanagawa",
+      "author": "Katsushika Hokusai",
+      "page": "https://www.metmuseum.org/art/collection/search/45434"
+    },
+    {
+      "role": "style",
+      "key": "watercolor",
+      "title": "A Basket of Clams",
+      "author": "Winslow Homer",
+      "page": "https://www.metmuseum.org/art/collection/search/12388"
+    },
+    {
+      "role": "style",
+      "key": "oil",
+      "title": "Wheat Field with Cypresses",
+      "author": "Vincent van Gogh",
+      "page": "https://www.metmuseum.org/art/collection/search/436535"
+    },
+    {
+      "role": "content",
+      "key": "portrait",
+      "author": "Andrea Piacquadio / Pexels",
+      "page": "https://www.pexels.com/photo/man-in-brown-button-up-shirt-3785079/"
+    },
+    {
+      "role": "content",
+      "key": "dogs",
+      "author": "Chevanon Photography / Pexels",
+      "page": "https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/"
+    },
+    {
+      "role": "content",
+      "key": "coffee",
+      "author": "Chevanon Photography / Pexels",
+      "page": "https://www.pexels.com/photo/person-performing-coffee-art-302899/"
+    },
+    {
+      "role": "style",
+      "key": "pastel",
+      "title": "Bouquet of Flowers",
+      "author": "Odilon Redon",
+      "page": "https://www.metmuseum.org/art/collection/search/437379",
+      "public_domain": true
+    },
+    {
+      "role": "style",
+      "key": "ink",
+      "title": "Landscape with Pavilion and Willows",
+      "author": "Shen Zhou",
+      "page": "https://www.metmuseum.org/art/collection/search/53601",
+      "public_domain": true
+    },
+    {
+      "role": "style",
+      "key": "cyanotype",
+      "title": "Spiraea aruncus (Tyrol)",
+      "author": "Anna Atkins",
+      "page": "https://www.metmuseum.org/art/collection/search/285421",
+      "public_domain": true
+    },
+    {
+      "role": "content",
+      "key": "landscape",
+      "author": "James Wheeler / Pexels",
+      "page": "https://www.pexels.com/photo/lake-and-mountain-417074/"
+    },
+    {
+      "role": "content",
+      "key": "plant",
+      "page": "https://www.pexels.com/photo/1084199/"
+    },
+    {
+      "role": "style",
+      "key": "pointillism",
+      "title": "Circus Sideshow (Parade de cirque)",
+      "author": "Georges Seurat",
+      "page": "https://www.metmuseum.org/art/collection/search/437654",
+      "public_domain": true
+    }
+  ]
+}

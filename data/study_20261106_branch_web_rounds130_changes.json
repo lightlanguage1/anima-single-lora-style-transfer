@@ -1,0 +1,52 @@
+{
+  "RGB_change_only_not_style_quality": [
+    {
+      "case": "portrait_etching",
+      "RGB_MAE_on_off": 0.0036170249804854393
+    },
+    {
+      "case": "portrait_pastel",
+      "RGB_MAE_on_off": 0.0024254319723695517
+    },
+    {
+      "case": "dogs_etching",
+      "RGB_MAE_on_off": 0.004540989175438881
+    },
+    {
+      "case": "dogs_pastel",
+      "RGB_MAE_on_off": 0.0016817488940432668
+    },
+    {
+      "case": "landscape_pointillism",
+      "RGB_MAE_on_off": 0.003080110065639019
+    },
+    {
+      "case": "landscape_ink",
+      "RGB_MAE_on_off": 0.001921328715980053
+    },
+    {
+      "case": "plant_pointillism",
+      "RGB_MAE_on_off": 0.002342168940231204
+    },
+    {
+      "case": "plant_ink",
+      "RGB_MAE_on_off": 0.0013093478046357632
+    },
+    {
+      "case": "car_poster",
+      "RGB_MAE_on_off": 0.001679441425949335
+    },
+    {
+      "case": "car_cyanotype",
+      "RGB_MAE_on_off": 0.0018692213343456388
+    },
+    {
+      "case": "coffee_poster",
+      "RGB_MAE_on_off": 0.0011110653867945075
+    },
+    {
+      "case": "coffee_cyanotype",
+      "RGB_MAE_on_off": 0.0013301946455612779
+    }
+  ]
+}

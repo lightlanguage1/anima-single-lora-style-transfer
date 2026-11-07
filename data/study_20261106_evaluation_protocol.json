@@ -1,0 +1,3469 @@
+{
+  "name": "Anima LoRA image-style generalization",
+  "date": "2026-11-02",
+  "status": "planned_not_started",
+  "seeds": [
+    20261014,
+    20261102
+  ],
+  "sampling_steps": 30,
+  "resolution": 1024,
+  "prompt": "Preserve the content of the first reference image and transfer the artistic style of the second reference image.",
+  "checkpoint_roles": {
+    "lora10135": "adapter in joint dynamic checkpoint; hooks disabled",
+    "lora10788": "cloud lora84_010788.safetensors; hooks disabled",
+    "original_cnn10135": "same adapter with original CNN900 and dynamic residual off",
+    "dynamic_cnn10135": "same adapter with original CNN900 and dynamic residual on",
+    "base_no_lora": "all existing LoRA weights zero, no CNN, native B/A route remains"
+  },
+  "contents": {
+    "cat": {
+      "path": "web_content_cat.jpg",
+      "source": "https://www.pexels.com/photo/white-and-grey-kitten-on-brown-and-black-leopard-print-textile-45201/",
+      "category": "cat"
+    },
+    "city": {
+      "path": "web_content_street.jpg",
+      "source": "https://www.pexels.com/photo/466685/",
+      "category": "city"
+    },
+    "portrait": {
+      "path": "web_more_content_portrait.jpg",
+      "source": "https://www.pexels.com/photo/3785079/",
+      "category": "portrait"
+    },
+    "dogs": {
+      "path": "web_more_content_dogs.jpg",
+      "source": "https://www.pexels.com/photo/1108099/",
+      "category": "dogs"
+    },
+    "landscape": {
+      "path": "web_more_content_landscape.jpg",
+      "source": "https://www.pexels.com/photo/417074/",
+      "category": "landscape"
+    },
+    "plant": {
+      "path": "web_more_content_flowers.jpg",
+      "source": "https://www.pexels.com/photo/1084199/",
+      "category": "plant"
+    },
+    "car": {
+      "path": "web_more_content_car.jpg",
+      "source": "https://www.pexels.com/photo/170811/",
+      "category": "car"
+    },
+    "coffee": {
+      "path": "web_more_content_coffee.jpg",
+      "source": "https://www.pexels.com/photo/302899/",
+      "category": "coffee"
+    },
+    "woman": {
+      "path": "QQ20241205-000623.png",
+      "source": "user-provided ces",
+      "category": "portrait"
+    }
+  },
+  "references": {
+    "woodcut": {
+      "path": "web_style_woodcut.jpg",
+      "source": "https://www.metmuseum.org/art/collection/search/45434",
+      "category": "woodcut"
+    },
+    "watercolor": {
+      "path": "web_style_watercolor.jpg",
+      "source": "https://www.metmuseum.org/art/collection/search/12388",
+      "category": "watercolor"
+    },
+    "oil": {
+      "path": "web_style_oil.jpg",
+      "source": "https://www.metmuseum.org/art/collection/search/436535",
+      "category": "oil"
+    },
+    "etching": {
+      "path": "web_more_style_etching.jpg",
+      "source": "https://www.metmuseum.org/art/collection/search/354633",
+      "category": "etching"
+    },
+    "pastel": {
+      "path": "web_more_style_pastel.jpg",
+      "source": "https://www.metmuseum.org/art/collection/search/437379",
+      "category": "pastel"
+    },
+    "pointillism": {
+      "path": "web_more_style_pointillism.jpg",
+      "source": "https://www.metmuseum.org/art/collection/search/437654",
+      "category": "pointillism"
+    },
+    "ink": {
+      "path": "web_more_style_ink.jpg",
+      "source": "https://www.metmuseum.org/art/collection/search/53601",
+      "category": "ink"
+    },
+    "poster": {
+      "path": "web_more_style_poster.jpg",
+      "source": "https://www.metmuseum.org/art/collection/search/334197",
+      "category": "poster"
+    },
+    "cyanotype": {
+      "path": "web_more_style_cyanotype.jpg",
+      "source": "https://www.metmuseum.org/art/collection/search/285421",
+      "category": "cyanotype"
+    },
+    "ces_00": {
+      "path": "03C62D438E1DFD0B4F903246CDBBCF38.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_01": {
+      "path": "B59554EE11A5143C1F2032CDC4A8D2B2.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_02": {
+      "path": "ComfyUI_00546_.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_03": {
+      "path": "ComfyUI_00567_.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_04": {
+      "path": "ComfyUI_02300_.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_05": {
+      "path": "ComfyUI_02555_.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_06": {
+      "path": "ComfyUI_03976_.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_07": {
+      "path": "ComfyUI_03986_.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_08": {
+      "path": "ComfyUI_04046_.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_09": {
+      "path": "ComfyUI_04969_.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_10": {
+      "path": "ComfyUI_05207_.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_11": {
+      "path": "ComfyUI_05327_.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_12": {
+      "path": "ComfyUI_05579_.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    },
+    "ces_13": {
+      "path": "FD052C402BD4514273A07BD8AF2A8271.png",
+      "source": "user-provided ces",
+      "category": "user_reference"
+    }
+  },
+  "cases": [
+    {
+      "id": "ext_cat_woodcut",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "woodcut",
+      "B": "web_content_cat.jpg",
+      "A": "web_style_woodcut.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_cat_watercolor",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "watercolor",
+      "B": "web_content_cat.jpg",
+      "A": "web_style_watercolor.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_cat_oil",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "oil",
+      "B": "web_content_cat.jpg",
+      "A": "web_style_oil.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_cat_etching",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "etching",
+      "B": "web_content_cat.jpg",
+      "A": "web_more_style_etching.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_cat_pastel",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "pastel",
+      "B": "web_content_cat.jpg",
+      "A": "web_more_style_pastel.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_cat_pointillism",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "pointillism",
+      "B": "web_content_cat.jpg",
+      "A": "web_more_style_pointillism.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ink",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ink",
+      "B": "web_content_cat.jpg",
+      "A": "web_more_style_ink.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_cat_poster",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "poster",
+      "B": "web_content_cat.jpg",
+      "A": "web_more_style_poster.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_cat_cyanotype",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "cyanotype",
+      "B": "web_content_cat.jpg",
+      "A": "web_more_style_cyanotype.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_00",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_00",
+      "B": "web_content_cat.jpg",
+      "A": "03C62D438E1DFD0B4F903246CDBBCF38.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_01",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_01",
+      "B": "web_content_cat.jpg",
+      "A": "B59554EE11A5143C1F2032CDC4A8D2B2.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_02",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_02",
+      "B": "web_content_cat.jpg",
+      "A": "ComfyUI_00546_.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_03",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_03",
+      "B": "web_content_cat.jpg",
+      "A": "ComfyUI_00567_.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_04",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_04",
+      "B": "web_content_cat.jpg",
+      "A": "ComfyUI_02300_.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_05",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_05",
+      "B": "web_content_cat.jpg",
+      "A": "ComfyUI_02555_.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_06",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_06",
+      "B": "web_content_cat.jpg",
+      "A": "ComfyUI_03976_.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_07",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_07",
+      "B": "web_content_cat.jpg",
+      "A": "ComfyUI_03986_.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_08",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_08",
+      "B": "web_content_cat.jpg",
+      "A": "ComfyUI_04046_.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_09",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_09",
+      "B": "web_content_cat.jpg",
+      "A": "ComfyUI_04969_.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_10",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_10",
+      "B": "web_content_cat.jpg",
+      "A": "ComfyUI_05207_.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_11",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_11",
+      "B": "web_content_cat.jpg",
+      "A": "ComfyUI_05327_.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_12",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_12",
+      "B": "web_content_cat.jpg",
+      "A": "ComfyUI_05579_.png",
+      "C": null
+    },
+    {
+      "id": "ext_cat_ces_13",
+      "group": "external_cross",
+      "content": "cat",
+      "style": "ces_13",
+      "B": "web_content_cat.jpg",
+      "A": "FD052C402BD4514273A07BD8AF2A8271.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_woodcut",
+      "group": "external_cross",
+      "content": "city",
+      "style": "woodcut",
+      "B": "web_content_street.jpg",
+      "A": "web_style_woodcut.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_city_watercolor",
+      "group": "external_cross",
+      "content": "city",
+      "style": "watercolor",
+      "B": "web_content_street.jpg",
+      "A": "web_style_watercolor.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_city_oil",
+      "group": "external_cross",
+      "content": "city",
+      "style": "oil",
+      "B": "web_content_street.jpg",
+      "A": "web_style_oil.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_city_etching",
+      "group": "external_cross",
+      "content": "city",
+      "style": "etching",
+      "B": "web_content_street.jpg",
+      "A": "web_more_style_etching.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_city_pastel",
+      "group": "external_cross",
+      "content": "city",
+      "style": "pastel",
+      "B": "web_content_street.jpg",
+      "A": "web_more_style_pastel.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_city_pointillism",
+      "group": "external_cross",
+      "content": "city",
+      "style": "pointillism",
+      "B": "web_content_street.jpg",
+      "A": "web_more_style_pointillism.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_city_ink",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ink",
+      "B": "web_content_street.jpg",
+      "A": "web_more_style_ink.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_city_poster",
+      "group": "external_cross",
+      "content": "city",
+      "style": "poster",
+      "B": "web_content_street.jpg",
+      "A": "web_more_style_poster.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_city_cyanotype",
+      "group": "external_cross",
+      "content": "city",
+      "style": "cyanotype",
+      "B": "web_content_street.jpg",
+      "A": "web_more_style_cyanotype.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_00",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_00",
+      "B": "web_content_street.jpg",
+      "A": "03C62D438E1DFD0B4F903246CDBBCF38.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_01",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_01",
+      "B": "web_content_street.jpg",
+      "A": "B59554EE11A5143C1F2032CDC4A8D2B2.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_02",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_02",
+      "B": "web_content_street.jpg",
+      "A": "ComfyUI_00546_.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_03",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_03",
+      "B": "web_content_street.jpg",
+      "A": "ComfyUI_00567_.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_04",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_04",
+      "B": "web_content_street.jpg",
+      "A": "ComfyUI_02300_.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_05",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_05",
+      "B": "web_content_street.jpg",
+      "A": "ComfyUI_02555_.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_06",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_06",
+      "B": "web_content_street.jpg",
+      "A": "ComfyUI_03976_.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_07",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_07",
+      "B": "web_content_street.jpg",
+      "A": "ComfyUI_03986_.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_08",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_08",
+      "B": "web_content_street.jpg",
+      "A": "ComfyUI_04046_.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_09",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_09",
+      "B": "web_content_street.jpg",
+      "A": "ComfyUI_04969_.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_10",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_10",
+      "B": "web_content_street.jpg",
+      "A": "ComfyUI_05207_.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_11",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_11",
+      "B": "web_content_street.jpg",
+      "A": "ComfyUI_05327_.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_12",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_12",
+      "B": "web_content_street.jpg",
+      "A": "ComfyUI_05579_.png",
+      "C": null
+    },
+    {
+      "id": "ext_city_ces_13",
+      "group": "external_cross",
+      "content": "city",
+      "style": "ces_13",
+      "B": "web_content_street.jpg",
+      "A": "FD052C402BD4514273A07BD8AF2A8271.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_woodcut",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "woodcut",
+      "B": "web_more_content_portrait.jpg",
+      "A": "web_style_woodcut.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_watercolor",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "watercolor",
+      "B": "web_more_content_portrait.jpg",
+      "A": "web_style_watercolor.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_oil",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "oil",
+      "B": "web_more_content_portrait.jpg",
+      "A": "web_style_oil.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_etching",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "etching",
+      "B": "web_more_content_portrait.jpg",
+      "A": "web_more_style_etching.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_pastel",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "pastel",
+      "B": "web_more_content_portrait.jpg",
+      "A": "web_more_style_pastel.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_pointillism",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "pointillism",
+      "B": "web_more_content_portrait.jpg",
+      "A": "web_more_style_pointillism.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ink",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ink",
+      "B": "web_more_content_portrait.jpg",
+      "A": "web_more_style_ink.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_poster",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "poster",
+      "B": "web_more_content_portrait.jpg",
+      "A": "web_more_style_poster.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_cyanotype",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "cyanotype",
+      "B": "web_more_content_portrait.jpg",
+      "A": "web_more_style_cyanotype.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_00",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_00",
+      "B": "web_more_content_portrait.jpg",
+      "A": "03C62D438E1DFD0B4F903246CDBBCF38.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_01",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_01",
+      "B": "web_more_content_portrait.jpg",
+      "A": "B59554EE11A5143C1F2032CDC4A8D2B2.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_02",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_02",
+      "B": "web_more_content_portrait.jpg",
+      "A": "ComfyUI_00546_.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_03",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_03",
+      "B": "web_more_content_portrait.jpg",
+      "A": "ComfyUI_00567_.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_04",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_04",
+      "B": "web_more_content_portrait.jpg",
+      "A": "ComfyUI_02300_.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_05",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_05",
+      "B": "web_more_content_portrait.jpg",
+      "A": "ComfyUI_02555_.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_06",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_06",
+      "B": "web_more_content_portrait.jpg",
+      "A": "ComfyUI_03976_.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_07",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_07",
+      "B": "web_more_content_portrait.jpg",
+      "A": "ComfyUI_03986_.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_08",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_08",
+      "B": "web_more_content_portrait.jpg",
+      "A": "ComfyUI_04046_.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_09",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_09",
+      "B": "web_more_content_portrait.jpg",
+      "A": "ComfyUI_04969_.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_10",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_10",
+      "B": "web_more_content_portrait.jpg",
+      "A": "ComfyUI_05207_.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_11",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_11",
+      "B": "web_more_content_portrait.jpg",
+      "A": "ComfyUI_05327_.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_12",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_12",
+      "B": "web_more_content_portrait.jpg",
+      "A": "ComfyUI_05579_.png",
+      "C": null
+    },
+    {
+      "id": "ext_portrait_ces_13",
+      "group": "external_cross",
+      "content": "portrait",
+      "style": "ces_13",
+      "B": "web_more_content_portrait.jpg",
+      "A": "FD052C402BD4514273A07BD8AF2A8271.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_woodcut",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "woodcut",
+      "B": "web_more_content_dogs.jpg",
+      "A": "web_style_woodcut.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_watercolor",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "watercolor",
+      "B": "web_more_content_dogs.jpg",
+      "A": "web_style_watercolor.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_oil",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "oil",
+      "B": "web_more_content_dogs.jpg",
+      "A": "web_style_oil.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_etching",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "etching",
+      "B": "web_more_content_dogs.jpg",
+      "A": "web_more_style_etching.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_pastel",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "pastel",
+      "B": "web_more_content_dogs.jpg",
+      "A": "web_more_style_pastel.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_pointillism",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "pointillism",
+      "B": "web_more_content_dogs.jpg",
+      "A": "web_more_style_pointillism.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ink",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ink",
+      "B": "web_more_content_dogs.jpg",
+      "A": "web_more_style_ink.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_poster",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "poster",
+      "B": "web_more_content_dogs.jpg",
+      "A": "web_more_style_poster.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_cyanotype",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "cyanotype",
+      "B": "web_more_content_dogs.jpg",
+      "A": "web_more_style_cyanotype.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_00",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_00",
+      "B": "web_more_content_dogs.jpg",
+      "A": "03C62D438E1DFD0B4F903246CDBBCF38.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_01",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_01",
+      "B": "web_more_content_dogs.jpg",
+      "A": "B59554EE11A5143C1F2032CDC4A8D2B2.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_02",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_02",
+      "B": "web_more_content_dogs.jpg",
+      "A": "ComfyUI_00546_.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_03",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_03",
+      "B": "web_more_content_dogs.jpg",
+      "A": "ComfyUI_00567_.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_04",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_04",
+      "B": "web_more_content_dogs.jpg",
+      "A": "ComfyUI_02300_.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_05",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_05",
+      "B": "web_more_content_dogs.jpg",
+      "A": "ComfyUI_02555_.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_06",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_06",
+      "B": "web_more_content_dogs.jpg",
+      "A": "ComfyUI_03976_.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_07",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_07",
+      "B": "web_more_content_dogs.jpg",
+      "A": "ComfyUI_03986_.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_08",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_08",
+      "B": "web_more_content_dogs.jpg",
+      "A": "ComfyUI_04046_.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_09",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_09",
+      "B": "web_more_content_dogs.jpg",
+      "A": "ComfyUI_04969_.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_10",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_10",
+      "B": "web_more_content_dogs.jpg",
+      "A": "ComfyUI_05207_.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_11",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_11",
+      "B": "web_more_content_dogs.jpg",
+      "A": "ComfyUI_05327_.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_12",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_12",
+      "B": "web_more_content_dogs.jpg",
+      "A": "ComfyUI_05579_.png",
+      "C": null
+    },
+    {
+      "id": "ext_dogs_ces_13",
+      "group": "external_cross",
+      "content": "dogs",
+      "style": "ces_13",
+      "B": "web_more_content_dogs.jpg",
+      "A": "FD052C402BD4514273A07BD8AF2A8271.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_woodcut",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "woodcut",
+      "B": "web_more_content_landscape.jpg",
+      "A": "web_style_woodcut.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_watercolor",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "watercolor",
+      "B": "web_more_content_landscape.jpg",
+      "A": "web_style_watercolor.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_oil",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "oil",
+      "B": "web_more_content_landscape.jpg",
+      "A": "web_style_oil.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_etching",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "etching",
+      "B": "web_more_content_landscape.jpg",
+      "A": "web_more_style_etching.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_pastel",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "pastel",
+      "B": "web_more_content_landscape.jpg",
+      "A": "web_more_style_pastel.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_pointillism",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "pointillism",
+      "B": "web_more_content_landscape.jpg",
+      "A": "web_more_style_pointillism.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ink",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ink",
+      "B": "web_more_content_landscape.jpg",
+      "A": "web_more_style_ink.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_poster",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "poster",
+      "B": "web_more_content_landscape.jpg",
+      "A": "web_more_style_poster.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_cyanotype",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "cyanotype",
+      "B": "web_more_content_landscape.jpg",
+      "A": "web_more_style_cyanotype.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_00",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_00",
+      "B": "web_more_content_landscape.jpg",
+      "A": "03C62D438E1DFD0B4F903246CDBBCF38.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_01",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_01",
+      "B": "web_more_content_landscape.jpg",
+      "A": "B59554EE11A5143C1F2032CDC4A8D2B2.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_02",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_02",
+      "B": "web_more_content_landscape.jpg",
+      "A": "ComfyUI_00546_.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_03",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_03",
+      "B": "web_more_content_landscape.jpg",
+      "A": "ComfyUI_00567_.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_04",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_04",
+      "B": "web_more_content_landscape.jpg",
+      "A": "ComfyUI_02300_.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_05",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_05",
+      "B": "web_more_content_landscape.jpg",
+      "A": "ComfyUI_02555_.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_06",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_06",
+      "B": "web_more_content_landscape.jpg",
+      "A": "ComfyUI_03976_.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_07",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_07",
+      "B": "web_more_content_landscape.jpg",
+      "A": "ComfyUI_03986_.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_08",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_08",
+      "B": "web_more_content_landscape.jpg",
+      "A": "ComfyUI_04046_.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_09",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_09",
+      "B": "web_more_content_landscape.jpg",
+      "A": "ComfyUI_04969_.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_10",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_10",
+      "B": "web_more_content_landscape.jpg",
+      "A": "ComfyUI_05207_.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_11",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_11",
+      "B": "web_more_content_landscape.jpg",
+      "A": "ComfyUI_05327_.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_12",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_12",
+      "B": "web_more_content_landscape.jpg",
+      "A": "ComfyUI_05579_.png",
+      "C": null
+    },
+    {
+      "id": "ext_landscape_ces_13",
+      "group": "external_cross",
+      "content": "landscape",
+      "style": "ces_13",
+      "B": "web_more_content_landscape.jpg",
+      "A": "FD052C402BD4514273A07BD8AF2A8271.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_woodcut",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "woodcut",
+      "B": "web_more_content_flowers.jpg",
+      "A": "web_style_woodcut.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_plant_watercolor",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "watercolor",
+      "B": "web_more_content_flowers.jpg",
+      "A": "web_style_watercolor.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_plant_oil",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "oil",
+      "B": "web_more_content_flowers.jpg",
+      "A": "web_style_oil.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_plant_etching",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "etching",
+      "B": "web_more_content_flowers.jpg",
+      "A": "web_more_style_etching.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_plant_pastel",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "pastel",
+      "B": "web_more_content_flowers.jpg",
+      "A": "web_more_style_pastel.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_plant_pointillism",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "pointillism",
+      "B": "web_more_content_flowers.jpg",
+      "A": "web_more_style_pointillism.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ink",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ink",
+      "B": "web_more_content_flowers.jpg",
+      "A": "web_more_style_ink.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_plant_poster",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "poster",
+      "B": "web_more_content_flowers.jpg",
+      "A": "web_more_style_poster.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_plant_cyanotype",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "cyanotype",
+      "B": "web_more_content_flowers.jpg",
+      "A": "web_more_style_cyanotype.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_00",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_00",
+      "B": "web_more_content_flowers.jpg",
+      "A": "03C62D438E1DFD0B4F903246CDBBCF38.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_01",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_01",
+      "B": "web_more_content_flowers.jpg",
+      "A": "B59554EE11A5143C1F2032CDC4A8D2B2.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_02",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_02",
+      "B": "web_more_content_flowers.jpg",
+      "A": "ComfyUI_00546_.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_03",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_03",
+      "B": "web_more_content_flowers.jpg",
+      "A": "ComfyUI_00567_.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_04",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_04",
+      "B": "web_more_content_flowers.jpg",
+      "A": "ComfyUI_02300_.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_05",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_05",
+      "B": "web_more_content_flowers.jpg",
+      "A": "ComfyUI_02555_.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_06",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_06",
+      "B": "web_more_content_flowers.jpg",
+      "A": "ComfyUI_03976_.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_07",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_07",
+      "B": "web_more_content_flowers.jpg",
+      "A": "ComfyUI_03986_.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_08",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_08",
+      "B": "web_more_content_flowers.jpg",
+      "A": "ComfyUI_04046_.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_09",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_09",
+      "B": "web_more_content_flowers.jpg",
+      "A": "ComfyUI_04969_.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_10",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_10",
+      "B": "web_more_content_flowers.jpg",
+      "A": "ComfyUI_05207_.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_11",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_11",
+      "B": "web_more_content_flowers.jpg",
+      "A": "ComfyUI_05327_.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_12",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_12",
+      "B": "web_more_content_flowers.jpg",
+      "A": "ComfyUI_05579_.png",
+      "C": null
+    },
+    {
+      "id": "ext_plant_ces_13",
+      "group": "external_cross",
+      "content": "plant",
+      "style": "ces_13",
+      "B": "web_more_content_flowers.jpg",
+      "A": "FD052C402BD4514273A07BD8AF2A8271.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_woodcut",
+      "group": "external_cross",
+      "content": "car",
+      "style": "woodcut",
+      "B": "web_more_content_car.jpg",
+      "A": "web_style_woodcut.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_car_watercolor",
+      "group": "external_cross",
+      "content": "car",
+      "style": "watercolor",
+      "B": "web_more_content_car.jpg",
+      "A": "web_style_watercolor.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_car_oil",
+      "group": "external_cross",
+      "content": "car",
+      "style": "oil",
+      "B": "web_more_content_car.jpg",
+      "A": "web_style_oil.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_car_etching",
+      "group": "external_cross",
+      "content": "car",
+      "style": "etching",
+      "B": "web_more_content_car.jpg",
+      "A": "web_more_style_etching.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_car_pastel",
+      "group": "external_cross",
+      "content": "car",
+      "style": "pastel",
+      "B": "web_more_content_car.jpg",
+      "A": "web_more_style_pastel.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_car_pointillism",
+      "group": "external_cross",
+      "content": "car",
+      "style": "pointillism",
+      "B": "web_more_content_car.jpg",
+      "A": "web_more_style_pointillism.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_car_ink",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ink",
+      "B": "web_more_content_car.jpg",
+      "A": "web_more_style_ink.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_car_poster",
+      "group": "external_cross",
+      "content": "car",
+      "style": "poster",
+      "B": "web_more_content_car.jpg",
+      "A": "web_more_style_poster.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_car_cyanotype",
+      "group": "external_cross",
+      "content": "car",
+      "style": "cyanotype",
+      "B": "web_more_content_car.jpg",
+      "A": "web_more_style_cyanotype.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_00",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_00",
+      "B": "web_more_content_car.jpg",
+      "A": "03C62D438E1DFD0B4F903246CDBBCF38.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_01",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_01",
+      "B": "web_more_content_car.jpg",
+      "A": "B59554EE11A5143C1F2032CDC4A8D2B2.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_02",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_02",
+      "B": "web_more_content_car.jpg",
+      "A": "ComfyUI_00546_.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_03",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_03",
+      "B": "web_more_content_car.jpg",
+      "A": "ComfyUI_00567_.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_04",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_04",
+      "B": "web_more_content_car.jpg",
+      "A": "ComfyUI_02300_.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_05",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_05",
+      "B": "web_more_content_car.jpg",
+      "A": "ComfyUI_02555_.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_06",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_06",
+      "B": "web_more_content_car.jpg",
+      "A": "ComfyUI_03976_.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_07",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_07",
+      "B": "web_more_content_car.jpg",
+      "A": "ComfyUI_03986_.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_08",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_08",
+      "B": "web_more_content_car.jpg",
+      "A": "ComfyUI_04046_.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_09",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_09",
+      "B": "web_more_content_car.jpg",
+      "A": "ComfyUI_04969_.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_10",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_10",
+      "B": "web_more_content_car.jpg",
+      "A": "ComfyUI_05207_.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_11",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_11",
+      "B": "web_more_content_car.jpg",
+      "A": "ComfyUI_05327_.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_12",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_12",
+      "B": "web_more_content_car.jpg",
+      "A": "ComfyUI_05579_.png",
+      "C": null
+    },
+    {
+      "id": "ext_car_ces_13",
+      "group": "external_cross",
+      "content": "car",
+      "style": "ces_13",
+      "B": "web_more_content_car.jpg",
+      "A": "FD052C402BD4514273A07BD8AF2A8271.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_woodcut",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "woodcut",
+      "B": "web_more_content_coffee.jpg",
+      "A": "web_style_woodcut.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_watercolor",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "watercolor",
+      "B": "web_more_content_coffee.jpg",
+      "A": "web_style_watercolor.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_oil",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "oil",
+      "B": "web_more_content_coffee.jpg",
+      "A": "web_style_oil.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_etching",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "etching",
+      "B": "web_more_content_coffee.jpg",
+      "A": "web_more_style_etching.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_pastel",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "pastel",
+      "B": "web_more_content_coffee.jpg",
+      "A": "web_more_style_pastel.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_pointillism",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "pointillism",
+      "B": "web_more_content_coffee.jpg",
+      "A": "web_more_style_pointillism.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ink",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ink",
+      "B": "web_more_content_coffee.jpg",
+      "A": "web_more_style_ink.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_poster",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "poster",
+      "B": "web_more_content_coffee.jpg",
+      "A": "web_more_style_poster.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_cyanotype",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "cyanotype",
+      "B": "web_more_content_coffee.jpg",
+      "A": "web_more_style_cyanotype.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_00",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_00",
+      "B": "web_more_content_coffee.jpg",
+      "A": "03C62D438E1DFD0B4F903246CDBBCF38.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_01",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_01",
+      "B": "web_more_content_coffee.jpg",
+      "A": "B59554EE11A5143C1F2032CDC4A8D2B2.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_02",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_02",
+      "B": "web_more_content_coffee.jpg",
+      "A": "ComfyUI_00546_.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_03",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_03",
+      "B": "web_more_content_coffee.jpg",
+      "A": "ComfyUI_00567_.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_04",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_04",
+      "B": "web_more_content_coffee.jpg",
+      "A": "ComfyUI_02300_.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_05",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_05",
+      "B": "web_more_content_coffee.jpg",
+      "A": "ComfyUI_02555_.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_06",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_06",
+      "B": "web_more_content_coffee.jpg",
+      "A": "ComfyUI_03976_.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_07",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_07",
+      "B": "web_more_content_coffee.jpg",
+      "A": "ComfyUI_03986_.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_08",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_08",
+      "B": "web_more_content_coffee.jpg",
+      "A": "ComfyUI_04046_.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_09",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_09",
+      "B": "web_more_content_coffee.jpg",
+      "A": "ComfyUI_04969_.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_10",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_10",
+      "B": "web_more_content_coffee.jpg",
+      "A": "ComfyUI_05207_.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_11",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_11",
+      "B": "web_more_content_coffee.jpg",
+      "A": "ComfyUI_05327_.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_12",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_12",
+      "B": "web_more_content_coffee.jpg",
+      "A": "ComfyUI_05579_.png",
+      "C": null
+    },
+    {
+      "id": "ext_coffee_ces_13",
+      "group": "external_cross",
+      "content": "coffee",
+      "style": "ces_13",
+      "B": "web_more_content_coffee.jpg",
+      "A": "FD052C402BD4514273A07BD8AF2A8271.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_woodcut",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "woodcut",
+      "B": "QQ20241205-000623.png",
+      "A": "web_style_woodcut.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_woman_watercolor",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "watercolor",
+      "B": "QQ20241205-000623.png",
+      "A": "web_style_watercolor.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_woman_oil",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "oil",
+      "B": "QQ20241205-000623.png",
+      "A": "web_style_oil.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_woman_etching",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "etching",
+      "B": "QQ20241205-000623.png",
+      "A": "web_more_style_etching.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_woman_pastel",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "pastel",
+      "B": "QQ20241205-000623.png",
+      "A": "web_more_style_pastel.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_woman_pointillism",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "pointillism",
+      "B": "QQ20241205-000623.png",
+      "A": "web_more_style_pointillism.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ink",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ink",
+      "B": "QQ20241205-000623.png",
+      "A": "web_more_style_ink.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_woman_poster",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "poster",
+      "B": "QQ20241205-000623.png",
+      "A": "web_more_style_poster.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_woman_cyanotype",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "cyanotype",
+      "B": "QQ20241205-000623.png",
+      "A": "web_more_style_cyanotype.jpg",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_00",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_00",
+      "B": "QQ20241205-000623.png",
+      "A": "03C62D438E1DFD0B4F903246CDBBCF38.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_01",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_01",
+      "B": "QQ20241205-000623.png",
+      "A": "B59554EE11A5143C1F2032CDC4A8D2B2.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_02",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_02",
+      "B": "QQ20241205-000623.png",
+      "A": "ComfyUI_00546_.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_03",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_03",
+      "B": "QQ20241205-000623.png",
+      "A": "ComfyUI_00567_.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_04",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_04",
+      "B": "QQ20241205-000623.png",
+      "A": "ComfyUI_02300_.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_05",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_05",
+      "B": "QQ20241205-000623.png",
+      "A": "ComfyUI_02555_.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_06",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_06",
+      "B": "QQ20241205-000623.png",
+      "A": "ComfyUI_03976_.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_07",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_07",
+      "B": "QQ20241205-000623.png",
+      "A": "ComfyUI_03986_.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_08",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_08",
+      "B": "QQ20241205-000623.png",
+      "A": "ComfyUI_04046_.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_09",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_09",
+      "B": "QQ20241205-000623.png",
+      "A": "ComfyUI_04969_.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_10",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_10",
+      "B": "QQ20241205-000623.png",
+      "A": "ComfyUI_05207_.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_11",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_11",
+      "B": "QQ20241205-000623.png",
+      "A": "ComfyUI_05327_.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_12",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_12",
+      "B": "QQ20241205-000623.png",
+      "A": "ComfyUI_05579_.png",
+      "C": null
+    },
+    {
+      "id": "ext_woman_ces_13",
+      "group": "external_cross",
+      "content": "woman",
+      "style": "ces_13",
+      "B": "QQ20241205-000623.png",
+      "A": "FD052C402BD4514273A07BD8AF2A8271.png",
+      "C": null
+    },
+    {
+      "id": "identity_cat",
+      "group": "identity",
+      "content": "cat",
+      "style": "same_input",
+      "B": "web_content_cat.jpg",
+      "A": "web_content_cat.jpg",
+      "C": null
+    },
+    {
+      "id": "identity_city",
+      "group": "identity",
+      "content": "city",
+      "style": "same_input",
+      "B": "web_content_street.jpg",
+      "A": "web_content_street.jpg",
+      "C": null
+    },
+    {
+      "id": "identity_portrait",
+      "group": "identity",
+      "content": "portrait",
+      "style": "same_input",
+      "B": "web_more_content_portrait.jpg",
+      "A": "web_more_content_portrait.jpg",
+      "C": null
+    },
+    {
+      "id": "identity_dogs",
+      "group": "identity",
+      "content": "dogs",
+      "style": "same_input",
+      "B": "web_more_content_dogs.jpg",
+      "A": "web_more_content_dogs.jpg",
+      "C": null
+    },
+    {
+      "id": "identity_landscape",
+      "group": "identity",
+      "content": "landscape",
+      "style": "same_input",
+      "B": "web_more_content_landscape.jpg",
+      "A": "web_more_content_landscape.jpg",
+      "C": null
+    },
+    {
+      "id": "identity_plant",
+      "group": "identity",
+      "content": "plant",
+      "style": "same_input",
+      "B": "web_more_content_flowers.jpg",
+      "A": "web_more_content_flowers.jpg",
+      "C": null
+    },
+    {
+      "id": "identity_car",
+      "group": "identity",
+      "content": "car",
+      "style": "same_input",
+      "B": "web_more_content_car.jpg",
+      "A": "web_more_content_car.jpg",
+      "C": null
+    },
+    {
+      "id": "identity_coffee",
+      "group": "identity",
+      "content": "coffee",
+      "style": "same_input",
+      "B": "web_more_content_coffee.jpg",
+      "A": "web_more_content_coffee.jpg",
+      "C": null
+    },
+    {
+      "id": "identity_woman",
+      "group": "identity",
+      "content": "woman",
+      "style": "same_input",
+      "B": "QQ20241205-000623.png",
+      "A": "QQ20241205-000623.png",
+      "C": null
+    },
+    {
+      "id": "paired_seen_eval_000_ref0",
+      "group": "original_plan_seen_eval",
+      "content": "Jojo:049",
+      "style": "Detailed_Manga_Style",
+      "B": "tar:./Jojo_src_049.png",
+      "A": "tar:./extra_Paper_Cutting_050_Detailed_Manga_Style.png",
+      "C": "tar:./extra_Jojo_049_Detailed_Manga_Style.png"
+    },
+    {
+      "id": "paired_seen_eval_000_ref1",
+      "group": "original_plan_seen_eval",
+      "content": "Jojo:049",
+      "style": "Detailed_Manga_Style",
+      "B": "tar:./Jojo_src_049.png",
+      "A": "tar:./extra_Oil_Painting_011_Detailed_Manga_Style.png",
+      "C": "tar:./extra_Jojo_049_Detailed_Manga_Style.png"
+    },
+    {
+      "id": "paired_seen_eval_001_ref0",
+      "group": "original_plan_seen_eval",
+      "content": "Irasutoya:073",
+      "style": "Detailed_Manga_Style",
+      "B": "tar:./Irasutoya_src_073.png",
+      "A": "tar:./extra_Paper_Cutting_050_Detailed_Manga_Style.png",
+      "C": "tar:./extra_Irasutoya_073_Detailed_Manga_Style.png"
+    },
+    {
+      "id": "paired_seen_eval_001_ref1",
+      "group": "original_plan_seen_eval",
+      "content": "Irasutoya:073",
+      "style": "Detailed_Manga_Style",
+      "B": "tar:./Irasutoya_src_073.png",
+      "A": "tar:./extra_Oil_Painting_011_Detailed_Manga_Style.png",
+      "C": "tar:./extra_Irasutoya_073_Detailed_Manga_Style.png"
+    },
+    {
+      "id": "paired_seen_eval_002_ref0",
+      "group": "original_plan_seen_eval",
+      "content": "Rick_Morty:031",
+      "style": "turquoise_bohemian_cartoonz",
+      "B": "tar:./Rick_Morty_src_031.png",
+      "A": "tar:./extra_Paper_Cutting_031_turquoise_bohemian_cartoonz.png",
+      "C": "tar:./extra_Rick_Morty_031_turquoise_bohemian_cartoonz.png"
+    },
+    {
+      "id": "paired_seen_eval_002_ref1",
+      "group": "original_plan_seen_eval",
+      "content": "Rick_Morty:031",
+      "style": "turquoise_bohemian_cartoonz",
+      "B": "tar:./Rick_Morty_src_031.png",
+      "A": "tar:./extra_American_Cartoon_056_turquoise_bohemian_cartoonz.png",
+      "C": "tar:./extra_Rick_Morty_031_turquoise_bohemian_cartoonz.png"
+    },
+    {
+      "id": "paired_seen_eval_003_ref0",
+      "group": "original_plan_seen_eval",
+      "content": "Line:059",
+      "style": "turquoise_bohemian_cartoonz",
+      "B": "tar:./Line_src_059.png",
+      "A": "tar:./extra_Paper_Cutting_031_turquoise_bohemian_cartoonz.png",
+      "C": "tar:./extra_Line_059_turquoise_bohemian_cartoonz.png"
+    },
+    {
+      "id": "paired_seen_eval_003_ref1",
+      "group": "original_plan_seen_eval",
+      "content": "Line:059",
+      "style": "turquoise_bohemian_cartoonz",
+      "B": "tar:./Line_src_059.png",
+      "A": "tar:./extra_American_Cartoon_056_turquoise_bohemian_cartoonz.png",
+      "C": "tar:./extra_Line_059_turquoise_bohemian_cartoonz.png"
+    },
+    {
+      "id": "paired_seen_eval_004_ref0",
+      "group": "original_plan_seen_eval",
+      "content": "Pop_Art:035",
+      "style": "Picasso",
+      "B": "tar:./Pop_Art_src_035.png",
+      "A": "tar:./extra_Vector_052_Picasso.png",
+      "C": "tar:./extra_Pop_Art_035_Picasso.png"
+    },
+    {
+      "id": "paired_seen_eval_004_ref1",
+      "group": "original_plan_seen_eval",
+      "content": "Pop_Art:035",
+      "style": "Picasso",
+      "B": "tar:./Pop_Art_src_035.png",
+      "A": "tar:./extra_Pop_Art_010_Picasso.png",
+      "C": "tar:./extra_Pop_Art_035_Picasso.png"
+    },
+    {
+      "id": "paired_seen_eval_005_ref0",
+      "group": "original_plan_seen_eval",
+      "content": "Ghibli:043",
+      "style": "Picasso",
+      "B": "tar:./Ghibli_src_043.png",
+      "A": "tar:./extra_Vector_052_Picasso.png",
+      "C": "tar:./extra_Ghibli_043_Picasso.png"
+    },
+    {
+      "id": "paired_seen_eval_005_ref1",
+      "group": "original_plan_seen_eval",
+      "content": "Ghibli:043",
+      "style": "Picasso",
+      "B": "tar:./Ghibli_src_043.png",
+      "A": "tar:./extra_Pop_Art_010_Picasso.png",
+      "C": "tar:./extra_Ghibli_043_Picasso.png"
+    },
+    {
+      "id": "paired_seen_eval_006_ref0",
+      "group": "original_plan_seen_eval",
+      "content": "Pop_Art:007",
+      "style": "insectagon_notawimmel",
+      "B": "tar:./Pop_Art_src_007.png",
+      "A": "tar:./extra_Chinese_Ink_058_insectagon_notawimmel.png",
+      "C": "tar:./extra_Pop_Art_007_insectagon_notawimmel.png"
+    },
+    {
+      "id": "paired_seen_eval_006_ref1",
+      "group": "original_plan_seen_eval",
+      "content": "Pop_Art:007",
+      "style": "insectagon_notawimmel",
+      "B": "tar:./Pop_Art_src_007.png",
+      "A": "tar:./extra_American_Cartoon_120_insectagon_notawimmel.png",
+      "C": "tar:./extra_Pop_Art_007_insectagon_notawimmel.png"
+    },
+    {
+      "id": "paired_seen_eval_007_ref0",
+      "group": "original_plan_seen_eval",
+      "content": "Fabric:034",
+      "style": "insectagon_notawimmel",
+      "B": "tar:./Fabric_src_034.png",
+      "A": "tar:./extra_Chinese_Ink_058_insectagon_notawimmel.png",
+      "C": "tar:./extra_Fabric_034_insectagon_notawimmel.png"
+    },
+    {
+      "id": "paired_seen_eval_007_ref1",
+      "group": "original_plan_seen_eval",
+      "content": "Fabric:034",
+      "style": "insectagon_notawimmel",
+      "B": "tar:./Fabric_src_034.png",
+      "A": "tar:./extra_American_Cartoon_120_insectagon_notawimmel.png",
+      "C": "tar:./extra_Fabric_034_insectagon_notawimmel.png"
+    },
+    {
+      "id": "paired_unseen_eval_000_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:036",
+      "style": "AP123_flux_dev_gremplin",
+      "B": "tar:./Pop_Art_src_036.png",
+      "A": "tar:./extra_American_Cartoon_060_AP123_flux_dev_gremplin.png",
+      "C": "tar:./extra_Pop_Art_036_AP123_flux_dev_gremplin.png"
+    },
+    {
+      "id": "paired_unseen_eval_000_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:036",
+      "style": "AP123_flux_dev_gremplin",
+      "B": "tar:./Pop_Art_src_036.png",
+      "A": "tar:./extra_Vector_016_AP123_flux_dev_gremplin.png",
+      "C": "tar:./extra_Pop_Art_036_AP123_flux_dev_gremplin.png"
+    },
+    {
+      "id": "paired_unseen_eval_001_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "3D_Chibi:046",
+      "style": "AP123_flux_dev_gremplin",
+      "B": "tar:./3D_Chibi_src_046.png",
+      "A": "tar:./extra_American_Cartoon_060_AP123_flux_dev_gremplin.png",
+      "C": "tar:./extra_3D_Chibi_046_AP123_flux_dev_gremplin.png"
+    },
+    {
+      "id": "paired_unseen_eval_001_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "3D_Chibi:046",
+      "style": "AP123_flux_dev_gremplin",
+      "B": "tar:./3D_Chibi_src_046.png",
+      "A": "tar:./extra_Vector_016_AP123_flux_dev_gremplin.png",
+      "C": "tar:./extra_3D_Chibi_046_AP123_flux_dev_gremplin.png"
+    },
+    {
+      "id": "paired_unseen_eval_002_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Line:006",
+      "style": "AcrylicWorld",
+      "B": "tar:./Line_src_006.png",
+      "A": "tar:./extra_Oil_Painting_001_AcrylicWorld.png",
+      "C": "tar:./extra_Line_006_AcrylicWorld.png"
+    },
+    {
+      "id": "paired_unseen_eval_002_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Line:006",
+      "style": "AcrylicWorld",
+      "B": "tar:./Line_src_006.png",
+      "A": "tar:./extra_Chinese_Ink_007_AcrylicWorld.png",
+      "C": "tar:./extra_Line_006_AcrylicWorld.png"
+    },
+    {
+      "id": "paired_unseen_eval_003_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:075",
+      "style": "AcrylicWorld",
+      "B": "tar:./Pop_Art_src_075.png",
+      "A": "tar:./extra_Oil_Painting_001_AcrylicWorld.png",
+      "C": "tar:./extra_Pop_Art_075_AcrylicWorld.png"
+    },
+    {
+      "id": "paired_unseen_eval_003_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:075",
+      "style": "AcrylicWorld",
+      "B": "tar:./Pop_Art_src_075.png",
+      "A": "tar:./extra_Chinese_Ink_007_AcrylicWorld.png",
+      "C": "tar:./extra_Pop_Art_075_AcrylicWorld.png"
+    },
+    {
+      "id": "paired_unseen_eval_004_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Poly:056",
+      "style": "American_Cartoon",
+      "B": "tar:./Poly_src_056.png",
+      "A": "tar:./extra_Chinese_Ink_089_American_Cartoon.png",
+      "C": "tar:./extra_Poly_056_American_Cartoon.png"
+    },
+    {
+      "id": "paired_unseen_eval_004_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Poly:056",
+      "style": "American_Cartoon",
+      "B": "tar:./Poly_src_056.png",
+      "A": "tar:./extra_Origami_043_American_Cartoon.png",
+      "C": "tar:./extra_Poly_056_American_Cartoon.png"
+    },
+    {
+      "id": "paired_unseen_eval_005_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Paper_Cutting:031",
+      "style": "American_Cartoon",
+      "B": "tar:./Paper_Cutting_src_031.png",
+      "A": "tar:./extra_Chinese_Ink_089_American_Cartoon.png",
+      "C": "tar:./extra_Paper_Cutting_031_American_Cartoon.png"
+    },
+    {
+      "id": "paired_unseen_eval_005_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Paper_Cutting:031",
+      "style": "American_Cartoon",
+      "B": "tar:./Paper_Cutting_src_031.png",
+      "A": "tar:./extra_Origami_043_American_Cartoon.png",
+      "C": "tar:./extra_Paper_Cutting_031_American_Cartoon.png"
+    },
+    {
+      "id": "paired_unseen_eval_006_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Macaron:008",
+      "style": "ArtAug-lora-FLUX.1dev-v1",
+      "B": "tar:./Macaron_src_008.png",
+      "A": "tar:./extra_Chinese_Ink_089_ArtAug-lora-FLUX.1dev-v1.png",
+      "C": "tar:./extra_Macaron_008_ArtAug-lora-FLUX.1dev-v1.png"
+    },
+    {
+      "id": "paired_unseen_eval_006_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Macaron:008",
+      "style": "ArtAug-lora-FLUX.1dev-v1",
+      "B": "tar:./Macaron_src_008.png",
+      "A": "tar:./extra_Clay_Toy_106_ArtAug-lora-FLUX.1dev-v1.png",
+      "C": "tar:./extra_Macaron_008_ArtAug-lora-FLUX.1dev-v1.png"
+    },
+    {
+      "id": "paired_unseen_eval_007_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Fabric:022",
+      "style": "ArtAug-lora-FLUX.1dev-v1",
+      "B": "tar:./Fabric_src_022.png",
+      "A": "tar:./extra_Chinese_Ink_089_ArtAug-lora-FLUX.1dev-v1.png",
+      "C": "tar:./extra_Fabric_022_ArtAug-lora-FLUX.1dev-v1.png"
+    },
+    {
+      "id": "paired_unseen_eval_007_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Fabric:022",
+      "style": "ArtAug-lora-FLUX.1dev-v1",
+      "B": "tar:./Fabric_src_022.png",
+      "A": "tar:./extra_Clay_Toy_106_ArtAug-lora-FLUX.1dev-v1.png",
+      "C": "tar:./extra_Fabric_022_ArtAug-lora-FLUX.1dev-v1.png"
+    },
+    {
+      "id": "paired_unseen_eval_008_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Jojo:025",
+      "style": "Digital-Yellow-Flux-LoRA",
+      "B": "tar:./Jojo_src_025.png",
+      "A": "tar:./extra_American_Cartoon_060_Digital-Yellow-Flux-LoRA.png",
+      "C": "tar:./extra_Jojo_025_Digital-Yellow-Flux-LoRA.png"
+    },
+    {
+      "id": "paired_unseen_eval_008_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Jojo:025",
+      "style": "Digital-Yellow-Flux-LoRA",
+      "B": "tar:./Jojo_src_025.png",
+      "A": "tar:./extra_American_Cartoon_120_Digital-Yellow-Flux-LoRA.png",
+      "C": "tar:./extra_Jojo_025_Digital-Yellow-Flux-LoRA.png"
+    },
+    {
+      "id": "paired_unseen_eval_009_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Chinese_Ink:050",
+      "style": "Digital-Yellow-Flux-LoRA",
+      "B": "tar:./Chinese_Ink_src_050.png",
+      "A": "tar:./extra_American_Cartoon_060_Digital-Yellow-Flux-LoRA.png",
+      "C": "tar:./extra_Chinese_Ink_050_Digital-Yellow-Flux-LoRA.png"
+    },
+    {
+      "id": "paired_unseen_eval_009_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Chinese_Ink:050",
+      "style": "Digital-Yellow-Flux-LoRA",
+      "B": "tar:./Chinese_Ink_src_050.png",
+      "A": "tar:./extra_American_Cartoon_120_Digital-Yellow-Flux-LoRA.png",
+      "C": "tar:./extra_Chinese_Ink_050_Digital-Yellow-Flux-LoRA.png"
+    },
+    {
+      "id": "paired_unseen_eval_010_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Fabric:044",
+      "style": "FlacFerret_Bioglow",
+      "B": "tar:./Fabric_src_044.png",
+      "A": "tar:./extra_Chinese_Ink_003_FlacFerret_Bioglow.png",
+      "C": "tar:./extra_Fabric_044_FlacFerret_Bioglow.png"
+    },
+    {
+      "id": "paired_unseen_eval_010_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Fabric:044",
+      "style": "FlacFerret_Bioglow",
+      "B": "tar:./Fabric_src_044.png",
+      "A": "tar:./extra_Van_Gogh_005_FlacFerret_Bioglow.png",
+      "C": "tar:./extra_Fabric_044_FlacFerret_Bioglow.png"
+    },
+    {
+      "id": "paired_unseen_eval_011_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Clay_Toy:032",
+      "style": "FlacFerret_Bioglow",
+      "B": "tar:./Clay_Toy_src_032.png",
+      "A": "tar:./extra_Chinese_Ink_003_FlacFerret_Bioglow.png",
+      "C": "tar:./extra_Clay_Toy_032_FlacFerret_Bioglow.png"
+    },
+    {
+      "id": "paired_unseen_eval_011_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Clay_Toy:032",
+      "style": "FlacFerret_Bioglow",
+      "B": "tar:./Clay_Toy_src_032.png",
+      "A": "tar:./extra_Van_Gogh_005_FlacFerret_Bioglow.png",
+      "C": "tar:./extra_Clay_Toy_032_FlacFerret_Bioglow.png"
+    },
+    {
+      "id": "paired_unseen_eval_012_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "3D_Chibi:130",
+      "style": "Flux-Sketch-Flat-LoRA",
+      "B": "tar:./3D_Chibi_src_130.png",
+      "A": "tar:./extra_Snoopy_066_Flux-Sketch-Flat-LoRA.png",
+      "C": "tar:./extra_3D_Chibi_130_Flux-Sketch-Flat-LoRA.png"
+    },
+    {
+      "id": "paired_unseen_eval_012_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "3D_Chibi:130",
+      "style": "Flux-Sketch-Flat-LoRA",
+      "B": "tar:./3D_Chibi_src_130.png",
+      "A": "tar:./extra_Pop_Art_035_Flux-Sketch-Flat-LoRA.png",
+      "C": "tar:./extra_3D_Chibi_130_Flux-Sketch-Flat-LoRA.png"
+    },
+    {
+      "id": "paired_unseen_eval_013_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Line:011",
+      "style": "Flux-Sketch-Flat-LoRA",
+      "B": "tar:./Line_src_011.png",
+      "A": "tar:./extra_Snoopy_066_Flux-Sketch-Flat-LoRA.png",
+      "C": "tar:./extra_Line_011_Flux-Sketch-Flat-LoRA.png"
+    },
+    {
+      "id": "paired_unseen_eval_013_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Line:011",
+      "style": "Flux-Sketch-Flat-LoRA",
+      "B": "tar:./Line_src_011.png",
+      "A": "tar:./extra_Pop_Art_035_Flux-Sketch-Flat-LoRA.png",
+      "C": "tar:./extra_Line_011_Flux-Sketch-Flat-LoRA.png"
+    },
+    {
+      "id": "paired_unseen_eval_014_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Paper_Cutting:076",
+      "style": "Ghibli",
+      "B": "tar:./Paper_Cutting_src_076.png",
+      "A": "tar:./extra_Clay_Toy_037_Ghibli.png",
+      "C": "tar:./extra_Paper_Cutting_076_Ghibli.png"
+    },
+    {
+      "id": "paired_unseen_eval_014_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Paper_Cutting:076",
+      "style": "Ghibli",
+      "B": "tar:./Paper_Cutting_src_076.png",
+      "A": "tar:./extra_Paper_Cutting_054_Ghibli.png",
+      "C": "tar:./extra_Paper_Cutting_076_Ghibli.png"
+    },
+    {
+      "id": "paired_unseen_eval_015_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:075",
+      "style": "Ghibli",
+      "B": "tar:./Pop_Art_src_075.png",
+      "A": "tar:./extra_Clay_Toy_037_Ghibli.png",
+      "C": "tar:./extra_Pop_Art_075_Ghibli.png"
+    },
+    {
+      "id": "paired_unseen_eval_015_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:075",
+      "style": "Ghibli",
+      "B": "tar:./Pop_Art_src_075.png",
+      "A": "tar:./extra_Paper_Cutting_054_Ghibli.png",
+      "C": "tar:./extra_Pop_Art_075_Ghibli.png"
+    },
+    {
+      "id": "paired_unseen_eval_016_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Line:042",
+      "style": "Insectagon_FolkartV2",
+      "B": "tar:./Line_src_042.png",
+      "A": "tar:./extra_Chinese_Ink_067_Insectagon_FolkartV2.png",
+      "C": "tar:./extra_Line_042_Insectagon_FolkartV2.png"
+    },
+    {
+      "id": "paired_unseen_eval_016_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Line:042",
+      "style": "Insectagon_FolkartV2",
+      "B": "tar:./Line_src_042.png",
+      "A": "tar:./extra_American_Cartoon_118_Insectagon_FolkartV2.png",
+      "C": "tar:./extra_Line_042_Insectagon_FolkartV2.png"
+    },
+    {
+      "id": "paired_unseen_eval_017_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Clay_Toy:017",
+      "style": "Insectagon_FolkartV2",
+      "B": "tar:./Clay_Toy_src_017.png",
+      "A": "tar:./extra_Chinese_Ink_067_Insectagon_FolkartV2.png",
+      "C": "tar:./extra_Clay_Toy_017_Insectagon_FolkartV2.png"
+    },
+    {
+      "id": "paired_unseen_eval_017_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Clay_Toy:017",
+      "style": "Insectagon_FolkartV2",
+      "B": "tar:./Clay_Toy_src_017.png",
+      "A": "tar:./extra_American_Cartoon_118_Insectagon_FolkartV2.png",
+      "C": "tar:./extra_Clay_Toy_017_Insectagon_FolkartV2.png"
+    },
+    {
+      "id": "paired_unseen_eval_018_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "LEGO:052",
+      "style": "Insectagon_Hand_drawn_anime1",
+      "B": "tar:./LEGO_src_052.png",
+      "A": "tar:./extra_American_Cartoon_079_Insectagon_Hand_drawn_anime1.png",
+      "C": "tar:./extra_LEGO_052_Insectagon_Hand_drawn_anime1.png"
+    },
+    {
+      "id": "paired_unseen_eval_018_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "LEGO:052",
+      "style": "Insectagon_Hand_drawn_anime1",
+      "B": "tar:./LEGO_src_052.png",
+      "A": "tar:./extra_Ghibli_043_Insectagon_Hand_drawn_anime1.png",
+      "C": "tar:./extra_LEGO_052_Insectagon_Hand_drawn_anime1.png"
+    },
+    {
+      "id": "paired_unseen_eval_019_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "LEGO:042",
+      "style": "Insectagon_Hand_drawn_anime1",
+      "B": "tar:./LEGO_src_042.png",
+      "A": "tar:./extra_American_Cartoon_079_Insectagon_Hand_drawn_anime1.png",
+      "C": "tar:./extra_LEGO_042_Insectagon_Hand_drawn_anime1.png"
+    },
+    {
+      "id": "paired_unseen_eval_019_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "LEGO:042",
+      "style": "Insectagon_Hand_drawn_anime1",
+      "B": "tar:./LEGO_src_042.png",
+      "A": "tar:./extra_Ghibli_043_Insectagon_Hand_drawn_anime1.png",
+      "C": "tar:./extra_LEGO_042_Insectagon_Hand_drawn_anime1.png"
+    },
+    {
+      "id": "paired_unseen_eval_020_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "3D_Chibi:135",
+      "style": "LEGO",
+      "B": "tar:./3D_Chibi_src_135.png",
+      "A": "tar:./extra_Origami_031_LEGO.png",
+      "C": "tar:./extra_3D_Chibi_135_LEGO.png"
+    },
+    {
+      "id": "paired_unseen_eval_020_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "3D_Chibi:135",
+      "style": "LEGO",
+      "B": "tar:./3D_Chibi_src_135.png",
+      "A": "tar:./extra_Macaron_042_LEGO.png",
+      "C": "tar:./extra_3D_Chibi_135_LEGO.png"
+    },
+    {
+      "id": "paired_unseen_eval_021_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Vector:106",
+      "style": "LEGO",
+      "B": "tar:./Vector_src_106.png",
+      "A": "tar:./extra_Origami_031_LEGO.png",
+      "C": "tar:./extra_Vector_106_LEGO.png"
+    },
+    {
+      "id": "paired_unseen_eval_021_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Vector:106",
+      "style": "LEGO",
+      "B": "tar:./Vector_src_106.png",
+      "A": "tar:./extra_Macaron_042_LEGO.png",
+      "C": "tar:./extra_Vector_106_LEGO.png"
+    },
+    {
+      "id": "paired_unseen_eval_022_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Vector:018",
+      "style": "Qs-Sketch",
+      "B": "tar:./Vector_src_018.png",
+      "A": "tar:./extra_Paper_Cutting_054_Qs-Sketch.png",
+      "C": "tar:./extra_Vector_018_Qs-Sketch.png"
+    },
+    {
+      "id": "paired_unseen_eval_022_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Vector:018",
+      "style": "Qs-Sketch",
+      "B": "tar:./Vector_src_018.png",
+      "A": "tar:./extra_Clay_Toy_017_Qs-Sketch.png",
+      "C": "tar:./extra_Vector_018_Qs-Sketch.png"
+    },
+    {
+      "id": "paired_unseen_eval_023_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Van_Gogh:008",
+      "style": "Qs-Sketch",
+      "B": "tar:./Van_Gogh_src_008.png",
+      "A": "tar:./extra_Paper_Cutting_054_Qs-Sketch.png",
+      "C": "tar:./extra_Van_Gogh_008_Qs-Sketch.png"
+    },
+    {
+      "id": "paired_unseen_eval_023_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Van_Gogh:008",
+      "style": "Qs-Sketch",
+      "B": "tar:./Van_Gogh_src_008.png",
+      "A": "tar:./extra_Clay_Toy_017_Qs-Sketch.png",
+      "C": "tar:./extra_Van_Gogh_008_Qs-Sketch.png"
+    },
+    {
+      "id": "paired_unseen_eval_024_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:023",
+      "style": "Retro-Pixel-Flux-LoRA",
+      "B": "tar:./Pop_Art_src_023.png",
+      "A": "tar:./extra_Clay_Toy_073_Retro-Pixel-Flux-LoRA.png",
+      "C": "tar:./extra_Pop_Art_023_Retro-Pixel-Flux-LoRA.png"
+    },
+    {
+      "id": "paired_unseen_eval_024_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:023",
+      "style": "Retro-Pixel-Flux-LoRA",
+      "B": "tar:./Pop_Art_src_023.png",
+      "A": "tar:./extra_Clay_Toy_017_Retro-Pixel-Flux-LoRA.png",
+      "C": "tar:./extra_Pop_Art_023_Retro-Pixel-Flux-LoRA.png"
+    },
+    {
+      "id": "paired_unseen_eval_025_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "LEGO:006",
+      "style": "Retro-Pixel-Flux-LoRA",
+      "B": "tar:./LEGO_src_006.png",
+      "A": "tar:./extra_Clay_Toy_073_Retro-Pixel-Flux-LoRA.png",
+      "C": "tar:./extra_LEGO_006_Retro-Pixel-Flux-LoRA.png"
+    },
+    {
+      "id": "paired_unseen_eval_025_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "LEGO:006",
+      "style": "Retro-Pixel-Flux-LoRA",
+      "B": "tar:./LEGO_src_006.png",
+      "A": "tar:./extra_Clay_Toy_017_Retro-Pixel-Flux-LoRA.png",
+      "C": "tar:./extra_LEGO_006_Retro-Pixel-Flux-LoRA.png"
+    },
+    {
+      "id": "paired_unseen_eval_026_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Origami:110",
+      "style": "Rick_Morty",
+      "B": "tar:./Origami_src_110.png",
+      "A": "tar:./extra_LEGO_007_Rick_Morty.png",
+      "C": "tar:./extra_Origami_110_Rick_Morty.png"
+    },
+    {
+      "id": "paired_unseen_eval_026_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Origami:110",
+      "style": "Rick_Morty",
+      "B": "tar:./Origami_src_110.png",
+      "A": "tar:./extra_American_Cartoon_047_Rick_Morty.png",
+      "C": "tar:./extra_Origami_110_Rick_Morty.png"
+    },
+    {
+      "id": "paired_unseen_eval_027_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Irasutoya:036",
+      "style": "Rick_Morty",
+      "B": "tar:./Irasutoya_src_036.png",
+      "A": "tar:./extra_LEGO_007_Rick_Morty.png",
+      "C": "tar:./extra_Irasutoya_036_Rick_Morty.png"
+    },
+    {
+      "id": "paired_unseen_eval_027_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Irasutoya:036",
+      "style": "Rick_Morty",
+      "B": "tar:./Irasutoya_src_036.png",
+      "A": "tar:./extra_American_Cartoon_047_Rick_Morty.png",
+      "C": "tar:./extra_Irasutoya_036_Rick_Morty.png"
+    },
+    {
+      "id": "paired_unseen_eval_028_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Origami:050",
+      "style": "SHIPLEY_HeavyMetalStyle",
+      "B": "tar:./Origami_src_050.png",
+      "A": "tar:./extra_Origami_031_SHIPLEY_HeavyMetalStyle.png",
+      "C": "tar:./extra_Origami_050_SHIPLEY_HeavyMetalStyle.png"
+    },
+    {
+      "id": "paired_unseen_eval_028_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Origami:050",
+      "style": "SHIPLEY_HeavyMetalStyle",
+      "B": "tar:./Origami_src_050.png",
+      "A": "tar:./extra_Pop_Art_007_SHIPLEY_HeavyMetalStyle.png",
+      "C": "tar:./extra_Origami_050_SHIPLEY_HeavyMetalStyle.png"
+    },
+    {
+      "id": "paired_unseen_eval_029_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "American_Cartoon:077",
+      "style": "SHIPLEY_HeavyMetalStyle",
+      "B": "tar:./American_Cartoon_src_077.png",
+      "A": "tar:./extra_Origami_031_SHIPLEY_HeavyMetalStyle.png",
+      "C": "tar:./extra_American_Cartoon_077_SHIPLEY_HeavyMetalStyle.png"
+    },
+    {
+      "id": "paired_unseen_eval_029_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "American_Cartoon:077",
+      "style": "SHIPLEY_HeavyMetalStyle",
+      "B": "tar:./American_Cartoon_src_077.png",
+      "A": "tar:./extra_Pop_Art_007_SHIPLEY_HeavyMetalStyle.png",
+      "C": "tar:./extra_American_Cartoon_077_SHIPLEY_HeavyMetalStyle.png"
+    },
+    {
+      "id": "paired_unseen_eval_030_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Jojo:024",
+      "style": "an303042_Plympton_Toons",
+      "B": "tar:./Jojo_src_024.png",
+      "A": "tar:./extra_Clay_Toy_017_an303042_Plympton_Toons.png",
+      "C": "tar:./extra_Jojo_024_an303042_Plympton_Toons.png"
+    },
+    {
+      "id": "paired_unseen_eval_030_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Jojo:024",
+      "style": "an303042_Plympton_Toons",
+      "B": "tar:./Jojo_src_024.png",
+      "A": "tar:./extra_Chinese_Ink_013_an303042_Plympton_Toons.png",
+      "C": "tar:./extra_Jojo_024_an303042_Plympton_Toons.png"
+    },
+    {
+      "id": "paired_unseen_eval_031_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Rick_Morty:031",
+      "style": "an303042_Plympton_Toons",
+      "B": "tar:./Rick_Morty_src_031.png",
+      "A": "tar:./extra_Clay_Toy_017_an303042_Plympton_Toons.png",
+      "C": "tar:./extra_Rick_Morty_031_an303042_Plympton_Toons.png"
+    },
+    {
+      "id": "paired_unseen_eval_031_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Rick_Morty:031",
+      "style": "an303042_Plympton_Toons",
+      "B": "tar:./Rick_Morty_src_031.png",
+      "A": "tar:./extra_Chinese_Ink_013_an303042_Plympton_Toons.png",
+      "C": "tar:./extra_Rick_Morty_031_an303042_Plympton_Toons.png"
+    },
+    {
+      "id": "paired_unseen_eval_032_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Origami:077",
+      "style": "fabian3000_vgaleaders",
+      "B": "tar:./Origami_src_077.png",
+      "A": "tar:./extra_American_Cartoon_077_fabian3000_vgaleaders.png",
+      "C": "tar:./extra_Origami_077_fabian3000_vgaleaders.png"
+    },
+    {
+      "id": "paired_unseen_eval_032_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Origami:077",
+      "style": "fabian3000_vgaleaders",
+      "B": "tar:./Origami_src_077.png",
+      "A": "tar:./extra_Paper_Cutting_054_fabian3000_vgaleaders.png",
+      "C": "tar:./extra_Origami_077_fabian3000_vgaleaders.png"
+    },
+    {
+      "id": "paired_unseen_eval_033_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Paper_Cutting:051",
+      "style": "fabian3000_vgaleaders",
+      "B": "tar:./Paper_Cutting_src_051.png",
+      "A": "tar:./extra_American_Cartoon_077_fabian3000_vgaleaders.png",
+      "C": "tar:./extra_Paper_Cutting_051_fabian3000_vgaleaders.png"
+    },
+    {
+      "id": "paired_unseen_eval_033_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Paper_Cutting:051",
+      "style": "fabian3000_vgaleaders",
+      "B": "tar:./Paper_Cutting_src_051.png",
+      "A": "tar:./extra_Paper_Cutting_054_fabian3000_vgaleaders.png",
+      "C": "tar:./extra_Paper_Cutting_051_fabian3000_vgaleaders.png"
+    },
+    {
+      "id": "paired_unseen_eval_034_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Jojo:047",
+      "style": "flux-tarot-v1",
+      "B": "tar:./Jojo_src_047.png",
+      "A": "tar:./extra_Picasso_073_flux-tarot-v1.png",
+      "C": "tar:./extra_Jojo_047_flux-tarot-v1.png"
+    },
+    {
+      "id": "paired_unseen_eval_034_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Jojo:047",
+      "style": "flux-tarot-v1",
+      "B": "tar:./Jojo_src_047.png",
+      "A": "tar:./extra_Pop_Art_075_flux-tarot-v1.png",
+      "C": "tar:./extra_Jojo_047_flux-tarot-v1.png"
+    },
+    {
+      "id": "paired_unseen_eval_035_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "American_Cartoon:118",
+      "style": "flux-tarot-v1",
+      "B": "tar:./American_Cartoon_src_118.png",
+      "A": "tar:./extra_Picasso_073_flux-tarot-v1.png",
+      "C": "tar:./extra_American_Cartoon_118_flux-tarot-v1.png"
+    },
+    {
+      "id": "paired_unseen_eval_035_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "American_Cartoon:118",
+      "style": "flux-tarot-v1",
+      "B": "tar:./American_Cartoon_src_118.png",
+      "A": "tar:./extra_Pop_Art_075_flux-tarot-v1.png",
+      "C": "tar:./extra_American_Cartoon_118_flux-tarot-v1.png"
+    },
+    {
+      "id": "paired_unseen_eval_036_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:035",
+      "style": "flux_dev_karl_weiner",
+      "B": "tar:./Pop_Art_src_035.png",
+      "A": "tar:./extra_Chinese_Ink_003_flux_dev_karl_weiner.png",
+      "C": "tar:./extra_Pop_Art_035_flux_dev_karl_weiner.png"
+    },
+    {
+      "id": "paired_unseen_eval_036_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:035",
+      "style": "flux_dev_karl_weiner",
+      "B": "tar:./Pop_Art_src_035.png",
+      "A": "tar:./extra_Origami_077_flux_dev_karl_weiner.png",
+      "C": "tar:./extra_Pop_Art_035_flux_dev_karl_weiner.png"
+    },
+    {
+      "id": "paired_unseen_eval_037_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Chinese_Ink:058",
+      "style": "flux_dev_karl_weiner",
+      "B": "tar:./Chinese_Ink_src_058.png",
+      "A": "tar:./extra_Chinese_Ink_003_flux_dev_karl_weiner.png",
+      "C": "tar:./extra_Chinese_Ink_058_flux_dev_karl_weiner.png"
+    },
+    {
+      "id": "paired_unseen_eval_037_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Chinese_Ink:058",
+      "style": "flux_dev_karl_weiner",
+      "B": "tar:./Chinese_Ink_src_058.png",
+      "A": "tar:./extra_Origami_077_flux_dev_karl_weiner.png",
+      "C": "tar:./extra_Chinese_Ink_058_flux_dev_karl_weiner.png"
+    },
+    {
+      "id": "paired_unseen_eval_038_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "LEGO:052",
+      "style": "flux_render",
+      "B": "tar:./LEGO_src_052.png",
+      "A": "tar:./extra_Paper_Cutting_051_flux_render.png",
+      "C": "tar:./extra_LEGO_052_flux_render.png"
+    },
+    {
+      "id": "paired_unseen_eval_038_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "LEGO:052",
+      "style": "flux_render",
+      "B": "tar:./LEGO_src_052.png",
+      "A": "tar:./extra_Poly_120_flux_render.png",
+      "C": "tar:./extra_LEGO_052_flux_render.png"
+    },
+    {
+      "id": "paired_unseen_eval_039_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Snoopy:066",
+      "style": "flux_render",
+      "B": "tar:./Snoopy_src_066.png",
+      "A": "tar:./extra_Paper_Cutting_051_flux_render.png",
+      "C": "tar:./extra_Snoopy_066_flux_render.png"
+    },
+    {
+      "id": "paired_unseen_eval_039_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Snoopy:066",
+      "style": "flux_render",
+      "B": "tar:./Snoopy_src_066.png",
+      "A": "tar:./extra_Poly_120_flux_render.png",
+      "C": "tar:./extra_Snoopy_066_flux_render.png"
+    },
+    {
+      "id": "paired_unseen_eval_040_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Vector:106",
+      "style": "flux_surf",
+      "B": "tar:./Vector_src_106.png",
+      "A": "tar:./extra_Van_Gogh_093_flux_surf.png",
+      "C": "tar:./extra_Vector_106_flux_surf.png"
+    },
+    {
+      "id": "paired_unseen_eval_040_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Vector:106",
+      "style": "flux_surf",
+      "B": "tar:./Vector_src_106.png",
+      "A": "tar:./extra_Oil_Painting_011_flux_surf.png",
+      "C": "tar:./extra_Vector_106_flux_surf.png"
+    },
+    {
+      "id": "paired_unseen_eval_041_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Clay_Toy:041",
+      "style": "flux_surf",
+      "B": "tar:./Clay_Toy_src_041.png",
+      "A": "tar:./extra_Van_Gogh_093_flux_surf.png",
+      "C": "tar:./extra_Clay_Toy_041_flux_surf.png"
+    },
+    {
+      "id": "paired_unseen_eval_041_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Clay_Toy:041",
+      "style": "flux_surf",
+      "B": "tar:./Clay_Toy_src_041.png",
+      "A": "tar:./extra_Oil_Painting_011_flux_surf.png",
+      "C": "tar:./extra_Clay_Toy_041_flux_surf.png"
+    },
+    {
+      "id": "paired_unseen_eval_042_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:143",
+      "style": "holi_colorz",
+      "B": "tar:./Pop_Art_src_143.png",
+      "A": "tar:./extra_Rick_Morty_031_holi_colorz.png",
+      "C": "tar:./extra_Pop_Art_143_holi_colorz.png"
+    },
+    {
+      "id": "paired_unseen_eval_042_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:143",
+      "style": "holi_colorz",
+      "B": "tar:./Pop_Art_src_143.png",
+      "A": "tar:./extra_Snoopy_059_holi_colorz.png",
+      "C": "tar:./extra_Pop_Art_143_holi_colorz.png"
+    },
+    {
+      "id": "paired_unseen_eval_043_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Pixel:054",
+      "style": "holi_colorz",
+      "B": "tar:./Pixel_src_054.png",
+      "A": "tar:./extra_Rick_Morty_031_holi_colorz.png",
+      "C": "tar:./extra_Pixel_054_holi_colorz.png"
+    },
+    {
+      "id": "paired_unseen_eval_043_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Pixel:054",
+      "style": "holi_colorz",
+      "B": "tar:./Pixel_src_054.png",
+      "A": "tar:./extra_Snoopy_059_holi_colorz.png",
+      "C": "tar:./extra_Pixel_054_holi_colorz.png"
+    },
+    {
+      "id": "paired_unseen_eval_044_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Fabric:060",
+      "style": "i12bp8_i12bp8_moebius_v1",
+      "B": "tar:./Fabric_src_060.png",
+      "A": "tar:./extra_Pop_Art_007_i12bp8_i12bp8_moebius_v1.png",
+      "C": "tar:./extra_Fabric_060_i12bp8_i12bp8_moebius_v1.png"
+    },
+    {
+      "id": "paired_unseen_eval_044_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Fabric:060",
+      "style": "i12bp8_i12bp8_moebius_v1",
+      "B": "tar:./Fabric_src_060.png",
+      "A": "tar:./extra_Oil_Painting_001_i12bp8_i12bp8_moebius_v1.png",
+      "C": "tar:./extra_Fabric_060_i12bp8_i12bp8_moebius_v1.png"
+    },
+    {
+      "id": "paired_unseen_eval_045_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Clay_Toy:017",
+      "style": "i12bp8_i12bp8_moebius_v1",
+      "B": "tar:./Clay_Toy_src_017.png",
+      "A": "tar:./extra_Pop_Art_007_i12bp8_i12bp8_moebius_v1.png",
+      "C": "tar:./extra_Clay_Toy_017_i12bp8_i12bp8_moebius_v1.png"
+    },
+    {
+      "id": "paired_unseen_eval_045_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Clay_Toy:017",
+      "style": "i12bp8_i12bp8_moebius_v1",
+      "B": "tar:./Clay_Toy_src_017.png",
+      "A": "tar:./extra_Oil_Painting_001_i12bp8_i12bp8_moebius_v1.png",
+      "C": "tar:./extra_Clay_Toy_017_i12bp8_i12bp8_moebius_v1.png"
+    },
+    {
+      "id": "paired_unseen_eval_046_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "American_Cartoon:079",
+      "style": "maxxd4240_BNWTOONS",
+      "B": "tar:./American_Cartoon_src_079.png",
+      "A": "tar:./extra_Clay_Toy_041_maxxd4240_BNWTOONS.png",
+      "C": "tar:./extra_American_Cartoon_079_maxxd4240_BNWTOONS.png"
+    },
+    {
+      "id": "paired_unseen_eval_046_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "American_Cartoon:079",
+      "style": "maxxd4240_BNWTOONS",
+      "B": "tar:./American_Cartoon_src_079.png",
+      "A": "tar:./extra_Oil_Painting_042_maxxd4240_BNWTOONS.png",
+      "C": "tar:./extra_American_Cartoon_079_maxxd4240_BNWTOONS.png"
+    },
+    {
+      "id": "paired_unseen_eval_047_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Jojo:047",
+      "style": "maxxd4240_BNWTOONS",
+      "B": "tar:./Jojo_src_047.png",
+      "A": "tar:./extra_Clay_Toy_041_maxxd4240_BNWTOONS.png",
+      "C": "tar:./extra_Jojo_047_maxxd4240_BNWTOONS.png"
+    },
+    {
+      "id": "paired_unseen_eval_047_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Jojo:047",
+      "style": "maxxd4240_BNWTOONS",
+      "B": "tar:./Jojo_src_047.png",
+      "A": "tar:./extra_Oil_Painting_042_maxxd4240_BNWTOONS.png",
+      "C": "tar:./extra_Jojo_047_maxxd4240_BNWTOONS.png"
+    },
+    {
+      "id": "paired_unseen_eval_048_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Clay_Toy:021",
+      "style": "maxxd4240_LazyAnimalMemes",
+      "B": "tar:./Clay_Toy_src_021.png",
+      "A": "tar:./extra_LEGO_015_maxxd4240_LazyAnimalMemes.png",
+      "C": "tar:./extra_Clay_Toy_021_maxxd4240_LazyAnimalMemes.png"
+    },
+    {
+      "id": "paired_unseen_eval_048_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Clay_Toy:021",
+      "style": "maxxd4240_LazyAnimalMemes",
+      "B": "tar:./Clay_Toy_src_021.png",
+      "A": "tar:./extra_Fabric_057_maxxd4240_LazyAnimalMemes.png",
+      "C": "tar:./extra_Clay_Toy_021_maxxd4240_LazyAnimalMemes.png"
+    },
+    {
+      "id": "paired_unseen_eval_049_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "3D_Chibi:020",
+      "style": "maxxd4240_LazyAnimalMemes",
+      "B": "tar:./3D_Chibi_src_020.png",
+      "A": "tar:./extra_LEGO_015_maxxd4240_LazyAnimalMemes.png",
+      "C": "tar:./extra_3D_Chibi_020_maxxd4240_LazyAnimalMemes.png"
+    },
+    {
+      "id": "paired_unseen_eval_049_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "3D_Chibi:020",
+      "style": "maxxd4240_LazyAnimalMemes",
+      "B": "tar:./3D_Chibi_src_020.png",
+      "A": "tar:./extra_Fabric_057_maxxd4240_LazyAnimalMemes.png",
+      "C": "tar:./extra_3D_Chibi_020_maxxd4240_LazyAnimalMemes.png"
+    },
+    {
+      "id": "paired_unseen_eval_050_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Chinese_Ink:003",
+      "style": "maxxd4240_VictorianMemes",
+      "B": "tar:./Chinese_Ink_src_003.png",
+      "A": "tar:./extra_Van_Gogh_011_maxxd4240_VictorianMemes.png",
+      "C": "tar:./extra_Chinese_Ink_003_maxxd4240_VictorianMemes.png"
+    },
+    {
+      "id": "paired_unseen_eval_050_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Chinese_Ink:003",
+      "style": "maxxd4240_VictorianMemes",
+      "B": "tar:./Chinese_Ink_src_003.png",
+      "A": "tar:./extra_Line_011_maxxd4240_VictorianMemes.png",
+      "C": "tar:./extra_Chinese_Ink_003_maxxd4240_VictorianMemes.png"
+    },
+    {
+      "id": "paired_unseen_eval_051_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:010",
+      "style": "maxxd4240_VictorianMemes",
+      "B": "tar:./Pop_Art_src_010.png",
+      "A": "tar:./extra_Van_Gogh_011_maxxd4240_VictorianMemes.png",
+      "C": "tar:./extra_Pop_Art_010_maxxd4240_VictorianMemes.png"
+    },
+    {
+      "id": "paired_unseen_eval_051_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:010",
+      "style": "maxxd4240_VictorianMemes",
+      "B": "tar:./Pop_Art_src_010.png",
+      "A": "tar:./extra_Line_011_maxxd4240_VictorianMemes.png",
+      "C": "tar:./extra_Pop_Art_010_maxxd4240_VictorianMemes.png"
+    },
+    {
+      "id": "paired_unseen_eval_052_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:105",
+      "style": "mindlywork_Backcloth",
+      "B": "tar:./Pop_Art_src_105.png",
+      "A": "tar:./extra_Paper_Cutting_008_mindlywork_Backcloth.png",
+      "C": "tar:./extra_Pop_Art_105_mindlywork_Backcloth.png"
+    },
+    {
+      "id": "paired_unseen_eval_052_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:105",
+      "style": "mindlywork_Backcloth",
+      "B": "tar:./Pop_Art_src_105.png",
+      "A": "tar:./extra_Line_044_mindlywork_Backcloth.png",
+      "C": "tar:./extra_Pop_Art_105_mindlywork_Backcloth.png"
+    },
+    {
+      "id": "paired_unseen_eval_053_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "3D_Chibi:111",
+      "style": "mindlywork_Backcloth",
+      "B": "tar:./3D_Chibi_src_111.png",
+      "A": "tar:./extra_Paper_Cutting_008_mindlywork_Backcloth.png",
+      "C": "tar:./extra_3D_Chibi_111_mindlywork_Backcloth.png"
+    },
+    {
+      "id": "paired_unseen_eval_053_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "3D_Chibi:111",
+      "style": "mindlywork_Backcloth",
+      "B": "tar:./3D_Chibi_src_111.png",
+      "A": "tar:./extra_Line_044_mindlywork_Backcloth.png",
+      "C": "tar:./extra_3D_Chibi_111_mindlywork_Backcloth.png"
+    },
+    {
+      "id": "paired_unseen_eval_054_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Line:011",
+      "style": "quitters_flux_dev_courtroomsketch",
+      "B": "tar:./Line_src_011.png",
+      "A": "tar:./extra_Vector_018_quitters_flux_dev_courtroomsketch.png",
+      "C": "tar:./extra_Line_011_quitters_flux_dev_courtroomsketch.png"
+    },
+    {
+      "id": "paired_unseen_eval_054_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Line:011",
+      "style": "quitters_flux_dev_courtroomsketch",
+      "B": "tar:./Line_src_011.png",
+      "A": "tar:./extra_Clay_Toy_099_quitters_flux_dev_courtroomsketch.png",
+      "C": "tar:./extra_Line_011_quitters_flux_dev_courtroomsketch.png"
+    },
+    {
+      "id": "paired_unseen_eval_055_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Paper_Cutting:050",
+      "style": "quitters_flux_dev_courtroomsketch",
+      "B": "tar:./Paper_Cutting_src_050.png",
+      "A": "tar:./extra_Vector_018_quitters_flux_dev_courtroomsketch.png",
+      "C": "tar:./extra_Paper_Cutting_050_quitters_flux_dev_courtroomsketch.png"
+    },
+    {
+      "id": "paired_unseen_eval_055_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Paper_Cutting:050",
+      "style": "quitters_flux_dev_courtroomsketch",
+      "B": "tar:./Paper_Cutting_src_050.png",
+      "A": "tar:./extra_Clay_Toy_099_quitters_flux_dev_courtroomsketch.png",
+      "C": "tar:./extra_Paper_Cutting_050_quitters_flux_dev_courtroomsketch.png"
+    },
+    {
+      "id": "paired_unseen_eval_056_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "LEGO:052",
+      "style": "rennurtsfx_geosketch_test",
+      "B": "tar:./LEGO_src_052.png",
+      "A": "tar:./extra_Chinese_Ink_067_rennurtsfx_geosketch_test.png",
+      "C": "tar:./extra_LEGO_052_rennurtsfx_geosketch_test.png"
+    },
+    {
+      "id": "paired_unseen_eval_056_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "LEGO:052",
+      "style": "rennurtsfx_geosketch_test",
+      "B": "tar:./LEGO_src_052.png",
+      "A": "tar:./extra_Origami_050_rennurtsfx_geosketch_test.png",
+      "C": "tar:./extra_LEGO_052_rennurtsfx_geosketch_test.png"
+    },
+    {
+      "id": "paired_unseen_eval_057_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Origami:031",
+      "style": "rennurtsfx_geosketch_test",
+      "B": "tar:./Origami_src_031.png",
+      "A": "tar:./extra_Chinese_Ink_067_rennurtsfx_geosketch_test.png",
+      "C": "tar:./extra_Origami_031_rennurtsfx_geosketch_test.png"
+    },
+    {
+      "id": "paired_unseen_eval_057_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Origami:031",
+      "style": "rennurtsfx_geosketch_test",
+      "B": "tar:./Origami_src_031.png",
+      "A": "tar:./extra_Origami_050_rennurtsfx_geosketch_test.png",
+      "C": "tar:./extra_Origami_031_rennurtsfx_geosketch_test.png"
+    },
+    {
+      "id": "paired_unseen_eval_058_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "3D_Chibi:032",
+      "style": "swapagrawal14_moonlight_aura_anime",
+      "B": "tar:./3D_Chibi_src_032.png",
+      "A": "tar:./extra_Line_038_swapagrawal14_moonlight_aura_anime.png",
+      "C": "tar:./extra_3D_Chibi_032_swapagrawal14_moonlight_aura_anime.png"
+    },
+    {
+      "id": "paired_unseen_eval_058_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "3D_Chibi:032",
+      "style": "swapagrawal14_moonlight_aura_anime",
+      "B": "tar:./3D_Chibi_src_032.png",
+      "A": "tar:./extra_Van_Gogh_042_swapagrawal14_moonlight_aura_anime.png",
+      "C": "tar:./extra_3D_Chibi_032_swapagrawal14_moonlight_aura_anime.png"
+    },
+    {
+      "id": "paired_unseen_eval_059_ref0",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:036",
+      "style": "swapagrawal14_moonlight_aura_anime",
+      "B": "tar:./Pop_Art_src_036.png",
+      "A": "tar:./extra_Line_038_swapagrawal14_moonlight_aura_anime.png",
+      "C": "tar:./extra_Pop_Art_036_swapagrawal14_moonlight_aura_anime.png"
+    },
+    {
+      "id": "paired_unseen_eval_059_ref1",
+      "group": "original_plan_unseen_eval",
+      "content": "Pop_Art:036",
+      "style": "swapagrawal14_moonlight_aura_anime",
+      "B": "tar:./Pop_Art_src_036.png",
+      "A": "tar:./extra_Van_Gogh_042_swapagrawal14_moonlight_aura_anime.png",
+      "C": "tar:./extra_Pop_Art_036_swapagrawal14_moonlight_aura_anime.png"
+    }
+  ],
+  "ablation_case_ids": [
+    "ext_woman_ces_02",
+    "ext_woman_ces_03",
+    "ext_woman_ces_09",
+    "ext_woman_ces_12",
+    "ext_woman_woodcut",
+    "ext_woman_pastel",
+    "ext_woman_pointillism",
+    "ext_woman_cyanotype",
+    "ext_portrait_ces_02",
+    "ext_portrait_ces_03",
+    "ext_portrait_ces_09",
+    "ext_portrait_ces_12",
+    "ext_portrait_woodcut",
+    "ext_portrait_pastel",
+    "ext_portrait_pointillism",
+    "ext_portrait_cyanotype",
+    "ext_cat_ces_02",
+    "ext_cat_ces_03",
+    "ext_cat_ces_09",
+    "ext_cat_ces_12",
+    "ext_cat_woodcut",
+    "ext_cat_pastel",
+    "ext_cat_pointillism",
+    "ext_cat_cyanotype",
+    "ext_landscape_ces_02",
+    "ext_landscape_ces_03",
+    "ext_landscape_ces_09",
+    "ext_landscape_ces_12",
+    "ext_landscape_woodcut",
+    "ext_landscape_pastel",
+    "ext_landscape_pointillism",
+    "ext_landscape_cyanotype"
+  ],
+  "counts": {
+    "external_cross": 207,
+    "identity": 9,
+    "original_plan_seen_eval": 16,
+    "original_plan_unseen_eval": 120
+  },
+  "limits": [
+    "Pretrained base and early training exposure for external images or style labels is not established.",
+    "Original plan val styles are held out by that plan, but not proven unseen across all historical runs.",
+    "Paired C is a dataset-provided stylized target, not the unique ground truth for arbitrary style transfer.",
+    "Metrics are proxies; no automatic disentanglement percentage, no identity/quality guarantee.",
+    "This fixed 9-content external grid is not a population-representative sample.",
+    "For paired/branch-control suites only the first seed is used; external grid uses two seeds."
+  ],
+  "sources": [
+    "https://github.com/open-mmlab/StyleShot",
+    "https://github.com/learn2phoenix/CSD",
+    "https://arxiv.org/abs/2207.12280"
+  ],
+  "planned_outputs": {
+    "main_external": 864,
+    "main_paired": 272,
+    "controls": 96,
+    "total": 1232
+  },
+  "suite_settings": {
+    "external_cross_and_identity": {
+      "seeds": [
+        20261014,
+        20261102
+      ],
+      "modes": [
+        "lora10135",
+        "lora10788"
+      ]
+    },
+    "original_plan_seen_eval_and_unseen_eval": {
+      "seeds": [
+        20261014
+      ],
+      "modes": [
+        "lora10135",
+        "lora10788"
+      ]
+    },
+    "branch_and_base_controls": {
+      "seeds": [
+        20261014
+      ],
+      "modes": [
+        "base_no_lora",
+        "original_cnn10135",
+        "dynamic_cnn10135"
+      ],
+      "cases": 32
+    }
+  },
+  "inference": {
+    "base": "anima_baseV10.safetensors",
+    "vae": "qwen_image_vae.safetensors",
+    "text_encoder": "qwen_3_06b_base.safetensors",
+    "sampler": "native explicit Euler, 30 updates",
+    "timestep_schedule": "3*t/(1+2*t), t from 1 to 0",
+    "cfg": 1.0,
+    "negative_prompt": null,
+    "input_preprocessing": "EXIF transpose; RGB; PIL BICUBIC resize to 1024x1024 without preserving aspect ratio",
+    "precision": "base/VAE native bfloat16; LoRA masters float32 and cast for forward",
+    "lora_rank": 32,
+    "lora_scale": "native forward y + up(down(x)); no separate alpha multiplier",
+    "main_adapter_10135": "adapter_cloud000100_branch000130.pt",
+    "main_adapter_10788": "lora84_010788.safetensors",
+    "checkpoint_note": "The joint run froze adapter weights while training CNN; later 10788 and joint 10135 have different recorded histories, so no claim of a 653-step paired continuation."
+  },
+  "analysis_plan": {
+    "style": "Report per-reference and per-content style similarity using available validated metrics; descriptive proxy, not style accuracy.",
+    "content": "Report per-content structural/perceptual proxy plus visual identity, object and layout changes; no interpretation as identity verification.",
+    "texture": "Inspect full-resolution zoomed crops for medium-specific edges and marks; no universal numerical percent claimed.",
+    "reference_content_leak": "Matched same-B/different-A comparisons and visual evidence, reporting concrete cases rather than inferred absolute purity.",
+    "aggregates": "Report per-content and per-style groups; two seeds and repeated references sharing B/C are dependent, not independent images. If confidence intervals are estimated, use grouped resampling and disclose n.",
+    "human_review": "QA visual review is an inspection; no fabricated blinded multi-rater human study.",
+    "comparisons": "Same condition and seed: lora10135 vs lora10788; 10135 vs old/dynamic residual; native B/A route no-LoRA control. No SOTA claim without external baselines."
+  }
+}

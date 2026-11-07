@@ -1,0 +1,114 @@
+{
+  "checkpoint": "lora84_010788.safetensors",
+  "outputs": 138,
+  "specific_B": [
+    "cat",
+    "city",
+    "portrait"
+  ],
+  "specific_A_count": 23,
+  "seeds": [
+    "20261014",
+    "20261102"
+  ],
+  "dimensions": 1168,
+  "results": {
+    "A_swap": {
+      "distance_full": {
+        "count_correlated_pairs": 1518,
+        "mean": 0.3671486918551858,
+        "median": 0.346907516249909,
+        "p10": 0.17158306590975791,
+        "p90": 0.5660833727145236,
+        "min": 0.049793881574770535,
+        "max": 1.1576838653968278
+      },
+      "distance_gram": {
+        "count_correlated_pairs": 1518,
+        "mean": 0.33325028949154384,
+        "median": 0.31210257938994984,
+        "p10": 0.1451775904029954,
+        "p90": 0.5280719387124769,
+        "min": 0.03847479657540717,
+        "max": 1.080774281777745
+      },
+      "distance_moments": {
+        "count_correlated_pairs": 1518,
+        "mean": 0.14736758088535193,
+        "median": 0.14187252110438625,
+        "p10": 0.07402359223540997,
+        "p90": 0.22414671662649108,
+        "min": 0.026932695798208502,
+        "max": 0.4710645821954765
+      }
+    },
+    "B_swap": {
+      "distance_full": {
+        "count_correlated_pairs": 138,
+        "mean": 0.7124491134009644,
+        "median": 0.7267886784492688,
+        "p10": 0.5131195563129739,
+        "p90": 0.8746553048677806,
+        "min": 0.3484591083343144,
+        "max": 1.0272600033302048
+      },
+      "distance_gram": {
+        "count_correlated_pairs": 138,
+        "mean": 0.6775522822063298,
+        "median": 0.6905627049471388,
+        "p10": 0.4918817028743502,
+        "p90": 0.8435400609736108,
+        "min": 0.3067023198303741,
+        "max": 1.0065561269453416
+      },
+      "distance_moments": {
+        "count_correlated_pairs": 138,
+        "mean": 0.21440214677643243,
+        "median": 0.21387214000910332,
+        "p10": 0.1551795342097972,
+        "p90": 0.2794044387542889,
+        "min": 0.05284423662922056,
+        "max": 0.31247163499447766
+      }
+    },
+    "seed_swap": {
+      "distance_full": {
+        "count_correlated_pairs": 69,
+        "mean": 0.41833409548151007,
+        "median": 0.38305023549390704,
+        "p10": 0.281908893458915,
+        "p90": 0.5994166262765971,
+        "min": 0.22179376569935488,
+        "max": 0.9119148428716646
+      },
+      "distance_gram": {
+        "count_correlated_pairs": 69,
+        "mean": 0.3687905772712442,
+        "median": 0.33934041206728704,
+        "p10": 0.22399706214684137,
+        "p90": 0.550233635230175,
+        "min": 0.18562375781237633,
+        "max": 0.8233685068222392
+      },
+      "distance_moments": {
+        "count_correlated_pairs": 69,
+        "mean": 0.19162003119981763,
+        "median": 0.18244421928474397,
+        "p10": 0.13404719675065782,
+        "p90": 0.24940652271099767,
+        "min": 0.11355789087401484,
+        "max": 0.39198594697127725
+      }
+    }
+  },
+  "definition_A_swap": "fixed B and seed; vary two A reference images",
+  "definition_B_swap": "fixed A and seed; vary two B content images",
+  "definition_seed_swap": "fixed B and A; vary the two recorded seeds",
+  "descriptor": "Weighted VAE latent channel correlations, moments and joint edge statistics; not LoRA hidden states.",
+  "limits": [
+    "Pairs share images and are correlated; counts are not independent sample counts.",
+    "One specific image per A style label and B label; changes include identity, color, background and composition.",
+    "1168-D Euclidean distances are descriptive; not style purity, disentanglement, success rate or causal contributions.",
+    "The historical output images were generated with stretched input preprocessing; 1024 outputs themselves were not stretched here."
+  ]
+}

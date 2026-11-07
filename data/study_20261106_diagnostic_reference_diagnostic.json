@@ -1,0 +1,24 @@
+{
+  "records": [
+    {
+      "reference": "matching",
+      "output": "matching__A_t0_full.png",
+      "seconds": 56.46974450000562
+    },
+    {
+      "reference": "same_style_other_subject",
+      "output": "same_style_other_subject__A_t0_full.png",
+      "seconds": 56.89714259997709
+    },
+    {
+      "reference": "same_subject_other_style",
+      "output": "same_subject_other_style__A_t0_full.png",
+      "seconds": 57.17106289998628
+    }
+  ],
+  "seed": 20261014,
+  "steps": 30,
+  "checkpoint": "lora84_010788.safetensors",
+  "route": "Full three-frame; A timestep zero, A self-only attention, A no text cross-attention; no cache.",
+  "limits": "Existing 10788 checkpoint was trained on the native joint route, not this inference intervention."
+}

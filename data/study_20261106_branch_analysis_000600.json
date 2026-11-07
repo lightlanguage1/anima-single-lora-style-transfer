@@ -1,0 +1,1194 @@
+{
+  "comparison_updates": [
+    0,
+    400,
+    600
+  ],
+  "baseline_includes_local300": true,
+  "training": {
+    "last_update": 600,
+    "presentations": 9600,
+    "unique_pairs": 9600,
+    "unique_A": 8519,
+    "unique_B": 1651,
+    "styles": 140,
+    "windows": [
+      {
+        "updates": [
+          1,
+          100
+        ],
+        "total": 0.09980075463186949,
+        "weighted_flow_C": 0.08999131800374016,
+        "unweighted_spatial_C": 0.560799716943875
+      },
+      {
+        "updates": [
+          301,
+          400
+        ],
+        "total": 0.09791101945447736,
+        "weighted_flow_C": 0.08823968418524601,
+        "unweighted_spatial_C": 0.5529045404028148
+      },
+      {
+        "updates": [
+          401,
+          500
+        ],
+        "total": 0.09806187318754382,
+        "weighted_flow_C": 0.08847742907353677,
+        "unweighted_spatial_C": 0.5479370266478508
+      },
+      {
+        "updates": [
+          501,
+          600
+        ],
+        "total": 0.09796793285058811,
+        "weighted_flow_C": 0.08826713872374967,
+        "unweighted_spatial_C": 0.554588686353527
+      }
+    ],
+    "lr": [
+      0.0001
+    ],
+    "maximum_joint_gradient": 0.03141159564256668,
+    "original_gradient_tensors_max": 0,
+    "recent20_seconds": 29.628691423498093,
+    "A_equals_C_count": 0,
+    "per_style_presentations_min_max": [
+      3,
+      110
+    ],
+    "anchor_exact_C_presentations": {
+      "Pixel": 0,
+      "Van_Gogh": 1,
+      "Flux-Sketch-Ep-LoRA": 0
+    },
+    "fraction_of_available_pair_rows": 0.2312528605497073
+  },
+  "hidden_additions": [
+    {
+      "update": 1,
+      "block": 17,
+      "residual_to_target_rms": 0.009544885746436194,
+      "effective_nonzero_fraction": 0.9640148058533669,
+      "effective_to_raw_rms": 1.0002320478232174
+    },
+    {
+      "update": 1,
+      "block": 22,
+      "residual_to_target_rms": 0.012857318972237408,
+      "effective_nonzero_fraction": 0.9580845683813095,
+      "effective_to_raw_rms": 1.0001845706563444
+    },
+    {
+      "update": 1,
+      "block": 27,
+      "residual_to_target_rms": 0.001282368120882893,
+      "effective_nonzero_fraction": 0.49220019578933716,
+      "effective_to_raw_rms": 1.0323423170123351
+    },
+    {
+      "update": 400,
+      "block": 17,
+      "residual_to_target_rms": 0.0054496239754371345,
+      "effective_nonzero_fraction": 0.9589980244636536,
+      "effective_to_raw_rms": 1.005294326534738
+    },
+    {
+      "update": 400,
+      "block": 22,
+      "residual_to_target_rms": 0.011088082246715203,
+      "effective_nonzero_fraction": 0.9646582901477814,
+      "effective_to_raw_rms": 0.9993551860575832
+    },
+    {
+      "update": 400,
+      "block": 27,
+      "residual_to_target_rms": 0.00127350544789806,
+      "effective_nonzero_fraction": 0.49295052140951157,
+      "effective_to_raw_rms": 1.0202161244664474
+    },
+    {
+      "update": 600,
+      "block": 17,
+      "residual_to_target_rms": 0.0061117988952901214,
+      "effective_nonzero_fraction": 0.9599903151392937,
+      "effective_to_raw_rms": 1.0055291915422302
+    },
+    {
+      "update": 600,
+      "block": 22,
+      "residual_to_target_rms": 0.012519309035269544,
+      "effective_nonzero_fraction": 0.9622481092810631,
+      "effective_to_raw_rms": 0.9980601039702257
+    },
+    {
+      "update": 600,
+      "block": 27,
+      "residual_to_target_rms": 0.0016558089628233574,
+      "effective_nonzero_fraction": 0.5720860362052917,
+      "effective_to_raw_rms": 1.033742499673273
+    }
+  ],
+  "output_changes": [
+    {
+      "style": "ComfyUI_02300_",
+      "RGB_MAE_0_to400": 0.07201657444238663,
+      "RGB_MAE_400_to600": 0.008566164411604404
+    },
+    {
+      "style": "ComfyUI_03976_",
+      "RGB_MAE_0_to400": 0.10208335518836975,
+      "RGB_MAE_400_to600": 0.014140463434159756
+    },
+    {
+      "style": "ComfyUI_05579_",
+      "RGB_MAE_0_to400": 0.0655183419585228,
+      "RGB_MAE_400_to600": 0.00824715569615364
+    },
+    {
+      "style": "Pixel",
+      "RGB_MAE_0_to400": 0.09620141237974167,
+      "RGB_MAE_400_to600": 0.013328892178833485
+    },
+    {
+      "style": "Van_Gogh",
+      "RGB_MAE_0_to400": 0.04249808192253113,
+      "RGB_MAE_400_to600": 0.00996797252446413
+    },
+    {
+      "style": "Flux-Sketch-Ep-LoRA",
+      "RGB_MAE_0_to400": 0.1063978374004364,
+      "RGB_MAE_400_to600": 0.022586306557059288
+    }
+  ],
+  "reference_crops": [
+    {
+      "style": "ComfyUI_02300_",
+      "patches": [
+        {
+          "left": 128,
+          "top": 128,
+          "mean_sobel": 0.018015556037425995,
+          "edge_fraction_above_001": 0.1977081298828125,
+          "flat_fraction_below_0002": 0.4077911376953125
+        },
+        {
+          "left": 640,
+          "top": 128,
+          "mean_sobel": 0.01625450886785984,
+          "edge_fraction_above_001": 0.1790771484375,
+          "flat_fraction_below_0002": 0.5404205322265625
+        },
+        {
+          "left": 128,
+          "top": 640,
+          "mean_sobel": 0.006695020943880081,
+          "edge_fraction_above_001": 0.0816802978515625,
+          "flat_fraction_below_0002": 0.5489349365234375
+        },
+        {
+          "left": 640,
+          "top": 640,
+          "mean_sobel": 0.003348973812535405,
+          "edge_fraction_above_001": 0.0420379638671875,
+          "flat_fraction_below_0002": 0.6878204345703125
+        }
+      ],
+      "central512": {
+        "mean_sobel": 0.020902791991829872,
+        "edge_fraction_above_001": 0.23242568969726562,
+        "flat_fraction_below_0002": 0.3545722961425781
+      }
+    },
+    {
+      "style": "ComfyUI_03976_",
+      "patches": [
+        {
+          "left": 128,
+          "top": 128,
+          "mean_sobel": 0.06980356574058533,
+          "edge_fraction_above_001": 0.2952117919921875,
+          "flat_fraction_below_0002": 0.4766998291015625
+        },
+        {
+          "left": 640,
+          "top": 128,
+          "mean_sobel": 0.01748528704047203,
+          "edge_fraction_above_001": 0.1078643798828125,
+          "flat_fraction_below_0002": 0.633087158203125
+        },
+        {
+          "left": 128,
+          "top": 640,
+          "mean_sobel": 0.020656565204262733,
+          "edge_fraction_above_001": 0.10296630859375,
+          "flat_fraction_below_0002": 0.68804931640625
+        },
+        {
+          "left": 640,
+          "top": 640,
+          "mean_sobel": 0.006713970098644495,
+          "edge_fraction_above_001": 0.0439605712890625,
+          "flat_fraction_below_0002": 0.7749481201171875
+        }
+      ],
+      "central512": {
+        "mean_sobel": 0.10039350390434265,
+        "edge_fraction_above_001": 0.45166015625,
+        "flat_fraction_below_0002": 0.3333091735839844
+      }
+    },
+    {
+      "style": "ComfyUI_05579_",
+      "patches": [
+        {
+          "left": 128,
+          "top": 128,
+          "mean_sobel": 0.03488492593169212,
+          "edge_fraction_above_001": 0.34759521484375,
+          "flat_fraction_below_0002": 0.252593994140625
+        },
+        {
+          "left": 640,
+          "top": 128,
+          "mean_sobel": 0.03130173310637474,
+          "edge_fraction_above_001": 0.363677978515625,
+          "flat_fraction_below_0002": 0.2996063232421875
+        },
+        {
+          "left": 128,
+          "top": 640,
+          "mean_sobel": 0.018799016252160072,
+          "edge_fraction_above_001": 0.2307586669921875,
+          "flat_fraction_below_0002": 0.38995361328125
+        },
+        {
+          "left": 640,
+          "top": 640,
+          "mean_sobel": 0.020273104310035706,
+          "edge_fraction_above_001": 0.267822265625,
+          "flat_fraction_below_0002": 0.3393707275390625
+        }
+      ],
+      "central512": {
+        "mean_sobel": 0.02816169336438179,
+        "edge_fraction_above_001": 0.3327674865722656,
+        "flat_fraction_below_0002": 0.28064727783203125
+      }
+    }
+  ],
+  "fixed_C_metrics": [
+    {
+      "style": "Pixel",
+      "paired_C_spatial_distance": {
+        "0": 0.9771421551704407,
+        "400": 1.1122742891311646,
+        "600": 1.1000306606292725
+      }
+    },
+    {
+      "style": "Van_Gogh",
+      "paired_C_spatial_distance": {
+        "0": 0.657940685749054,
+        "400": 0.6820116639137268,
+        "600": 0.6923501491546631
+      }
+    },
+    {
+      "style": "Flux-Sketch-Ep-LoRA",
+      "paired_C_spatial_distance": {
+        "0": 0.9640166163444519,
+        "400": 1.0048271417617798,
+        "600": 0.9958341717720032
+      }
+    }
+  ],
+  "local_native_active_function_AST_matches_cloud_snapshot": {
+    "SequenceRoute": true,
+    "LoRALinear": true,
+    "amp": true,
+    "noise_like": true,
+    "native_config": true,
+    "load_base": true,
+    "encode_text": true
+  },
+  "real_hidden_probe": {
+    "metadata": {
+      "sample": {
+        "pair_index": 22114,
+        "style": "an303042_Seiwert_Industrial_v1",
+        "B": "./Line_src_060.png",
+        "C": "./extra_Line_060_an303042_Seiwert_Industrial_v1.png",
+        "A": "./extra_Van_Gogh_021_an303042_Seiwert_Industrial_v1.png",
+        "ordinal": 9584,
+        "flow_C": 0.05435079336166382,
+        "spatial_RGB_C": 0.41205114126205444,
+        "total": 0.06155833974480629,
+        "residual_measurements": [
+          {
+            "target_rms": 443.3302307128906,
+            "residual_rms": 2.5866198539733887,
+            "effective_add_rms": 2.605961322784424,
+            "residual_to_target_rms": 0.005834521725773811,
+            "effective_nonzero_fraction": 0.9590269327163696,
+            "dtype": "torch.bfloat16"
+          },
+          {
+            "target_rms": 330.6783447265625,
+            "residual_rms": 4.362338542938232,
+            "effective_add_rms": 4.3487653732299805,
+            "residual_to_target_rms": 0.013192090205848217,
+            "effective_nonzero_fraction": 0.9665935039520264,
+            "dtype": "torch.bfloat16"
+          },
+          {
+            "target_rms": 1357.4365234375,
+            "residual_rms": 1.962577223777771,
+            "effective_add_rms": 2.0445094108581543,
+            "residual_to_target_rms": 0.0014457966899499297,
+            "effective_nonzero_fraction": 0.5315823554992676,
+            "dtype": "torch.bfloat16"
+          }
+        ]
+      },
+      "timestep": 0.75,
+      "checkpoint_cloud_update": 600
+    },
+    "records": [
+      {
+        "cloud_update": 0,
+        "block": 17,
+        "A": "ComfyUI_02300_",
+        "effective_keys_exp_entropy_mean": 587.5330810546875,
+        "attention_entropy_over_logN": 0.7663112282752991,
+        "mean_max_attention_weight": 0.00835280492901802,
+        "value_spatial_energy_fraction": 0.3769993185997009,
+        "conditioned_spatial_energy_fraction": 4.615592479240149e-05,
+        "residual_spatial_energy_fraction": 4.7985853598220274e-05,
+        "residual_rms": 3.7009456157684326
+      },
+      {
+        "cloud_update": 0,
+        "block": 17,
+        "A": "ComfyUI_03976_",
+        "effective_keys_exp_entropy_mean": 888.7743530273438,
+        "attention_entropy_over_logN": 0.8161765336990356,
+        "mean_max_attention_weight": 0.0041669392958283424,
+        "value_spatial_energy_fraction": 0.2796429395675659,
+        "conditioned_spatial_energy_fraction": 4.073307354701683e-05,
+        "residual_spatial_energy_fraction": 4.259258275851607e-05,
+        "residual_rms": 6.356963634490967
+      },
+      {
+        "cloud_update": 0,
+        "block": 17,
+        "A": "ComfyUI_05579_",
+        "effective_keys_exp_entropy_mean": 963.0400390625,
+        "attention_entropy_over_logN": 0.8258315920829773,
+        "mean_max_attention_weight": 0.0045386250130832195,
+        "value_spatial_energy_fraction": 0.29280275106430054,
+        "conditioned_spatial_energy_fraction": 3.816165553871542e-05,
+        "residual_spatial_energy_fraction": 4.024896043119952e-05,
+        "residual_rms": 4.483642101287842
+      },
+      {
+        "cloud_update": 0,
+        "block": 17,
+        "comparison": "A0_to_A1",
+        "cosine": 0.9999939190442059,
+        "relative_change_L2": 0.7176737740104394,
+        "parallel_fraction_of_changed_energy": 0.9999303340794343
+      },
+      {
+        "cloud_update": 0,
+        "block": 17,
+        "comparison": "A0_to_A2",
+        "cosine": 0.99999616686647,
+        "relative_change_L2": 0.211507536788861,
+        "parallel_fraction_of_changed_energy": 0.9997484826675573
+      },
+      {
+        "cloud_update": 0,
+        "block": 22,
+        "A": "ComfyUI_02300_",
+        "effective_keys_exp_entropy_mean": 637.2515869140625,
+        "attention_entropy_over_logN": 0.7760048508644104,
+        "mean_max_attention_weight": 0.007693252991884947,
+        "value_spatial_energy_fraction": 0.3769993185997009,
+        "conditioned_spatial_energy_fraction": 5.210534072830342e-05,
+        "residual_spatial_energy_fraction": 5.430512464954518e-05,
+        "residual_rms": 3.6598615646362305
+      },
+      {
+        "cloud_update": 0,
+        "block": 22,
+        "A": "ComfyUI_03976_",
+        "effective_keys_exp_entropy_mean": 947.4028930664062,
+        "attention_entropy_over_logN": 0.8238049745559692,
+        "mean_max_attention_weight": 0.003856202121824026,
+        "value_spatial_energy_fraction": 0.2796429395675659,
+        "conditioned_spatial_energy_fraction": 5.081319613964297e-05,
+        "residual_spatial_energy_fraction": 5.234603304415941e-05,
+        "residual_rms": 6.270752906799316
+      },
+      {
+        "cloud_update": 0,
+        "block": 22,
+        "A": "ComfyUI_05579_",
+        "effective_keys_exp_entropy_mean": 1021.361328125,
+        "attention_entropy_over_logN": 0.8328499794006348,
+        "mean_max_attention_weight": 0.004356406629085541,
+        "value_spatial_energy_fraction": 0.29280275106430054,
+        "conditioned_spatial_energy_fraction": 4.393484414322302e-05,
+        "residual_spatial_energy_fraction": 4.6050558012211695e-05,
+        "residual_rms": 4.435512542724609
+      },
+      {
+        "cloud_update": 0,
+        "block": 22,
+        "comparison": "A0_to_A1",
+        "cosine": 0.9999954295099073,
+        "relative_change_L2": 0.7133961869703795,
+        "parallel_fraction_of_changed_energy": 0.9999472721289259
+      },
+      {
+        "cloud_update": 0,
+        "block": 22,
+        "comparison": "A0_to_A2",
+        "cosine": 0.9999964503496984,
+        "relative_change_L2": 0.2119547661144737,
+        "parallel_fraction_of_changed_energy": 0.9997678938219748
+      },
+      {
+        "cloud_update": 0,
+        "block": 27,
+        "A": "ComfyUI_02300_",
+        "effective_keys_exp_entropy_mean": 3087.6416015625,
+        "attention_entropy_over_logN": 0.9660238027572632,
+        "mean_max_attention_weight": 0.0004402590566314757,
+        "value_spatial_energy_fraction": 0.3769993185997009,
+        "conditioned_spatial_energy_fraction": 5.058861006546067e-06,
+        "residual_spatial_energy_fraction": 2.888061135308817e-05,
+        "residual_rms": 0.8158590197563171
+      },
+      {
+        "cloud_update": 0,
+        "block": 27,
+        "A": "ComfyUI_03976_",
+        "effective_keys_exp_entropy_mean": 2960.06640625,
+        "attention_entropy_over_logN": 0.9609503149986267,
+        "mean_max_attention_weight": 0.00045934985973872244,
+        "value_spatial_energy_fraction": 0.2796429395675659,
+        "conditioned_spatial_energy_fraction": 3.287064828327857e-06,
+        "residual_spatial_energy_fraction": 7.58391797717195e-06,
+        "residual_rms": 1.9313210248947144
+      },
+      {
+        "cloud_update": 0,
+        "block": 27,
+        "A": "ComfyUI_05579_",
+        "effective_keys_exp_entropy_mean": 2260.0654296875,
+        "attention_entropy_over_logN": 0.9285072684288025,
+        "mean_max_attention_weight": 0.001082815695554018,
+        "value_spatial_energy_fraction": 0.29280275106430054,
+        "conditioned_spatial_energy_fraction": 1.2177602911833674e-05,
+        "residual_spatial_energy_fraction": 1.3665810001839418e-05,
+        "residual_rms": 1.1263965368270874
+      },
+      {
+        "cloud_update": 0,
+        "block": 27,
+        "comparison": "A0_to_A1",
+        "cosine": 0.9999893982112463,
+        "relative_change_L2": 1.3672422939251867,
+        "parallel_fraction_of_changed_energy": 0.9999364384381717
+      },
+      {
+        "cloud_update": 0,
+        "block": 27,
+        "comparison": "A0_to_A2",
+        "cosine": 0.9999924255045417,
+        "relative_change_L2": 0.380653839007611,
+        "parallel_fraction_of_changed_energy": 0.9998007152987599
+      },
+      {
+        "cloud_update": 400,
+        "block": 17,
+        "A": "ComfyUI_02300_",
+        "effective_keys_exp_entropy_mean": 3263.265625,
+        "attention_entropy_over_logN": 0.968478798866272,
+        "mean_max_attention_weight": 0.0009620856726542115,
+        "value_spatial_energy_fraction": 0.3569106161594391,
+        "conditioned_spatial_energy_fraction": 0.11715272814035416,
+        "residual_spatial_energy_fraction": 0.10935718566179276,
+        "residual_rms": 1.6667490005493164
+      },
+      {
+        "cloud_update": 400,
+        "block": 17,
+        "A": "ComfyUI_03976_",
+        "effective_keys_exp_entropy_mean": 3412.067138671875,
+        "attention_entropy_over_logN": 0.9768648147583008,
+        "mean_max_attention_weight": 0.0005293277790769935,
+        "value_spatial_energy_fraction": 0.2589549422264099,
+        "conditioned_spatial_energy_fraction": 0.06035007908940315,
+        "residual_spatial_energy_fraction": 0.056184008717536926,
+        "residual_rms": 2.3730313777923584
+      },
+      {
+        "cloud_update": 400,
+        "block": 17,
+        "A": "ComfyUI_05579_",
+        "effective_keys_exp_entropy_mean": 3275.5107421875,
+        "attention_entropy_over_logN": 0.9715907573699951,
+        "mean_max_attention_weight": 0.0007321576122194529,
+        "value_spatial_energy_fraction": 0.2791943848133087,
+        "conditioned_spatial_energy_fraction": 0.07878562808036804,
+        "residual_spatial_energy_fraction": 0.07327771186828613,
+        "residual_rms": 2.067051887512207
+      },
+      {
+        "cloud_update": 400,
+        "block": 17,
+        "comparison": "A0_to_A1",
+        "cosine": 0.9895926700616712,
+        "relative_change_L2": 0.4573811901292684,
+        "parallel_fraction_of_changed_energy": 0.7993619037206039
+      },
+      {
+        "cloud_update": 400,
+        "block": 17,
+        "comparison": "A0_to_A2",
+        "cosine": 0.9977488610394275,
+        "relative_change_L2": 0.2515255526337317,
+        "parallel_fraction_of_changed_energy": 0.8906695215228664
+      },
+      {
+        "cloud_update": 400,
+        "block": 22,
+        "A": "ComfyUI_02300_",
+        "effective_keys_exp_entropy_mean": 844.27783203125,
+        "attention_entropy_over_logN": 0.7827600240707397,
+        "mean_max_attention_weight": 0.005421111360192299,
+        "value_spatial_energy_fraction": 0.3569106161594391,
+        "conditioned_spatial_energy_fraction": 0.02041727676987648,
+        "residual_spatial_energy_fraction": 0.019467748701572418,
+        "residual_rms": 3.487886667251587
+      },
+      {
+        "cloud_update": 400,
+        "block": 22,
+        "A": "ComfyUI_03976_",
+        "effective_keys_exp_entropy_mean": 1467.8017578125,
+        "attention_entropy_over_logN": 0.8602543473243713,
+        "mean_max_attention_weight": 0.0020684581249952316,
+        "value_spatial_energy_fraction": 0.2589549422264099,
+        "conditioned_spatial_energy_fraction": 0.027591479942202568,
+        "residual_spatial_energy_fraction": 0.026522642001509666,
+        "residual_rms": 5.369345188140869
+      },
+      {
+        "cloud_update": 400,
+        "block": 22,
+        "A": "ComfyUI_05579_",
+        "effective_keys_exp_entropy_mean": 1277.77392578125,
+        "attention_entropy_over_logN": 0.8456418514251709,
+        "mean_max_attention_weight": 0.002728719264268875,
+        "value_spatial_energy_fraction": 0.2791943848133087,
+        "conditioned_spatial_energy_fraction": 0.0185296181589365,
+        "residual_spatial_energy_fraction": 0.017669865861535072,
+        "residual_rms": 4.17018461227417
+      },
+      {
+        "cloud_update": 400,
+        "block": 22,
+        "comparison": "A0_to_A1",
+        "cosine": 0.9992400254829668,
+        "relative_change_L2": 0.5415909539264936,
+        "parallel_fraction_of_changed_energy": 0.9877245036501876
+      },
+      {
+        "cloud_update": 400,
+        "block": 22,
+        "comparison": "A0_to_A2",
+        "cosine": 0.9998614000111705,
+        "relative_change_L2": 0.1964644753649675,
+        "parallel_fraction_of_changed_energy": 0.9897344841954844
+      },
+      {
+        "cloud_update": 400,
+        "block": 27,
+        "A": "ComfyUI_02300_",
+        "effective_keys_exp_entropy_mean": 2965.978271484375,
+        "attention_entropy_over_logN": 0.9611902832984924,
+        "mean_max_attention_weight": 0.0004482149670366198,
+        "value_spatial_energy_fraction": 0.3569106161594391,
+        "conditioned_spatial_energy_fraction": 2.55044074037869e-06,
+        "residual_spatial_energy_fraction": 4.6899720473447815e-05,
+        "residual_rms": 0.8616861701011658
+      },
+      {
+        "cloud_update": 400,
+        "block": 27,
+        "A": "ComfyUI_03976_",
+        "effective_keys_exp_entropy_mean": 2633.232177734375,
+        "attention_entropy_over_logN": 0.9468847513198853,
+        "mean_max_attention_weight": 0.0006772993947379291,
+        "value_spatial_energy_fraction": 0.2589549422264099,
+        "conditioned_spatial_energy_fraction": 4.844678755944187e-07,
+        "residual_spatial_energy_fraction": 1.2456369404389989e-05,
+        "residual_rms": 1.9413186311721802
+      },
+      {
+        "cloud_update": 400,
+        "block": 27,
+        "A": "ComfyUI_05579_",
+        "effective_keys_exp_entropy_mean": 2051.6728515625,
+        "attention_entropy_over_logN": 0.9168758392333984,
+        "mean_max_attention_weight": 0.0008942834101617336,
+        "value_spatial_energy_fraction": 0.2791943848133087,
+        "conditioned_spatial_energy_fraction": 1.0090724572364707e-05,
+        "residual_spatial_energy_fraction": 2.6524623535806313e-05,
+        "residual_rms": 1.153875708580017
+      },
+      {
+        "cloud_update": 400,
+        "block": 27,
+        "comparison": "A0_to_A1",
+        "cosine": 0.999534183448273,
+        "relative_change_L2": 1.2537673703318504,
+        "parallel_fraction_of_changed_energy": 0.9969925027462282
+      },
+      {
+        "cloud_update": 400,
+        "block": 27,
+        "comparison": "A0_to_A2",
+        "cosine": 0.9999490888550712,
+        "relative_change_L2": 0.33929140743121483,
+        "parallel_fraction_of_changed_energy": 0.9984139901322471
+      },
+      {
+        "cloud_update": 600,
+        "block": 17,
+        "A": "ComfyUI_02300_",
+        "effective_keys_exp_entropy_mean": 3363.744873046875,
+        "attention_entropy_over_logN": 0.9759116768836975,
+        "mean_max_attention_weight": 0.0008853917242959142,
+        "value_spatial_energy_fraction": 0.35161662101745605,
+        "conditioned_spatial_energy_fraction": 0.08201169222593307,
+        "residual_spatial_energy_fraction": 0.0762917548418045,
+        "residual_rms": 1.5863317251205444
+      },
+      {
+        "cloud_update": 600,
+        "block": 17,
+        "A": "ComfyUI_03976_",
+        "effective_keys_exp_entropy_mean": 3142.405517578125,
+        "attention_entropy_over_logN": 0.9676975607872009,
+        "mean_max_attention_weight": 0.0005087967729195952,
+        "value_spatial_energy_fraction": 0.255949467420578,
+        "conditioned_spatial_energy_fraction": 0.022969426587224007,
+        "residual_spatial_energy_fraction": 0.021260468289256096,
+        "residual_rms": 2.4054086208343506
+      },
+      {
+        "cloud_update": 600,
+        "block": 17,
+        "A": "ComfyUI_05579_",
+        "effective_keys_exp_entropy_mean": 3111.06689453125,
+        "attention_entropy_over_logN": 0.9666814804077148,
+        "mean_max_attention_weight": 0.0007656772504560649,
+        "value_spatial_energy_fraction": 0.27563488483428955,
+        "conditioned_spatial_energy_fraction": 0.04666472226381302,
+        "residual_spatial_energy_fraction": 0.04336467385292053,
+        "residual_rms": 2.060638904571533
+      },
+      {
+        "cloud_update": 600,
+        "block": 17,
+        "comparison": "A0_to_A1",
+        "cosine": 0.9851395533977616,
+        "relative_change_L2": 0.5582719131004954,
+        "parallel_fraction_of_changed_energy": 0.7823688514713437
+      },
+      {
+        "cloud_update": 600,
+        "block": 17,
+        "comparison": "A0_to_A2",
+        "cosine": 0.99727218873829,
+        "relative_change_L2": 0.31062117649414,
+        "parallel_fraction_of_changed_energy": 0.9047192508350478
+      },
+      {
+        "cloud_update": 600,
+        "block": 17,
+        "A": "ComfyUI_02300_",
+        "comparison": "blur_A_only_branch",
+        "cosine": 0.9806467989381786,
+        "relative_change_L2": 0.20510421818338745,
+        "parallel_fraction_of_changed_energy": 0.22956205569318958,
+        "input_VGG_low_relative_L2": 0.8188331723213196
+      },
+      {
+        "cloud_update": 600,
+        "block": 17,
+        "A": "ComfyUI_03976_",
+        "comparison": "blur_A_only_branch",
+        "cosine": 0.9900245095595144,
+        "relative_change_L2": 0.16622687298198496,
+        "parallel_fraction_of_changed_energy": 0.415707029539898,
+        "input_VGG_low_relative_L2": 0.8684476613998413
+      },
+      {
+        "cloud_update": 600,
+        "block": 17,
+        "A": "ComfyUI_05579_",
+        "comparison": "blur_A_only_branch",
+        "cosine": 0.9931588293599596,
+        "relative_change_L2": 0.24212742841476512,
+        "parallel_fraction_of_changed_energy": 0.8581131866874522,
+        "input_VGG_low_relative_L2": 0.8866618275642395
+      },
+      {
+        "cloud_update": 600,
+        "block": 22,
+        "A": "ComfyUI_02300_",
+        "effective_keys_exp_entropy_mean": 764.847412109375,
+        "attention_entropy_over_logN": 0.7544530630111694,
+        "mean_max_attention_weight": 0.006476744543761015,
+        "value_spatial_energy_fraction": 0.35161662101745605,
+        "conditioned_spatial_energy_fraction": 0.02701619267463684,
+        "residual_spatial_energy_fraction": 0.025929555296897888,
+        "residual_rms": 4.168493270874023
+      },
+      {
+        "cloud_update": 600,
+        "block": 22,
+        "A": "ComfyUI_03976_",
+        "effective_keys_exp_entropy_mean": 1238.218505859375,
+        "attention_entropy_over_logN": 0.8365932106971741,
+        "mean_max_attention_weight": 0.0022172662429511547,
+        "value_spatial_energy_fraction": 0.255949467420578,
+        "conditioned_spatial_energy_fraction": 0.029462121427059174,
+        "residual_spatial_energy_fraction": 0.02839050628244877,
+        "residual_rms": 6.383528709411621
+      },
+      {
+        "cloud_update": 600,
+        "block": 22,
+        "A": "ComfyUI_05579_",
+        "effective_keys_exp_entropy_mean": 1080.108154296875,
+        "attention_entropy_over_logN": 0.8182675242424011,
+        "mean_max_attention_weight": 0.0031521006021648645,
+        "value_spatial_energy_fraction": 0.27563488483428955,
+        "conditioned_spatial_energy_fraction": 0.02297518216073513,
+        "residual_spatial_energy_fraction": 0.02200028859078884,
+        "residual_rms": 4.992081165313721
+      },
+      {
+        "cloud_update": 600,
+        "block": 22,
+        "comparison": "A0_to_A1",
+        "cosine": 0.9993083796970199,
+        "relative_change_L2": 0.5333649414974495,
+        "parallel_fraction_of_changed_energy": 0.988601125657613
+      },
+      {
+        "cloud_update": 600,
+        "block": 22,
+        "comparison": "A0_to_A2",
+        "cosine": 0.9997602227919966,
+        "relative_change_L2": 0.19902249194615274,
+        "parallel_fraction_of_changed_energy": 0.9826385287770762
+      },
+      {
+        "cloud_update": 600,
+        "block": 22,
+        "A": "ComfyUI_02300_",
+        "comparison": "blur_A_only_branch",
+        "cosine": 0.9925458861885378,
+        "relative_change_L2": 0.5757468344024409,
+        "parallel_fraction_of_changed_energy": 0.99172122745951,
+        "input_VGG_low_relative_L2": 0.8188331723213196
+      },
+      {
+        "cloud_update": 600,
+        "block": 22,
+        "A": "ComfyUI_03976_",
+        "comparison": "blur_A_only_branch",
+        "cosine": 0.9854424361316227,
+        "relative_change_L2": 0.6617915058350811,
+        "parallel_fraction_of_changed_energy": 0.9921058373700742,
+        "input_VGG_low_relative_L2": 0.8684476613998413
+      },
+      {
+        "cloud_update": 600,
+        "block": 22,
+        "A": "ComfyUI_05579_",
+        "comparison": "blur_A_only_branch",
+        "cosine": 0.9973422483266097,
+        "relative_change_L2": 0.5294269600150104,
+        "parallel_fraction_of_changed_energy": 0.9957636670877107,
+        "input_VGG_low_relative_L2": 0.8866618275642395
+      },
+      {
+        "cloud_update": 600,
+        "block": 27,
+        "A": "ComfyUI_02300_",
+        "effective_keys_exp_entropy_mean": 3024.33544921875,
+        "attention_entropy_over_logN": 0.963532567024231,
+        "mean_max_attention_weight": 0.00041375315049663186,
+        "value_spatial_energy_fraction": 0.35161662101745605,
+        "conditioned_spatial_energy_fraction": 3.946815922972746e-06,
+        "residual_spatial_energy_fraction": 3.531272886903025e-05,
+        "residual_rms": 1.0072749853134155
+      },
+      {
+        "cloud_update": 600,
+        "block": 27,
+        "A": "ComfyUI_03976_",
+        "effective_keys_exp_entropy_mean": 2602.51806640625,
+        "attention_entropy_over_logN": 0.9454740881919861,
+        "mean_max_attention_weight": 0.0006354273646138608,
+        "value_spatial_energy_fraction": 0.255949467420578,
+        "conditioned_spatial_energy_fraction": 4.3701879803847987e-07,
+        "residual_spatial_energy_fraction": 8.519584298483096e-06,
+        "residual_rms": 2.237421751022339
+      },
+      {
+        "cloud_update": 600,
+        "block": 27,
+        "A": "ComfyUI_05579_",
+        "effective_keys_exp_entropy_mean": 2224.24755859375,
+        "attention_entropy_over_logN": 0.9265860915184021,
+        "mean_max_attention_weight": 0.0007399072637781501,
+        "value_spatial_energy_fraction": 0.27563488483428955,
+        "conditioned_spatial_energy_fraction": 1.3538196071749553e-05,
+        "residual_spatial_energy_fraction": 2.3810363927623257e-05,
+        "residual_rms": 1.3856362104415894
+      },
+      {
+        "cloud_update": 600,
+        "block": 27,
+        "comparison": "A0_to_A1",
+        "cosine": 0.9993258317665982,
+        "relative_change_L2": 1.222487693494443,
+        "parallel_fraction_of_changed_energy": 0.995549974607722
+      },
+      {
+        "cloud_update": 600,
+        "block": 27,
+        "comparison": "A0_to_A2",
+        "cosine": 0.9999469052470088,
+        "relative_change_L2": 0.3758229130378892,
+        "parallel_fraction_of_changed_energy": 0.9985773243307869
+      },
+      {
+        "cloud_update": 600,
+        "block": 27,
+        "A": "ComfyUI_02300_",
+        "comparison": "blur_A_only_branch",
+        "cosine": 0.9999882392584166,
+        "relative_change_L2": 0.05173654298894651,
+        "parallel_fraction_of_changed_energy": 0.9902840922418968,
+        "input_VGG_low_relative_L2": 0.8188331723213196
+      },
+      {
+        "cloud_update": 600,
+        "block": 27,
+        "A": "ComfyUI_03976_",
+        "comparison": "blur_A_only_branch",
+        "cosine": 0.9999797736073942,
+        "relative_change_L2": 0.0759591548599849,
+        "parallel_fraction_of_changed_energy": 0.9940103999852552,
+        "input_VGG_low_relative_L2": 0.8684476613998413
+      },
+      {
+        "cloud_update": 600,
+        "block": 27,
+        "A": "ComfyUI_05579_",
+        "comparison": "blur_A_only_branch",
+        "cosine": 0.9999933906390677,
+        "relative_change_L2": 0.08603141252270345,
+        "parallel_fraction_of_changed_energy": 0.9985078818135861,
+        "input_VGG_low_relative_L2": 0.8866618275642395
+      }
+    ],
+    "scope": "One retained real training C_t, with600 branch active. Hold those hidden inputs fixed to replay0/400/600 branches and3 existing external A. Not full trajectories; no generated images or training.",
+    "blur_scope": "Only CNN reference maps changed; original native A route held fixed. Relative L2/cosines are not purity or transfer success percentages.",
+    "memory": "Native BF16 route retained; official SDPA called on512 query chunks with every key/value retained, no attention approximation."
+  },
+  "parameter_spectrum": {
+    "records": [
+      {
+        "cloud_update": 0,
+        "parameter": "reference_encoder.0.weight",
+        "matrix_shape": [
+          32,
+          1152
+        ],
+        "top1_weight_energy_fraction": 0.17786329984664917,
+        "top4_weight_energy_fraction": 0.3039889931678772,
+        "effective_rank_exp_entropy": 26.15694808959961
+      },
+      {
+        "cloud_update": 0,
+        "parameter": "reference_encoder.2.weight",
+        "matrix_shape": [
+          64,
+          288
+        ],
+        "top1_weight_energy_fraction": 0.053456392139196396,
+        "top4_weight_energy_fraction": 0.15366235375404358,
+        "effective_rank_exp_entropy": 55.494449615478516
+      },
+      {
+        "cloud_update": 0,
+        "parameter": "query.weight",
+        "matrix_shape": [
+          64,
+          64
+        ],
+        "top1_weight_energy_fraction": 0.06553030014038086,
+        "top4_weight_energy_fraction": 0.22495609521865845,
+        "effective_rank_exp_entropy": 37.60312271118164
+      },
+      {
+        "cloud_update": 0,
+        "parameter": "key.weight",
+        "matrix_shape": [
+          64,
+          64
+        ],
+        "top1_weight_energy_fraction": 0.07162021100521088,
+        "top4_weight_energy_fraction": 0.22582057118415833,
+        "effective_rank_exp_entropy": 37.951839447021484
+      },
+      {
+        "cloud_update": 0,
+        "parameter": "value.weight",
+        "matrix_shape": [
+          64,
+          64
+        ],
+        "top1_weight_energy_fraction": 0.08082982152700424,
+        "top4_weight_energy_fraction": 0.2421400249004364,
+        "effective_rank_exp_entropy": 37.02958679199219
+      },
+      {
+        "cloud_update": 0,
+        "parameter": "output_up.weight",
+        "matrix_shape": [
+          2048,
+          64
+        ],
+        "top1_weight_energy_fraction": 0.9736663699150085,
+        "top4_weight_energy_fraction": 0.9964349269866943,
+        "effective_rank_exp_entropy": 1.177259922027588
+      },
+      {
+        "cloud_update": 400,
+        "parameter": "reference_encoder.0.weight",
+        "matrix_shape": [
+          32,
+          1152
+        ],
+        "top1_weight_energy_fraction": 0.19208164513111115,
+        "top4_weight_energy_fraction": 0.32859501242637634,
+        "effective_rank_exp_entropy": 25.14400863647461
+      },
+      {
+        "cloud_update": 400,
+        "parameter": "reference_encoder.2.weight",
+        "matrix_shape": [
+          64,
+          288
+        ],
+        "top1_weight_energy_fraction": 0.06817681342363358,
+        "top4_weight_energy_fraction": 0.17441248893737793,
+        "effective_rank_exp_entropy": 53.90583038330078
+      },
+      {
+        "cloud_update": 400,
+        "parameter": "query.weight",
+        "matrix_shape": [
+          64,
+          64
+        ],
+        "top1_weight_energy_fraction": 0.07373005151748657,
+        "top4_weight_energy_fraction": 0.23607143759727478,
+        "effective_rank_exp_entropy": 36.99412155151367
+      },
+      {
+        "cloud_update": 400,
+        "parameter": "key.weight",
+        "matrix_shape": [
+          64,
+          64
+        ],
+        "top1_weight_energy_fraction": 0.07864849269390106,
+        "top4_weight_energy_fraction": 0.23279213905334473,
+        "effective_rank_exp_entropy": 37.55692672729492
+      },
+      {
+        "cloud_update": 400,
+        "parameter": "value.weight",
+        "matrix_shape": [
+          64,
+          64
+        ],
+        "top1_weight_energy_fraction": 0.08268634229898453,
+        "top4_weight_energy_fraction": 0.24713775515556335,
+        "effective_rank_exp_entropy": 36.70594024658203
+      },
+      {
+        "cloud_update": 400,
+        "parameter": "output_up.weight",
+        "matrix_shape": [
+          2048,
+          64
+        ],
+        "top1_weight_energy_fraction": 0.8302163481712341,
+        "top4_weight_energy_fraction": 0.9938567280769348,
+        "effective_rank_exp_entropy": 1.756395936012268
+      },
+      {
+        "cloud_update": 600,
+        "parameter": "reference_encoder.0.weight",
+        "matrix_shape": [
+          32,
+          1152
+        ],
+        "top1_weight_energy_fraction": 0.20637983083724976,
+        "top4_weight_energy_fraction": 0.34925156831741333,
+        "effective_rank_exp_entropy": 24.185190200805664
+      },
+      {
+        "cloud_update": 600,
+        "parameter": "reference_encoder.2.weight",
+        "matrix_shape": [
+          64,
+          288
+        ],
+        "top1_weight_energy_fraction": 0.07538159936666489,
+        "top4_weight_energy_fraction": 0.1853518933057785,
+        "effective_rank_exp_entropy": 53.058570861816406
+      },
+      {
+        "cloud_update": 600,
+        "parameter": "query.weight",
+        "matrix_shape": [
+          64,
+          64
+        ],
+        "top1_weight_energy_fraction": 0.07814627885818481,
+        "top4_weight_energy_fraction": 0.2402200698852539,
+        "effective_rank_exp_entropy": 36.75190734863281
+      },
+      {
+        "cloud_update": 600,
+        "parameter": "key.weight",
+        "matrix_shape": [
+          64,
+          64
+        ],
+        "top1_weight_energy_fraction": 0.08224305510520935,
+        "top4_weight_energy_fraction": 0.23594987392425537,
+        "effective_rank_exp_entropy": 37.3665771484375
+      },
+      {
+        "cloud_update": 600,
+        "parameter": "value.weight",
+        "matrix_shape": [
+          64,
+          64
+        ],
+        "top1_weight_energy_fraction": 0.08581645786762238,
+        "top4_weight_energy_fraction": 0.25168749690055847,
+        "effective_rank_exp_entropy": 36.46038818359375
+      },
+      {
+        "cloud_update": 600,
+        "parameter": "output_up.weight",
+        "matrix_shape": [
+          2048,
+          64
+        ],
+        "top1_weight_energy_fraction": 0.7763971090316772,
+        "top4_weight_energy_fraction": 0.992925226688385,
+        "effective_rank_exp_entropy": 1.9455342292785645
+      }
+    ],
+    "scope": "Weight-matrix singular spectrum, not input-dependent activation rank or style purity.",
+    "definition": "p_i=s_i^2/sum_j s_j^2; energy_entropy_effective_rank=exp(-sum_i p_i log p_i). Not algebraic matrix rank."
+  },
+  "conclusions": {
+    "visual": "No clear external brushwork/material gain at600 versus400 or cloud0. Red shorts and invented garment curls persist.",
+    "measured_bottlenecks": [
+      "Fixed4 A crops cover25% and fully omit center256.",
+      "On one actual training hidden, late-branch A swaps mostly change residual amplitude along a common direction.",
+      "Output2048x64 projection has99.29% squared singular energy in top4 directions and entropy effective rank1.95.",
+      "Supervision is paired-C velocity plus spatial RGB VGG C, not direct A texture matching."
+    ],
+    "limits": [
+      "Single real C_t at t=.75; hidden inputs fixed from600 for submodule replay. Not a full sampler causal attribution.",
+      "Matrix effective rank is not algebraic rank, activation rank or style purity.",
+      "First injection retains more directional variation; not complete collapse.",
+      "Cloud training increased output-map effective rank and spatially varying residuals but did not improve these external previews."
+    ]
+  },
+  "paired_target_content_conflict_example": {
+    "style": "Van_Gogh",
+    "source": "./3D_Chibi_src_022.png",
+    "target": "./extra_3D_Chibi_022_Van_Gogh.png",
+    "observation": "The retained paired C contains two large foreground figures on the right, whereas B shows waterside vegetation there. This is a visible content difference; no dataset-wide rate is estimated.",
+    "implication": "Spatial C reconstruction can reward content changes along with style, rather than strict preservation of B."
+  },
+  "independent_QA": {
+    "visual_review": "Same B/A/C/seed/30-step settings across0/400/600 verified; no clear external brushwork gain; content drift persists.",
+    "math_review": "Spatial centered-energy and parallel-residual-change formulas checked; effective attention support sampled64 queries; spatial output energy uses4096 queries. Squared-singular-energy entropy effective rank is correctly defined.",
+    "scope_review": "One real training C_t at t=.75, fixed600 hidden replay; not full checkpoint trajectories or global style-purity percentages. First injection differs more than final two; some spatial/weight-spectrum progress occurred.",
+    "paired_C_review": "Van_Gogh paired C has two added large foreground people absent from B in that region. Example-specific, not dataset-wide content-error estimate."
+  },
+  "convolution_design_research": {
+    "clarification": "The current target-side3x3 kernel is trained but shared across A; A acts after convolution through attention-based gating and bias. Shared fixed-at-inference convolution is a valid style-transfer design, not proof of failure by itself.",
+    "primary_sources": [
+      {
+        "method": "AdaIN",
+        "url": "https://github.com/xunhuang1995/AdaIN-style",
+        "finding": "Author implementation. Shared encoder/decoder convolutions plus input-style-dependent normalization demonstrate that per-reference kernel generation is not necessary for arbitrary style transfer."
+      },
+      {
+        "method": "DIN",
+        "url": "https://arxiv.org/pdf/1911.06953",
+        "finding": "Style encoder predicts dynamic convolution weight and bias; default kernel is1x1, with larger/spatial/deformable variants discussed. Author homepage links code viaOSF85rgu; code package not accessible in this research session."
+      },
+      {
+        "method": "AdaConv",
+        "url": "https://openaccess.thecvf.com/content/CVPR2021/papers/Chandran_Adaptive_Convolutions_for_Structure-Aware_Style_Transfer_CVPR_2021_paper.pdf",
+        "project": "https://studios.disneyresearch.com/2021/06/19/adaptive-convolutions-for-structure-aware-style-transfer/",
+        "finding": "A global style descriptor predicts depthwise/grouped spatial and pointwise kernels at four decoder resolutions, followed by ordinary shared convolutions. The final objective jointly trains style encoder/predictors/decoder."
+      },
+      {
+        "method": "AdaAttN",
+        "url": "https://openaccess.thecvf.com/content/ICCV2021/papers/Liu_AdaAttN_Revisit_Attention_Mechanism_in_Arbitrary_Neural_Style_Transfer_ICCV_2021_paper.pdf",
+        "finding": "Alternative attention-driven per-point normalization and local feature loss; dynamic kernels are not the only valid style-conditioning mechanism."
+      },
+      {
+        "method": "PyTorch conv2d",
+        "url": "https://docs.pytorch.org/docs/main/generated/torch.nn.functional.conv2d.html",
+        "finding": "Official operator accepts tensor weight and grouped convolution; no custom convolution kernel required."
+      }
+    ],
+    "implementation_provenance": {
+      "https://github.com/RElbers/ada-conv-pytorch": "Explicitly unofficial PyTorch reimplementation; not an author release.",
+      "https://github.com/wzmsltw/AdaAttN": "Author official PaddlePaddle entry; not verified as a ready-to-import PyTorch module."
+    },
+    "project_inference": "An A-conditioned depthwise/grouped spatial operator in the existing small branch is a literature-grounded candidate. Conventional CNN papers do not prove improvement when inserted into Anima DiT. Crop coverage, concentrated output projection, and paired-C content mismatch still require independent validation.",
+    "status": "Research only; no training architecture, model checkpoint or training parameters changed."
+  }
+}

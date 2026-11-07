@@ -1,0 +1,207 @@
+{
+  "checkpoint": "adapter_cloud000100_branch000130.pt",
+  "checkpoint_counters": {
+    "base_step": 10135,
+    "dynamic_updates": 130,
+    "original_branch_updates": 900
+  },
+  "source_manifest": "web_more_sources.json",
+  "complete": true,
+  "seed": 20261014,
+  "sampling_steps": 30,
+  "resolution": 1024,
+  "records": [
+    {
+      "case": "portrait_etching",
+      "source": "web_more_content_portrait.jpg",
+      "reference": "web_more_style_etching.jpg",
+      "dynamic_branch": "off",
+      "output": "web_rounds130_portrait_etching_off.png",
+      "seconds": 20.94468992948532
+    },
+    {
+      "case": "portrait_etching",
+      "source": "web_more_content_portrait.jpg",
+      "reference": "web_more_style_etching.jpg",
+      "dynamic_branch": "on",
+      "output": "web_rounds130_portrait_etching_on.png",
+      "seconds": 20.956324230879545
+    },
+    {
+      "case": "portrait_pastel",
+      "source": "web_more_content_portrait.jpg",
+      "reference": "web_more_style_pastel.jpg",
+      "dynamic_branch": "off",
+      "output": "web_rounds130_portrait_pastel_off.png",
+      "seconds": 20.94622577354312
+    },
+    {
+      "case": "portrait_pastel",
+      "source": "web_more_content_portrait.jpg",
+      "reference": "web_more_style_pastel.jpg",
+      "dynamic_branch": "on",
+      "output": "web_rounds130_portrait_pastel_on.png",
+      "seconds": 20.98588079586625
+    },
+    {
+      "case": "dogs_etching",
+      "source": "web_more_content_dogs.jpg",
+      "reference": "web_more_style_etching.jpg",
+      "dynamic_branch": "off",
+      "output": "web_rounds130_dogs_etching_off.png",
+      "seconds": 20.966007489711046
+    },
+    {
+      "case": "dogs_etching",
+      "source": "web_more_content_dogs.jpg",
+      "reference": "web_more_style_etching.jpg",
+      "dynamic_branch": "on",
+      "output": "web_rounds130_dogs_etching_on.png",
+      "seconds": 20.995103660970926
+    },
+    {
+      "case": "dogs_pastel",
+      "source": "web_more_content_dogs.jpg",
+      "reference": "web_more_style_pastel.jpg",
+      "dynamic_branch": "off",
+      "output": "web_rounds130_dogs_pastel_off.png",
+      "seconds": 20.97966681793332
+    },
+    {
+      "case": "dogs_pastel",
+      "source": "web_more_content_dogs.jpg",
+      "reference": "web_more_style_pastel.jpg",
+      "dynamic_branch": "on",
+      "output": "web_rounds130_dogs_pastel_on.png",
+      "seconds": 21.027779918164015
+    },
+    {
+      "case": "landscape_pointillism",
+      "source": "web_more_content_landscape.jpg",
+      "reference": "web_more_style_pointillism.jpg",
+      "dynamic_branch": "off",
+      "output": "web_rounds130_landscape_pointillism_off.png",
+      "seconds": 21.043449480086565
+    },
+    {
+      "case": "landscape_pointillism",
+      "source": "web_more_content_landscape.jpg",
+      "reference": "web_more_style_pointillism.jpg",
+      "dynamic_branch": "on",
+      "output": "web_rounds130_landscape_pointillism_on.png",
+      "seconds": 21.085583433508873
+    },
+    {
+      "case": "landscape_ink",
+      "source": "web_more_content_landscape.jpg",
+      "reference": "web_more_style_ink.jpg",
+      "dynamic_branch": "off",
+      "output": "web_rounds130_landscape_ink_off.png",
+      "seconds": 21.007806219160557
+    },
+    {
+      "case": "landscape_ink",
+      "source": "web_more_content_landscape.jpg",
+      "reference": "web_more_style_ink.jpg",
+      "dynamic_branch": "on",
+      "output": "web_rounds130_landscape_ink_on.png",
+      "seconds": 21.066452473402023
+    },
+    {
+      "case": "plant_pointillism",
+      "source": "web_more_content_flowers.jpg",
+      "reference": "web_more_style_pointillism.jpg",
+      "dynamic_branch": "off",
+      "output": "web_rounds130_plant_pointillism_off.png",
+      "seconds": 21.0220140889287
+    },
+    {
+      "case": "plant_pointillism",
+      "source": "web_more_content_flowers.jpg",
+      "reference": "web_more_style_pointillism.jpg",
+      "dynamic_branch": "on",
+      "output": "web_rounds130_plant_pointillism_on.png",
+      "seconds": 21.070791237056255
+    },
+    {
+      "case": "plant_ink",
+      "source": "web_more_content_flowers.jpg",
+      "reference": "web_more_style_ink.jpg",
+      "dynamic_branch": "off",
+      "output": "web_rounds130_plant_ink_off.png",
+      "seconds": 20.970762874931097
+    },
+    {
+      "case": "plant_ink",
+      "source": "web_more_content_flowers.jpg",
+      "reference": "web_more_style_ink.jpg",
+      "dynamic_branch": "on",
+      "output": "web_rounds130_plant_ink_on.png",
+      "seconds": 21.021561354398727
+    },
+    {
+      "case": "car_poster",
+      "source": "web_more_content_car.jpg",
+      "reference": "web_more_style_poster.jpg",
+      "dynamic_branch": "off",
+      "output": "web_rounds130_car_poster_off.png",
+      "seconds": 20.996651995927095
+    },
+    {
+      "case": "car_poster",
+      "source": "web_more_content_car.jpg",
+      "reference": "web_more_style_poster.jpg",
+      "dynamic_branch": "on",
+      "output": "web_rounds130_car_poster_on.png",
+      "seconds": 21.05000774562359
+    },
+    {
+      "case": "car_cyanotype",
+      "source": "web_more_content_car.jpg",
+      "reference": "web_more_style_cyanotype.jpg",
+      "dynamic_branch": "off",
+      "output": "web_rounds130_car_cyanotype_off.png",
+      "seconds": 20.95108574256301
+    },
+    {
+      "case": "car_cyanotype",
+      "source": "web_more_content_car.jpg",
+      "reference": "web_more_style_cyanotype.jpg",
+      "dynamic_branch": "on",
+      "output": "web_rounds130_car_cyanotype_on.png",
+      "seconds": 21.021205935627222
+    },
+    {
+      "case": "coffee_poster",
+      "source": "web_more_content_coffee.jpg",
+      "reference": "web_more_style_poster.jpg",
+      "dynamic_branch": "off",
+      "output": "web_rounds130_coffee_poster_off.png",
+      "seconds": 20.975088238716125
+    },
+    {
+      "case": "coffee_poster",
+      "source": "web_more_content_coffee.jpg",
+      "reference": "web_more_style_poster.jpg",
+      "dynamic_branch": "on",
+      "output": "web_rounds130_coffee_poster_on.png",
+      "seconds": 21.03941935673356
+    },
+    {
+      "case": "coffee_cyanotype",
+      "source": "web_more_content_coffee.jpg",
+      "reference": "web_more_style_cyanotype.jpg",
+      "dynamic_branch": "off",
+      "output": "web_rounds130_coffee_cyanotype_off.png",
+      "seconds": 20.95733715593815
+    },
+    {
+      "case": "coffee_cyanotype",
+      "source": "web_more_content_coffee.jpg",
+      "reference": "web_more_style_cyanotype.jpg",
+      "dynamic_branch": "on",
+      "output": "web_rounds130_coffee_cyanotype_on.png",
+      "seconds": 20.986826192587614
+    }
+  ]
+}

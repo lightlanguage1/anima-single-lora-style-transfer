@@ -1,0 +1,74 @@
+{
+  "current_checkpoint": "[local path omitted] lora84_010788.safetensors",
+  "earlier_checkpoint": "[local path omitted] lora84_009999.safetensors",
+  "base_checkpoint": "[local path omitted] anima_baseV10.safetensors",
+  "current_tensor_count": 560,
+  "current_parameter_counts": {
+    "up": 23855104,
+    "down": 22020096
+  },
+  "matrix_count": 280,
+  "scale": 1.0,
+  "histogram_bound": 0.19206515547633168,
+  "median_delta_over_base": 0.08248923011004493,
+  "global_concatenated_delta_over_base": 0.09570090428687228,
+  "median_energy_entropy_rank": 7.352014708939004,
+  "median_rank_for_90pct_energy": 8.0,
+  "median_change_over_earlier_delta": 0.15968479166243382,
+  "global_concatenated_change_over_earlier": 0.1442654160378381,
+  "median_delta_cosine_with_earlier": 0.9876470018799421,
+  "module_summaries": {
+    "self_attn.q_proj": {
+      "median_delta_over_base": 0.13037206229684728,
+      "median_energy_entropy_rank": 6.19333762387577
+    },
+    "self_attn.k_proj": {
+      "median_delta_over_base": 0.13779656618320674,
+      "median_energy_entropy_rank": 4.177894820916613
+    },
+    "self_attn.v_proj": {
+      "median_delta_over_base": 0.0538614406715124,
+      "median_energy_entropy_rank": 21.366543906923162
+    },
+    "self_attn.output_proj": {
+      "median_delta_over_base": 0.0710634327381233,
+      "median_energy_entropy_rank": 18.450253083282195
+    },
+    "cross_attn.q_proj": {
+      "median_delta_over_base": 0.09407098838100832,
+      "median_energy_entropy_rank": 10.67475736026186
+    },
+    "cross_attn.k_proj": {
+      "median_delta_over_base": 0.09018817148845665,
+      "median_energy_entropy_rank": 6.050436237147428
+    },
+    "cross_attn.v_proj": {
+      "median_delta_over_base": 0.06285715757088914,
+      "median_energy_entropy_rank": 4.404716711665785
+    },
+    "cross_attn.output_proj": {
+      "median_delta_over_base": 0.07693822199117085,
+      "median_energy_entropy_rank": 5.377628996904367
+    },
+    "mlp.layer1": {
+      "median_delta_over_base": 0.09072435029681614,
+      "median_energy_entropy_rank": 14.665610948590288
+    },
+    "mlp.layer2": {
+      "median_delta_over_base": 0.03995458481653497,
+      "median_energy_entropy_rank": 12.912403830264441
+    }
+  },
+  "cross_checks": {
+    "frobenius_absolute_error": 0.0,
+    "inner_product_absolute_error": 0.0,
+    "singular_value_max_absolute_error": 8.526512829121202e-14,
+    "actual_matrix_frobenius_relative_error": 4.1635537932061466e-15
+  },
+  "limits": [
+    "Weight norms, spectra and directions do not determine generalization quality.",
+    "Raw up/down factor magnitudes are gauge-dependent; induced-matrix measurements are invariant to invertible rank-space rescaling.",
+    "9999 and 10788 were produced under different training phases; parameter differences do not isolate one training intervention.",
+    "The denominator includes only 280 base matrices targeted by LoRA; other base parameters are not included."
+  ]
+}

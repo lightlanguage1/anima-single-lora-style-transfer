@@ -1,0 +1,12 @@
+group,mode,records
+external_cross,base_no_lora,16
+external_cross,dynamic_cnn10135,16
+external_cross,lora10135,162
+external_cross,lora10788,162
+external_cross,original_cnn10135,16
+identity,lora10135,18
+identity,lora10788,18
+original_plan_seen_eval,lora10135,16
+original_plan_seen_eval,lora10788,16
+original_plan_unseen_eval,lora10135,80
+original_plan_unseen_eval,lora10788,80

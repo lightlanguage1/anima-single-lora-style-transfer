@@ -1,0 +1,95 @@
+{
+  "complete": true,
+  "cases": 12,
+  "predictions": 24,
+  "checkpoint_counters": {
+    "base_step": 10135,
+    "dynamic_updates": 130,
+    "original_branch_updates": 900
+  },
+  "seed": 20261014,
+  "sampling_steps": 30,
+  "resolution": 1024,
+  "control": "OFF disables only the new dynamic CNN residual. Original LoRA, original CNN and native A conditioning remain active in both modes.",
+  "provenance": "New Internet content and artwork images; no ces or training-dataset assets opened for this evaluation. This does not prove their media categories were absent from training.",
+  "rounds": [
+    {
+      "round": 1,
+      "cases": [
+        "portrait_etching",
+        "portrait_pastel",
+        "dogs_etching",
+        "dogs_pastel"
+      ],
+      "observations": [
+        "Etched portrait has monochrome/sepia paper and fine line texture, but smile, beard and face orientation drift.",
+        "Pastel portrait remains relatively photographic and lacks a strong powder-pastel appearance.",
+        "Etched dogs keep count two, but golden coats and head orientations change substantially; much color remains.",
+        "Pastel dogs visibly show powder-like edges and dry strokes at original resolution, but flowers intensify and dog shapes change. Source already contained flowers, so increased flowers alone do not establish semantic copying."
+      ]
+    },
+    {
+      "round": 2,
+      "cases": [
+        "landscape_pointillism",
+        "landscape_ink",
+        "plant_pointillism",
+        "plant_ink"
+      ],
+      "observations": [
+        "Pointillist landscape has painterly short strokes and canvas-like texture rather than faithful organized pointillism; lake/reflection structure becomes a waterfall and new objects appear.",
+        "Ink landscape has ink-line/paper/dilute-color response, but also invents waterfall and small figures/buildings.",
+        "Pointillist plant becomes a general painted drawing with dark outlines, not clear reference pointillism; pot changes.",
+        "Ink plant has paper, thin uneven outlines and dilute green washes, but leaf layout and pot change and pseudo-writing/marks appear."
+      ]
+    },
+    {
+      "round": 3,
+      "cases": [
+        "car_poster",
+        "car_cyanotype",
+        "coffee_poster",
+        "coffee_cyanotype"
+      ],
+      "observations": [
+        "Poster car simplifies the background and reflections but keeps blue shaded vehicle; the limited-color silhouette language of A is weak and vehicle details change.",
+        "Cyanotype car remains a blue car with green trees, not a blue-ground pale contact-print image.",
+        "Poster coffee has clear flattened color blocks and outlines, while cup/hand/milk relationship remains recognizable; exact four-color poster palette is not faithfully transferred.",
+        "Cyanotype coffee stays a colored flat illustration with skin and coffee hues; cyanotype medium is not transferred."
+      ]
+    }
+  ],
+  "dynamic_increment": "At overview and selected full-resolution inspection no stable visible improvement of medium-specific brushwork or texture from ON versus OFF was established.",
+  "pixel_change": {
+    "mean_8bit_levels": 0.5717965585063212,
+    "min_8bit_levels": 0.2833216736325994,
+    "max_8bit_levels": 1.1579522397369146,
+    "meaning": "Mean absolute RGB pixel change only; not style quality, separation degree, gradient strength or causal mechanism."
+  },
+  "mean_prediction_seconds": 21.002821755905945,
+  "limitations": [
+    "One fixed seed per case.",
+    "Two contents per artwork reference, not exhaustive generalization coverage.",
+    "Visual observations are qualitative, not calibrated percentages.",
+    "No claim about training-data absence of the six medium categories."
+  ],
+  "qa": {
+    "agent": "qa_local_conv",
+    "status": "completed",
+    "material": "All three completed round overviews and full-resolution dogs_pastel, landscape_pointillism, portrait_etching predictions.",
+    "independent_conclusion": "Some real medium/texture response exists, especially powder-pastel dogs and paper/ink plant; pointillism and cyanotype fidelity fail, content drift remains substantial. OFF and ON are visually near-identical across all twelve pairs, with no stable added dynamic-CNN benefit established.",
+    "root_assessment": "Agree with the pictured findings. For lake/waterfall replacement and invented figures, the outputs establish content reconstruction/drift; they do not alone prove that all invented objects were copied from reference A."
+  },
+  "remote_status": {
+    "process_exists": false,
+    "complete": true,
+    "outputs": 24,
+    "checkpoint_counters": {
+      "base_step": 10135,
+      "dynamic_updates": 130,
+      "original_branch_updates": 900
+    },
+    "log_tail": "cyanotype_off.png\", \"seconds\": 20.95108574256301}\n{\"case\": \"car_cyanotype\", \"source\": \"web_more_content_car.jpg\", \"reference\": \"web_more_style_cyanotype.jpg\", \"dynamic_branch\": \"on\", \"output\": \"web_rounds130_car_cyanotype_on.png\", \"seconds\": 21.021205935627222}\n{\"case\": \"coffee_poster\", \"source\": \"web_more_content_coffee.jpg\", \"reference\": \"web_more_style_poster.jpg\", \"dynamic_branch\": \"off\", \"output\": \"web_rounds130_coffee_poster_off.png\", \"seconds\": 20.975088238716125}\n{\"case\": \"coffee_poster\", \"source\": \"web_more_content_coffee.jpg\", \"reference\": \"web_more_style_poster.jpg\", \"dynamic_branch\": \"on\", \"output\": \"web_rounds130_coffee_poster_on.png\", \"seconds\": 21.03941935673356}\n{\"case\": \"coffee_cyanotype\", \"source\": \"web_more_content_coffee.jpg\", \"reference\": \"web_more_style_cyanotype.jpg\", \"dynamic_branch\": \"off\", \"output\": \"web_rounds130_coffee_cyanotype_off.png\", \"seconds\": 20.95733715593815}\n{\"case\": \"coffee_cyanotype\", \"source\": \"web_more_content_coffee.jpg\", \"reference\": \"web_more_style_cyanotype.jpg\", \"dynamic_branch\": \"on\", \"output\": \"web_rounds130_coffee_cyanotype_on.png\", \"seconds\": 20.986826192587614}\n",
+    "gpu": "0 MiB, 0 %\n"
+  }
+}

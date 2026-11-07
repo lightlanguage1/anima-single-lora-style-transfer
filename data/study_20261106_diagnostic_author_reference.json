@@ -1,0 +1,94 @@
+{
+  "checkpoint": "lora84_010788.safetensors",
+  "seed": 20261014,
+  "sampling_steps": 30,
+  "resolution": 1024,
+  "resize": "EXIF/RGB; preserve aspect ratio, bicubic fit, centered gray padding",
+  "padding_rgb": [
+    127,
+    127,
+    127
+  ],
+  "reference_source": "https://github.com/ArcAnima/ComfyUI-Anima-Ref-Adapter#showcase",
+  "reference_images": {
+    "police": {
+      "crop_box": [
+        42,
+        42,
+        386,
+        559
+      ],
+      "source": "https://raw.githubusercontent.com/ArcAnima/ComfyUI-Anima-Ref-Adapter/main/docs/showcase/v2_police.jpg"
+    },
+    "mecha": {
+      "crop_box": [
+        42,
+        42,
+        394,
+        559
+      ],
+      "source": "https://raw.githubusercontent.com/ArcAnima/ComfyUI-Anima-Ref-Adapter/main/docs/showcase/v2_mecha.jpg"
+    },
+    "swim": {
+      "crop_box": [
+        42,
+        42,
+        394,
+        559
+      ],
+      "source": "https://raw.githubusercontent.com/ArcAnima/ComfyUI-Anima-Ref-Adapter/main/docs/showcase/v2_swim.jpg"
+    }
+  },
+  "notes": "Showcase crops are low resolution; held-out status against the base and our training is unknown.",
+  "complete": true,
+  "records": [
+    {
+      "name": "user_photo__police",
+      "B": "QQ20241205-000623.png",
+      "A": "reference_police.png",
+      "seed": 20261014,
+      "output": "user_photo__police_no_stretch.png",
+      "seconds": 63.59
+    },
+    {
+      "name": "user_photo__mecha",
+      "B": "QQ20241205-000623.png",
+      "A": "reference_mecha.png",
+      "seed": 20261014,
+      "output": "user_photo__mecha_no_stretch.png",
+      "seconds": 63.97
+    },
+    {
+      "name": "user_photo__swim",
+      "B": "QQ20241205-000623.png",
+      "A": "reference_swim.png",
+      "seed": 20261014,
+      "output": "user_photo__swim_no_stretch.png",
+      "seconds": 64.08
+    },
+    {
+      "name": "author_police__police",
+      "B": "reference_police.png",
+      "A": "reference_police.png",
+      "seed": 20261014,
+      "output": "author_police__police_no_stretch.png",
+      "seconds": 64.22
+    },
+    {
+      "name": "author_police__mecha",
+      "B": "reference_police.png",
+      "A": "reference_mecha.png",
+      "seed": 20261014,
+      "output": "author_police__mecha_no_stretch.png",
+      "seconds": 64.34
+    },
+    {
+      "name": "author_police__swim",
+      "B": "reference_police.png",
+      "A": "reference_swim.png",
+      "seed": 20261014,
+      "output": "author_police__swim_no_stretch.png",
+      "seconds": 64.46
+    }
+  ]
+}

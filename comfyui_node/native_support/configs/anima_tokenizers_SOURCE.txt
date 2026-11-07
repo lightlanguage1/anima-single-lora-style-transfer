@@ -1,0 +1,2 @@
+Source: https://github.com/kohya-ss/sd-scripts/tree/37a1cbbc5725ed2a3575506e7bd2001c9908ac92/configs
+Native Qwen3-0.6B and T5 tokenizer assets, unmodified. No model weights included.

@@ -1,0 +1,135 @@
+{
+  "seed": 20261014,
+  "sigma": 0.85,
+  "checkpoint": "lora84_010788.safetensors",
+  "records": [
+    {
+      "content": "050",
+      "reference_source": "031",
+      "style": "SHIPLEY_HeavyMetalStyle",
+      "B": "tar:./Origami_src_050.png",
+      "C": "tar:./extra_Origami_050_SHIPLEY_HeavyMetalStyle.png",
+      "correct_A": "tar:./extra_Origami_031_SHIPLEY_HeavyMetalStyle.png",
+      "other_A": "tar:./extra_Origami_031_rennurtsfx_geosketch_test.png",
+      "flow_mse_correct": 0.051452431827783585,
+      "flow_mse_other_style": 0.05333447456359863,
+      "wrong_minus_correct": 0.0018820427358150482,
+      "velocity_difference": {
+        "rms": 0.0782158374786377,
+        "relative_rms": 0.06970582902431488,
+        "max_abs": 0.69921875
+      }
+    },
+    {
+      "content": "050",
+      "reference_source": "031",
+      "style": "rennurtsfx_geosketch_test",
+      "B": "tar:./Origami_src_050.png",
+      "C": "tar:./extra_Origami_050_rennurtsfx_geosketch_test.png",
+      "correct_A": "tar:./extra_Origami_031_rennurtsfx_geosketch_test.png",
+      "other_A": "tar:./extra_Origami_031_SHIPLEY_HeavyMetalStyle.png",
+      "flow_mse_correct": 0.027317984029650688,
+      "flow_mse_other_style": 0.03409599885344505,
+      "wrong_minus_correct": 0.006778014823794365,
+      "velocity_difference": {
+        "rms": 0.07388751953840256,
+        "relative_rms": 0.0718444213271141,
+        "max_abs": 0.544921875
+      }
+    },
+    {
+      "content": "031",
+      "reference_source": "050",
+      "style": "SHIPLEY_HeavyMetalStyle",
+      "B": "tar:./Origami_src_031.png",
+      "C": "tar:./extra_Origami_031_SHIPLEY_HeavyMetalStyle.png",
+      "correct_A": "tar:./extra_Origami_050_SHIPLEY_HeavyMetalStyle.png",
+      "other_A": "tar:./extra_Origami_050_rennurtsfx_geosketch_test.png",
+      "flow_mse_correct": 0.07480423897504807,
+      "flow_mse_other_style": 0.07641424238681793,
+      "wrong_minus_correct": 0.001610003411769867,
+      "velocity_difference": {
+        "rms": 0.07818064093589783,
+        "relative_rms": 0.07085209339857101,
+        "max_abs": 0.830078125
+      }
+    },
+    {
+      "content": "031",
+      "reference_source": "050",
+      "style": "rennurtsfx_geosketch_test",
+      "B": "tar:./Origami_src_031.png",
+      "C": "tar:./extra_Origami_031_rennurtsfx_geosketch_test.png",
+      "correct_A": "tar:./extra_Origami_050_rennurtsfx_geosketch_test.png",
+      "other_A": "tar:./extra_Origami_050_SHIPLEY_HeavyMetalStyle.png",
+      "flow_mse_correct": 0.03524298965930939,
+      "flow_mse_other_style": 0.04096715897321701,
+      "wrong_minus_correct": 0.005724169313907623,
+      "velocity_difference": {
+        "rms": 0.07378856092691422,
+        "relative_rms": 0.07180685549974442,
+        "max_abs": 0.484375
+      }
+    }
+  ],
+  "scope": "Read-only historical held-out 2x2, same B/noise/t, different styles from same reference source; no training.",
+  "limit": "One sigma, two content images, two visual styles. Paired C can change appearance; MSE is not style success.",
+  "grayscale_reference": {
+    "records": [
+      {
+        "content": "050",
+        "reference_source": "031",
+        "style": "SHIPLEY_HeavyMetalStyle",
+        "flow_mse_correct_grayA": 0.053711749613285065,
+        "flow_mse_other_grayA": 0.05379093810915947,
+        "wrong_minus_correct": 7.918849587440491e-05,
+        "velocity_difference": {
+          "rms": 0.07208210974931717,
+          "relative_rms": 0.06423249840736389,
+          "max_abs": 0.701171875
+        }
+      },
+      {
+        "content": "050",
+        "reference_source": "031",
+        "style": "rennurtsfx_geosketch_test",
+        "flow_mse_correct_grayA": 0.02812744677066803,
+        "flow_mse_other_grayA": 0.034109875559806824,
+        "wrong_minus_correct": 0.005982428789138794,
+        "velocity_difference": {
+          "rms": 0.07163017988204956,
+          "relative_rms": 0.0696478933095932,
+          "max_abs": 0.49609375
+        }
+      },
+      {
+        "content": "031",
+        "reference_source": "050",
+        "style": "SHIPLEY_HeavyMetalStyle",
+        "flow_mse_correct_grayA": 0.07633382081985474,
+        "flow_mse_other_grayA": 0.07694046199321747,
+        "wrong_minus_correct": 0.0006066411733627319,
+        "velocity_difference": {
+          "rms": 0.07691824436187744,
+          "relative_rms": 0.06970055401325226,
+          "max_abs": 0.787109375
+        }
+      },
+      {
+        "content": "031",
+        "reference_source": "050",
+        "style": "rennurtsfx_geosketch_test",
+        "flow_mse_correct_grayA": 0.03594179078936577,
+        "flow_mse_other_grayA": 0.04164094477891922,
+        "wrong_minus_correct": 0.0056991539895534515,
+        "velocity_difference": {
+          "rms": 0.07401466369628906,
+          "relative_rms": 0.0720604881644249,
+          "max_abs": 0.49609375
+        }
+      }
+    ],
+    "scope": "Only A converted to grayscale RGB; B,C,seed,sigma unchanged.",
+    "limit": "Grayscale may be outside training distribution; remaining difference is not proof of brushstroke transfer."
+  }
+}

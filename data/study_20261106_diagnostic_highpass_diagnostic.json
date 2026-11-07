@@ -1,0 +1,63 @@
+{
+  "records": [
+    {
+      "sigma": 0.35,
+      "reference": "matching",
+      "highpass_to_difference_energy": 0.7224941253662109,
+      "quadratic_best_additive_scale": -0.18046559222608394,
+      "mse_native": 0.09394038653154917,
+      "mse_add_one_highpass": 0.09566695082129277,
+      "mse_closed_form_minimum": 0.09389906890074166
+    },
+    {
+      "sigma": 0.35,
+      "reference": "same_style_other_subject",
+      "highpass_to_difference_energy": 0.7417916655540466,
+      "quadratic_best_additive_scale": 0.06236063607262784,
+      "mse_native": 0.09205916108329641,
+      "mse_add_one_highpass": 0.0938752751878402,
+      "mse_closed_form_minimum": 0.09205109211832564
+    },
+    {
+      "sigma": 0.6,
+      "reference": "matching",
+      "highpass_to_difference_energy": 0.6097415685653687,
+      "quadratic_best_additive_scale": -0.30630892720722125,
+      "mse_native": 0.08447447363684314,
+      "mse_add_one_highpass": 0.08718583639546859,
+      "mse_closed_form_minimum": 0.08431672141989262
+    },
+    {
+      "sigma": 0.6,
+      "reference": "same_style_other_subject",
+      "highpass_to_difference_energy": 0.5794529914855957,
+      "quadratic_best_additive_scale": -0.06927583209245668,
+      "mse_native": 0.08293120236150116,
+      "mse_add_one_highpass": 0.08539857435322272,
+      "mse_closed_form_minimum": 0.08292080207292109
+    },
+    {
+      "sigma": 0.85,
+      "reference": "matching",
+      "highpass_to_difference_energy": 0.21613670885562897,
+      "quadratic_best_additive_scale": -0.20554323630152987,
+      "mse_native": 0.11197181224659147,
+      "mse_add_one_highpass": 0.11353725155322741,
+      "mse_closed_form_minimum": 0.11192494289057839
+    },
+    {
+      "sigma": 0.85,
+      "reference": "same_style_other_subject",
+      "highpass_to_difference_energy": 0.20430955290794373,
+      "quadratic_best_additive_scale": -0.07177972874771629,
+      "mse_native": 0.10924803401884547,
+      "mse_add_one_highpass": 0.11085995985735458,
+      "mse_closed_form_minimum": 0.10924077145551378
+    }
+  ],
+  "checkpoint": "lora84_010788.safetensors",
+  "content": "tar:./Pop_Art_src_023.png",
+  "target": "tar:./extra_Pop_Art_023_Retro-Pixel-Flux-LoRA.png",
+  "scope": "Same two pixel-style A labels, same C-derived noisy states; no training.",
+  "limit": "Latent high frequencies are not a pure brushstroke or semantic decomposition."
+}

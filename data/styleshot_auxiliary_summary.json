@@ -1,0 +1,53 @@
+{
+  "checkpoint": "10788",
+  "outputs": 138,
+  "references": 23,
+  "seed": 20261103,
+  "descriptor": "mean of three unit-normalized 1024-D per-scale token cosines",
+  "preprocessing": "EXIF transpose, RGB, bilinear resize short side 512, center crop 512, normalized [-1,1], official 8/16/32 patches; fixed common official-style permutations",
+  "weight_provenance": "local weights strictly compatible with official architecture; origin unverified",
+  "limits": [
+    "exploratory proxy, not validated style-transfer success or disentanglement rate",
+    "historical generated images used stretched source inputs",
+    "center crop discards outer image regions",
+    "pairs share B/A/seed and are not independent",
+    "StyleShot prior pixel optimization reduced distance despite failed visual review"
+  ],
+  "groups": {
+    "A_swap": {
+      "count_correlated_pairs": 1518,
+      "median_distance": 0.16212472319602966,
+      "p10": 0.07211881875991823,
+      "p90": 0.2812079191207886
+    },
+    "B_swap": {
+      "count_correlated_pairs": 138,
+      "median_distance": 0.3855955898761749,
+      "p10": 0.2335713267326355,
+      "p90": 0.4753896951675415
+    },
+    "output_reference_matched": {
+      "count_correlated_pairs": 138,
+      "median_distance": 0.4033421277999878,
+      "p10": 0.27212039828300477,
+      "p90": 0.5872285425662994
+    },
+    "output_reference_other": {
+      "count_correlated_pairs": 3036,
+      "median_distance": 0.4898444414138794,
+      "p10": 0.35422199964523315,
+      "p90": 0.668936237692833
+    },
+    "seed_swap": {
+      "count_correlated_pairs": 69,
+      "median_distance": 0.17574429512023926,
+      "p10": 0.1241799831390381,
+      "p90": 0.2803206443786621
+    }
+  },
+  "case_margin_median": 0.09802828932350333,
+  "timings_seconds": {
+    "reference_encoding": 7.084703500033356,
+    "output_encoding": 15.528086000005715
+  }
+}

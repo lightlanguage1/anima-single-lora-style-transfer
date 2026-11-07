@@ -1,0 +1,3468 @@
+{
+  "checkpoint_metadata": {
+    "path": "lora84_010788.safetensors",
+    "step": "10788"
+  },
+  "content": "web_content_street.jpg",
+  "reference": "web_style_oil.jpg",
+  "seed": 20261014,
+  "steps": 30,
+  "switch_after_step": 15,
+  "sampler": "native Euler, shift=3, BF16",
+  "preview": "x0_hat=x_t-t*v at step index 14; it is not a complete intermediate output",
+  "A_probe": {
+    "blur_radius_after_resize_px": 6,
+    "step_index": 14,
+    "spatial_token_stride": 4,
+    "padding_border_margin_px": 16,
+    "selected_modes_per_module": 8,
+    "selection": "highest mean squared A-slot coefficient difference versus blurred same A",
+    "reference_content_box": [
+      0,
+      104,
+      1024,
+      919
+    ],
+    "sampled_token_count": 180
+  },
+  "image_module_count": 224,
+  "text_key_value_modules": "always original full LoRA",
+  "selected_operator_energy_fraction_mean": 0.7897420074524624,
+  "selected_operator_energy_fraction_min": 0.3644319772720337,
+  "selected_operator_energy_fraction_max": 0.9997214078903198,
+  "module_selections": [
+    {
+      "module": "blocks.0.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7,
+        6,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.985801100730896,
+      "selected_response_fraction": 0.994013786315918
+    },
+    {
+      "module": "blocks.0.self_attn.k_proj",
+      "selected_indices": [
+        1,
+        0,
+        3,
+        2,
+        4,
+        6,
+        7,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.9967890977859497,
+      "selected_response_fraction": 0.9992120862007141
+    },
+    {
+      "module": "blocks.0.self_attn.v_proj",
+      "selected_indices": [
+        1,
+        0,
+        3,
+        2,
+        4,
+        5,
+        7,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9757835865020752,
+      "selected_response_fraction": 0.9995109438896179
+    },
+    {
+      "module": "blocks.0.self_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        9,
+        6,
+        3,
+        8,
+        5,
+        12
+      ],
+      "selected_operator_energy_fraction": 0.908004879951477,
+      "selected_response_fraction": 0.9973757266998291
+    },
+    {
+      "module": "blocks.0.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        7,
+        6,
+        4,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.9938215613365173,
+      "selected_response_fraction": 0.9974989891052246
+    },
+    {
+      "module": "blocks.0.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        3,
+        5,
+        4,
+        7,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9989225268363953,
+      "selected_response_fraction": 0.9999523162841797
+    },
+    {
+      "module": "blocks.0.mlp.layer1",
+      "selected_indices": [
+        4,
+        3,
+        0,
+        1,
+        2,
+        8,
+        5,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.8499125838279724,
+      "selected_response_fraction": 0.9805312752723694
+    },
+    {
+      "module": "blocks.0.mlp.layer2",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        6,
+        3,
+        5,
+        7,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.9997214078903198,
+      "selected_response_fraction": 0.9998978972434998
+    },
+    {
+      "module": "blocks.1.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        7,
+        5,
+        3
+      ],
+      "selected_operator_energy_fraction": 0.998150646686554,
+      "selected_response_fraction": 0.9982662200927734
+    },
+    {
+      "module": "blocks.1.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        8,
+        9,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9950538277626038,
+      "selected_response_fraction": 0.997527003288269
+    },
+    {
+      "module": "blocks.1.self_attn.v_proj",
+      "selected_indices": [
+        2,
+        0,
+        3,
+        6,
+        1,
+        8,
+        9,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.9061832427978516,
+      "selected_response_fraction": 0.9925214052200317
+    },
+    {
+      "module": "blocks.1.self_attn.output_proj",
+      "selected_indices": [
+        1,
+        2,
+        3,
+        5,
+        0,
+        4,
+        9,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.9119815826416016,
+      "selected_response_fraction": 0.9290303587913513
+    },
+    {
+      "module": "blocks.1.cross_attn.q_proj",
+      "selected_indices": [
+        1,
+        0,
+        2,
+        6,
+        5,
+        4,
+        3,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.9964949488639832,
+      "selected_response_fraction": 0.9995591640472412
+    },
+    {
+      "module": "blocks.1.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        4,
+        7,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.9994070529937744,
+      "selected_response_fraction": 0.9999994039535522
+    },
+    {
+      "module": "blocks.1.mlp.layer1",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        4,
+        7,
+        10,
+        11,
+        2
+      ],
+      "selected_operator_energy_fraction": 0.9848795533180237,
+      "selected_response_fraction": 0.999734103679657
+    },
+    {
+      "module": "blocks.1.mlp.layer2",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        6,
+        4,
+        7,
+        3,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.9956154823303223,
+      "selected_response_fraction": 0.999570369720459
+    },
+    {
+      "module": "blocks.2.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        3,
+        6,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.9944234490394592,
+      "selected_response_fraction": 0.9986542463302612
+    },
+    {
+      "module": "blocks.2.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        3,
+        5,
+        8,
+        4,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9927652478218079,
+      "selected_response_fraction": 0.9990269541740417
+    },
+    {
+      "module": "blocks.2.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        2,
+        3,
+        1,
+        5,
+        4,
+        8,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.946461021900177,
+      "selected_response_fraction": 0.9766115546226501
+    },
+    {
+      "module": "blocks.2.self_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        5,
+        8,
+        6,
+        9,
+        2
+      ],
+      "selected_operator_energy_fraction": 0.9829858541488647,
+      "selected_response_fraction": 0.9969250559806824
+    },
+    {
+      "module": "blocks.2.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        13,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.983953595161438,
+      "selected_response_fraction": 0.9973551034927368
+    },
+    {
+      "module": "blocks.2.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        4,
+        6,
+        3,
+        8,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.9976364970207214,
+      "selected_response_fraction": 0.9999570250511169
+    },
+    {
+      "module": "blocks.2.mlp.layer1",
+      "selected_indices": [
+        0,
+        3,
+        5,
+        1,
+        2,
+        4,
+        7,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.9943192005157471,
+      "selected_response_fraction": 0.9986852407455444
+    },
+    {
+      "module": "blocks.2.mlp.layer2",
+      "selected_indices": [
+        1,
+        0,
+        4,
+        3,
+        5,
+        7,
+        2,
+        13
+      ],
+      "selected_operator_energy_fraction": 0.9996352195739746,
+      "selected_response_fraction": 0.9997977614402771
+    },
+    {
+      "module": "blocks.3.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        5,
+        6,
+        8,
+        3,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.9835642576217651,
+      "selected_response_fraction": 0.9964621663093567
+    },
+    {
+      "module": "blocks.3.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        4,
+        3,
+        7,
+        6,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.990472674369812,
+      "selected_response_fraction": 0.9979298114776611
+    },
+    {
+      "module": "blocks.3.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        2,
+        3,
+        6,
+        9,
+        1,
+        8,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.7912304401397705,
+      "selected_response_fraction": 0.969733715057373
+    },
+    {
+      "module": "blocks.3.self_attn.output_proj",
+      "selected_indices": [
+        3,
+        2,
+        0,
+        9,
+        5,
+        7,
+        6,
+        1
+      ],
+      "selected_operator_energy_fraction": 0.8733441829681396,
+      "selected_response_fraction": 0.9444092512130737
+    },
+    {
+      "module": "blocks.3.cross_attn.q_proj",
+      "selected_indices": [
+        2,
+        0,
+        1,
+        3,
+        8,
+        6,
+        7,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.9781574010848999,
+      "selected_response_fraction": 0.9967674016952515
+    },
+    {
+      "module": "blocks.3.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        4,
+        6,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.9945753216743469,
+      "selected_response_fraction": 0.9998505115509033
+    },
+    {
+      "module": "blocks.3.mlp.layer1",
+      "selected_indices": [
+        0,
+        1,
+        4,
+        3,
+        2,
+        5,
+        6,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.9863049983978271,
+      "selected_response_fraction": 0.9982914924621582
+    },
+    {
+      "module": "blocks.3.mlp.layer2",
+      "selected_indices": [
+        2,
+        0,
+        3,
+        1,
+        4,
+        8,
+        7,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.9918113946914673,
+      "selected_response_fraction": 0.996498167514801
+    },
+    {
+      "module": "blocks.4.self_attn.q_proj",
+      "selected_indices": [
+        2,
+        3,
+        5,
+        1,
+        0,
+        4,
+        6,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.9795870780944824,
+      "selected_response_fraction": 0.9943855404853821
+    },
+    {
+      "module": "blocks.4.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        4,
+        3,
+        1,
+        2,
+        5,
+        10,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.98506760597229,
+      "selected_response_fraction": 0.9981058239936829
+    },
+    {
+      "module": "blocks.4.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        2,
+        3,
+        4,
+        1,
+        5,
+        8,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.7679219841957092,
+      "selected_response_fraction": 0.9785118103027344
+    },
+    {
+      "module": "blocks.4.self_attn.output_proj",
+      "selected_indices": [
+        4,
+        3,
+        0,
+        8,
+        2,
+        14,
+        9,
+        15
+      ],
+      "selected_operator_energy_fraction": 0.6594817042350769,
+      "selected_response_fraction": 0.8510012626647949
+    },
+    {
+      "module": "blocks.4.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        6,
+        2,
+        8,
+        11,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.9810093641281128,
+      "selected_response_fraction": 0.9908674955368042
+    },
+    {
+      "module": "blocks.4.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        7,
+        6,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.9972774982452393,
+      "selected_response_fraction": 0.9999272227287292
+    },
+    {
+      "module": "blocks.4.mlp.layer1",
+      "selected_indices": [
+        0,
+        2,
+        5,
+        7,
+        9,
+        12,
+        1,
+        11
+      ],
+      "selected_operator_energy_fraction": 0.8984169363975525,
+      "selected_response_fraction": 0.9907279014587402
+    },
+    {
+      "module": "blocks.4.mlp.layer2",
+      "selected_indices": [
+        0,
+        1,
+        5,
+        2,
+        6,
+        7,
+        4,
+        3
+      ],
+      "selected_operator_energy_fraction": 0.9767526388168335,
+      "selected_response_fraction": 0.9872612357139587
+    },
+    {
+      "module": "blocks.5.self_attn.q_proj",
+      "selected_indices": [
+        1,
+        8,
+        0,
+        7,
+        2,
+        3,
+        4,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.928307831287384,
+      "selected_response_fraction": 0.9214401841163635
+    },
+    {
+      "module": "blocks.5.self_attn.k_proj",
+      "selected_indices": [
+        1,
+        0,
+        2,
+        5,
+        3,
+        4,
+        6,
+        12
+      ],
+      "selected_operator_energy_fraction": 0.9626564979553223,
+      "selected_response_fraction": 0.9864937663078308
+    },
+    {
+      "module": "blocks.5.self_attn.v_proj",
+      "selected_indices": [
+        1,
+        0,
+        5,
+        3,
+        6,
+        8,
+        4,
+        2
+      ],
+      "selected_operator_energy_fraction": 0.7609931230545044,
+      "selected_response_fraction": 0.8330316543579102
+    },
+    {
+      "module": "blocks.5.self_attn.output_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        6,
+        5,
+        9,
+        13,
+        22
+      ],
+      "selected_operator_energy_fraction": 0.7186155319213867,
+      "selected_response_fraction": 0.9463582634925842
+    },
+    {
+      "module": "blocks.5.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        5,
+        3,
+        10,
+        7,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.9859061241149902,
+      "selected_response_fraction": 0.9998510479927063
+    },
+    {
+      "module": "blocks.5.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.9948012828826904,
+      "selected_response_fraction": 0.9998064041137695
+    },
+    {
+      "module": "blocks.5.mlp.layer1",
+      "selected_indices": [
+        1,
+        0,
+        3,
+        5,
+        2,
+        10,
+        12,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.953865110874176,
+      "selected_response_fraction": 0.9767196178436279
+    },
+    {
+      "module": "blocks.5.mlp.layer2",
+      "selected_indices": [
+        0,
+        2,
+        4,
+        1,
+        5,
+        6,
+        9,
+        3
+      ],
+      "selected_operator_energy_fraction": 0.9815340638160706,
+      "selected_response_fraction": 0.9884768724441528
+    },
+    {
+      "module": "blocks.6.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        3,
+        1,
+        2,
+        5,
+        4,
+        6,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.9827204942703247,
+      "selected_response_fraction": 0.9794240593910217
+    },
+    {
+      "module": "blocks.6.self_attn.k_proj",
+      "selected_indices": [
+        2,
+        0,
+        5,
+        3,
+        1,
+        4,
+        6,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.9871034026145935,
+      "selected_response_fraction": 0.9969453811645508
+    },
+    {
+      "module": "blocks.6.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        3,
+        1,
+        6,
+        2,
+        11,
+        8,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.7093443870544434,
+      "selected_response_fraction": 0.7444594502449036
+    },
+    {
+      "module": "blocks.6.self_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        12,
+        13,
+        3,
+        5,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.7779188752174377,
+      "selected_response_fraction": 0.9745129346847534
+    },
+    {
+      "module": "blocks.6.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        4,
+        3,
+        11,
+        7,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9966147541999817,
+      "selected_response_fraction": 0.9970980286598206
+    },
+    {
+      "module": "blocks.6.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        2,
+        6,
+        5,
+        4,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.9996634721755981,
+      "selected_response_fraction": 0.9999995231628418
+    },
+    {
+      "module": "blocks.6.mlp.layer1",
+      "selected_indices": [
+        1,
+        0,
+        7,
+        8,
+        2,
+        3,
+        9,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9337177276611328,
+      "selected_response_fraction": 0.9616568088531494
+    },
+    {
+      "module": "blocks.6.mlp.layer2",
+      "selected_indices": [
+        0,
+        4,
+        2,
+        1,
+        9,
+        5,
+        3,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.9396925568580627,
+      "selected_response_fraction": 0.9472389817237854
+    },
+    {
+      "module": "blocks.7.self_attn.q_proj",
+      "selected_indices": [
+        3,
+        5,
+        0,
+        2,
+        7,
+        1,
+        6,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.9666452407836914,
+      "selected_response_fraction": 0.9928861856460571
+    },
+    {
+      "module": "blocks.7.self_attn.k_proj",
+      "selected_indices": [
+        1,
+        0,
+        3,
+        4,
+        2,
+        9,
+        5,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9768210053443909,
+      "selected_response_fraction": 0.9854492545127869
+    },
+    {
+      "module": "blocks.7.self_attn.v_proj",
+      "selected_indices": [
+        3,
+        0,
+        10,
+        1,
+        5,
+        15,
+        4,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.6108290553092957,
+      "selected_response_fraction": 0.8750216960906982
+    },
+    {
+      "module": "blocks.7.self_attn.output_proj",
+      "selected_indices": [
+        2,
+        7,
+        3,
+        5,
+        0,
+        4,
+        6,
+        1
+      ],
+      "selected_operator_energy_fraction": 0.7948583960533142,
+      "selected_response_fraction": 0.9154625535011292
+    },
+    {
+      "module": "blocks.7.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        5,
+        2,
+        6,
+        11,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.9561273455619812,
+      "selected_response_fraction": 0.9943486452102661
+    },
+    {
+      "module": "blocks.7.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        4,
+        7,
+        3,
+        6,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.9796594977378845,
+      "selected_response_fraction": 0.9974009990692139
+    },
+    {
+      "module": "blocks.7.mlp.layer1",
+      "selected_indices": [
+        1,
+        4,
+        3,
+        0,
+        8,
+        2,
+        7,
+        11
+      ],
+      "selected_operator_energy_fraction": 0.8678914308547974,
+      "selected_response_fraction": 0.8985598683357239
+    },
+    {
+      "module": "blocks.7.mlp.layer2",
+      "selected_indices": [
+        3,
+        0,
+        4,
+        1,
+        14,
+        8,
+        10,
+        2
+      ],
+      "selected_operator_energy_fraction": 0.8742963671684265,
+      "selected_response_fraction": 0.9282196760177612
+    },
+    {
+      "module": "blocks.8.self_attn.q_proj",
+      "selected_indices": [
+        1,
+        0,
+        5,
+        2,
+        4,
+        6,
+        3,
+        14
+      ],
+      "selected_operator_energy_fraction": 0.9504627585411072,
+      "selected_response_fraction": 0.9780158400535583
+    },
+    {
+      "module": "blocks.8.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        14,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.9569873809814453,
+      "selected_response_fraction": 0.9912537932395935
+    },
+    {
+      "module": "blocks.8.self_attn.v_proj",
+      "selected_indices": [
+        2,
+        4,
+        1,
+        7,
+        0,
+        9,
+        6,
+        14
+      ],
+      "selected_operator_energy_fraction": 0.5873467326164246,
+      "selected_response_fraction": 0.7195716500282288
+    },
+    {
+      "module": "blocks.8.self_attn.output_proj",
+      "selected_indices": [
+        0,
+        7,
+        6,
+        4,
+        2,
+        12,
+        15,
+        3
+      ],
+      "selected_operator_energy_fraction": 0.557620644569397,
+      "selected_response_fraction": 0.8748409748077393
+    },
+    {
+      "module": "blocks.8.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        5,
+        3,
+        4,
+        9,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9430544972419739,
+      "selected_response_fraction": 0.9534218907356262
+    },
+    {
+      "module": "blocks.8.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        5,
+        3,
+        4,
+        6,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.971934974193573,
+      "selected_response_fraction": 0.9959385395050049
+    },
+    {
+      "module": "blocks.8.mlp.layer1",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        10,
+        3,
+        5,
+        19,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.7528230547904968,
+      "selected_response_fraction": 0.7559890747070312
+    },
+    {
+      "module": "blocks.8.mlp.layer2",
+      "selected_indices": [
+        3,
+        0,
+        1,
+        4,
+        2,
+        5,
+        6,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.8955149054527283,
+      "selected_response_fraction": 0.9525800347328186
+    },
+    {
+      "module": "blocks.9.self_attn.q_proj",
+      "selected_indices": [
+        1,
+        0,
+        3,
+        2,
+        5,
+        6,
+        4,
+        11
+      ],
+      "selected_operator_energy_fraction": 0.9603196382522583,
+      "selected_response_fraction": 0.9830697774887085
+    },
+    {
+      "module": "blocks.9.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        5,
+        9,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.9452522993087769,
+      "selected_response_fraction": 0.9866509437561035
+    },
+    {
+      "module": "blocks.9.self_attn.v_proj",
+      "selected_indices": [
+        8,
+        1,
+        0,
+        2,
+        3,
+        5,
+        4,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.6356123089790344,
+      "selected_response_fraction": 0.752951979637146
+    },
+    {
+      "module": "blocks.9.self_attn.output_proj",
+      "selected_indices": [
+        1,
+        0,
+        11,
+        9,
+        8,
+        4,
+        3,
+        17
+      ],
+      "selected_operator_energy_fraction": 0.6304558515548706,
+      "selected_response_fraction": 0.846818208694458
+    },
+    {
+      "module": "blocks.9.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        3,
+        5,
+        6,
+        4,
+        12
+      ],
+      "selected_operator_energy_fraction": 0.890180230140686,
+      "selected_response_fraction": 0.9404745697975159
+    },
+    {
+      "module": "blocks.9.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        6,
+        4,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.9477928876876831,
+      "selected_response_fraction": 0.9972888827323914
+    },
+    {
+      "module": "blocks.9.mlp.layer1",
+      "selected_indices": [
+        0,
+        2,
+        5,
+        3,
+        7,
+        1,
+        19,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.7231313586235046,
+      "selected_response_fraction": 0.7339086532592773
+    },
+    {
+      "module": "blocks.9.mlp.layer2",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        4,
+        7,
+        5,
+        11,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.8426810503005981,
+      "selected_response_fraction": 0.9712533354759216
+    },
+    {
+      "module": "blocks.10.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        4,
+        3,
+        2,
+        6,
+        5,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.9066831469535828,
+      "selected_response_fraction": 0.9094772934913635
+    },
+    {
+      "module": "blocks.10.self_attn.k_proj",
+      "selected_indices": [
+        1,
+        2,
+        0,
+        3,
+        5,
+        4,
+        9,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9257547855377197,
+      "selected_response_fraction": 0.958721399307251
+    },
+    {
+      "module": "blocks.10.self_attn.v_proj",
+      "selected_indices": [
+        1,
+        3,
+        6,
+        7,
+        0,
+        5,
+        4,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.5600154995918274,
+      "selected_response_fraction": 0.7160359621047974
+    },
+    {
+      "module": "blocks.10.self_attn.output_proj",
+      "selected_indices": [
+        0,
+        2,
+        3,
+        1,
+        9,
+        4,
+        17,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.641315221786499,
+      "selected_response_fraction": 0.8157913088798523
+    },
+    {
+      "module": "blocks.10.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        6,
+        5,
+        3,
+        7,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.899538516998291,
+      "selected_response_fraction": 0.9814398288726807
+    },
+    {
+      "module": "blocks.10.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        2,
+        4,
+        1,
+        5,
+        6,
+        3,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.9409873485565186,
+      "selected_response_fraction": 0.9972594976425171
+    },
+    {
+      "module": "blocks.10.mlp.layer1",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        9,
+        4,
+        7,
+        10,
+        3
+      ],
+      "selected_operator_energy_fraction": 0.7964556813240051,
+      "selected_response_fraction": 0.7728220224380493
+    },
+    {
+      "module": "blocks.10.mlp.layer2",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        2,
+        6,
+        5,
+        4,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.8678644299507141,
+      "selected_response_fraction": 0.93934565782547
+    },
+    {
+      "module": "blocks.11.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        4,
+        2,
+        6,
+        7,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.9541714787483215,
+      "selected_response_fraction": 0.9522961378097534
+    },
+    {
+      "module": "blocks.11.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        4,
+        3,
+        5,
+        8,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9755542874336243,
+      "selected_response_fraction": 0.9870436191558838
+    },
+    {
+      "module": "blocks.11.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        3,
+        1,
+        6,
+        2,
+        4,
+        7,
+        21
+      ],
+      "selected_operator_energy_fraction": 0.5265523791313171,
+      "selected_response_fraction": 0.8047596216201782
+    },
+    {
+      "module": "blocks.11.self_attn.output_proj",
+      "selected_indices": [
+        6,
+        0,
+        2,
+        16,
+        15,
+        10,
+        1,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.5554593205451965,
+      "selected_response_fraction": 0.729756236076355
+    },
+    {
+      "module": "blocks.11.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        5,
+        2,
+        1,
+        4,
+        3,
+        9,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.8123070597648621,
+      "selected_response_fraction": 0.8690256476402283
+    },
+    {
+      "module": "blocks.11.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.9139788746833801,
+      "selected_response_fraction": 0.9886202216148376
+    },
+    {
+      "module": "blocks.11.mlp.layer1",
+      "selected_indices": [
+        2,
+        0,
+        1,
+        15,
+        3,
+        4,
+        12,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.7264888882637024,
+      "selected_response_fraction": 0.71816486120224
+    },
+    {
+      "module": "blocks.11.mlp.layer2",
+      "selected_indices": [
+        1,
+        0,
+        8,
+        4,
+        2,
+        3,
+        7,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.7520139217376709,
+      "selected_response_fraction": 0.7754362225532532
+    },
+    {
+      "module": "blocks.12.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        6,
+        9,
+        4,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.9136618971824646,
+      "selected_response_fraction": 0.9084461331367493
+    },
+    {
+      "module": "blocks.12.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        3,
+        7,
+        4,
+        5,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9285284876823425,
+      "selected_response_fraction": 0.922460675239563
+    },
+    {
+      "module": "blocks.12.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        1,
+        5,
+        3,
+        4,
+        8,
+        6,
+        2
+      ],
+      "selected_operator_energy_fraction": 0.5837967395782471,
+      "selected_response_fraction": 0.776616632938385
+    },
+    {
+      "module": "blocks.12.self_attn.output_proj",
+      "selected_indices": [
+        0,
+        7,
+        1,
+        10,
+        4,
+        2,
+        14,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.5760034918785095,
+      "selected_response_fraction": 0.7841350436210632
+    },
+    {
+      "module": "blocks.12.cross_attn.q_proj",
+      "selected_indices": [
+        1,
+        0,
+        2,
+        3,
+        4,
+        6,
+        5,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.8549883365631104,
+      "selected_response_fraction": 0.9240571856498718
+    },
+    {
+      "module": "blocks.12.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        2,
+        4,
+        5,
+        6,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.941047728061676,
+      "selected_response_fraction": 0.9906833171844482
+    },
+    {
+      "module": "blocks.12.mlp.layer1",
+      "selected_indices": [
+        0,
+        4,
+        1,
+        5,
+        2,
+        9,
+        3,
+        14
+      ],
+      "selected_operator_energy_fraction": 0.7070677876472473,
+      "selected_response_fraction": 0.7057870030403137
+    },
+    {
+      "module": "blocks.12.mlp.layer2",
+      "selected_indices": [
+        1,
+        0,
+        3,
+        2,
+        4,
+        7,
+        9,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.8139996528625488,
+      "selected_response_fraction": 0.8712714314460754
+    },
+    {
+      "module": "blocks.13.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        3,
+        1,
+        4,
+        2,
+        8,
+        7,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.8667557835578918,
+      "selected_response_fraction": 0.8677366375923157
+    },
+    {
+      "module": "blocks.13.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        1,
+        5,
+        2,
+        3,
+        4,
+        7,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.8807423114776611,
+      "selected_response_fraction": 0.8682557344436646
+    },
+    {
+      "module": "blocks.13.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        4,
+        5,
+        2,
+        1,
+        17,
+        3,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.5556583404541016,
+      "selected_response_fraction": 0.7421556711196899
+    },
+    {
+      "module": "blocks.13.self_attn.output_proj",
+      "selected_indices": [
+        7,
+        1,
+        8,
+        12,
+        4,
+        6,
+        0,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.5286392569541931,
+      "selected_response_fraction": 0.7870302200317383
+    },
+    {
+      "module": "blocks.13.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        3,
+        4,
+        5,
+        8,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.8342880010604858,
+      "selected_response_fraction": 0.8591781854629517
+    },
+    {
+      "module": "blocks.13.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        2,
+        4,
+        5,
+        6,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.9131760001182556,
+      "selected_response_fraction": 0.9698317646980286
+    },
+    {
+      "module": "blocks.13.mlp.layer1",
+      "selected_indices": [
+        0,
+        3,
+        1,
+        8,
+        2,
+        7,
+        12,
+        17
+      ],
+      "selected_operator_energy_fraction": 0.6156473159790039,
+      "selected_response_fraction": 0.742186427116394
+    },
+    {
+      "module": "blocks.13.mlp.layer2",
+      "selected_indices": [
+        0,
+        1,
+        7,
+        9,
+        2,
+        4,
+        3,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.6924526691436768,
+      "selected_response_fraction": 0.7638073563575745
+    },
+    {
+      "module": "blocks.14.self_attn.q_proj",
+      "selected_indices": [
+        3,
+        0,
+        1,
+        4,
+        2,
+        5,
+        7,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.8556568622589111,
+      "selected_response_fraction": 0.857674777507782
+    },
+    {
+      "module": "blocks.14.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        4,
+        3,
+        2,
+        1,
+        5,
+        7,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.8989018797874451,
+      "selected_response_fraction": 0.9211723208427429
+    },
+    {
+      "module": "blocks.14.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        4,
+        3,
+        2,
+        1,
+        6,
+        12,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.5177857875823975,
+      "selected_response_fraction": 0.688264012336731
+    },
+    {
+      "module": "blocks.14.self_attn.output_proj",
+      "selected_indices": [
+        0,
+        8,
+        12,
+        2,
+        4,
+        1,
+        5,
+        19
+      ],
+      "selected_operator_energy_fraction": 0.5018303990364075,
+      "selected_response_fraction": 0.6843482851982117
+    },
+    {
+      "module": "blocks.14.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        4,
+        3,
+        7,
+        8,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.7040088772773743,
+      "selected_response_fraction": 0.7172033786773682
+    },
+    {
+      "module": "blocks.14.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        2,
+        3,
+        1,
+        4,
+        5,
+        6,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.915084183216095,
+      "selected_response_fraction": 0.97958904504776
+    },
+    {
+      "module": "blocks.14.mlp.layer1",
+      "selected_indices": [
+        3,
+        1,
+        0,
+        2,
+        9,
+        7,
+        4,
+        16
+      ],
+      "selected_operator_energy_fraction": 0.6224804520606995,
+      "selected_response_fraction": 0.759874165058136
+    },
+    {
+      "module": "blocks.14.mlp.layer2",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        5,
+        4,
+        10,
+        3,
+        12
+      ],
+      "selected_operator_energy_fraction": 0.6882574558258057,
+      "selected_response_fraction": 0.8055024147033691
+    },
+    {
+      "module": "blocks.15.self_attn.q_proj",
+      "selected_indices": [
+        1,
+        0,
+        2,
+        3,
+        4,
+        10,
+        7,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.840133547782898,
+      "selected_response_fraction": 0.8459727764129639
+    },
+    {
+      "module": "blocks.15.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        4,
+        6,
+        3,
+        8,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.8675782084465027,
+      "selected_response_fraction": 0.8162075281143188
+    },
+    {
+      "module": "blocks.15.self_attn.v_proj",
+      "selected_indices": [
+        2,
+        3,
+        0,
+        1,
+        7,
+        8,
+        10,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.5345024466514587,
+      "selected_response_fraction": 0.6232977509498596
+    },
+    {
+      "module": "blocks.15.self_attn.output_proj",
+      "selected_indices": [
+        0,
+        12,
+        4,
+        2,
+        3,
+        13,
+        5,
+        1
+      ],
+      "selected_operator_energy_fraction": 0.6287878155708313,
+      "selected_response_fraction": 0.6553642749786377
+    },
+    {
+      "module": "blocks.15.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        7,
+        2,
+        5,
+        8,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.8155500888824463,
+      "selected_response_fraction": 0.850996196269989
+    },
+    {
+      "module": "blocks.15.cross_attn.output_proj",
+      "selected_indices": [
+        1,
+        0,
+        2,
+        3,
+        4,
+        5,
+        6,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.9567835330963135,
+      "selected_response_fraction": 0.9835730791091919
+    },
+    {
+      "module": "blocks.15.mlp.layer1",
+      "selected_indices": [
+        3,
+        0,
+        7,
+        1,
+        8,
+        2,
+        4,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.6507045030593872,
+      "selected_response_fraction": 0.6535769701004028
+    },
+    {
+      "module": "blocks.15.mlp.layer2",
+      "selected_indices": [
+        2,
+        0,
+        4,
+        5,
+        1,
+        6,
+        8,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.7166659832000732,
+      "selected_response_fraction": 0.7820636034011841
+    },
+    {
+      "module": "blocks.16.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        6,
+        3,
+        2,
+        5,
+        4,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.8221496343612671,
+      "selected_response_fraction": 0.800395667552948
+    },
+    {
+      "module": "blocks.16.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        8,
+        6,
+        3,
+        7,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.8573915958404541,
+      "selected_response_fraction": 0.8610002398490906
+    },
+    {
+      "module": "blocks.16.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        3,
+        2,
+        1,
+        7,
+        5,
+        11,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.4957163333892822,
+      "selected_response_fraction": 0.6954666376113892
+    },
+    {
+      "module": "blocks.16.self_attn.output_proj",
+      "selected_indices": [
+        2,
+        1,
+        13,
+        0,
+        8,
+        9,
+        7,
+        11
+      ],
+      "selected_operator_energy_fraction": 0.4920228123664856,
+      "selected_response_fraction": 0.6996360421180725
+    },
+    {
+      "module": "blocks.16.cross_attn.q_proj",
+      "selected_indices": [
+        1,
+        0,
+        4,
+        3,
+        2,
+        6,
+        5,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.8358879685401917,
+      "selected_response_fraction": 0.8863497972488403
+    },
+    {
+      "module": "blocks.16.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        7,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.931912899017334,
+      "selected_response_fraction": 0.9779351949691772
+    },
+    {
+      "module": "blocks.16.mlp.layer1",
+      "selected_indices": [
+        1,
+        2,
+        0,
+        8,
+        3,
+        4,
+        7,
+        19
+      ],
+      "selected_operator_energy_fraction": 0.5959743857383728,
+      "selected_response_fraction": 0.6627243161201477
+    },
+    {
+      "module": "blocks.16.mlp.layer2",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        2,
+        5,
+        6,
+        4,
+        13
+      ],
+      "selected_operator_energy_fraction": 0.695306658744812,
+      "selected_response_fraction": 0.8328710198402405
+    },
+    {
+      "module": "blocks.17.self_attn.q_proj",
+      "selected_indices": [
+        1,
+        0,
+        3,
+        2,
+        4,
+        5,
+        6,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.9215714335441589,
+      "selected_response_fraction": 0.8894676566123962
+    },
+    {
+      "module": "blocks.17.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        3,
+        14,
+        5,
+        4,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.9177790284156799,
+      "selected_response_fraction": 0.9357325434684753
+    },
+    {
+      "module": "blocks.17.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        4,
+        2,
+        1,
+        3,
+        7,
+        10,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.5302092432975769,
+      "selected_response_fraction": 0.5878278613090515
+    },
+    {
+      "module": "blocks.17.self_attn.output_proj",
+      "selected_indices": [
+        1,
+        7,
+        3,
+        0,
+        10,
+        4,
+        9,
+        2
+      ],
+      "selected_operator_energy_fraction": 0.6230509281158447,
+      "selected_response_fraction": 0.8285587430000305
+    },
+    {
+      "module": "blocks.17.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        4,
+        5,
+        6,
+        8,
+        3,
+        2
+      ],
+      "selected_operator_energy_fraction": 0.7461785674095154,
+      "selected_response_fraction": 0.8796399831771851
+    },
+    {
+      "module": "blocks.17.cross_attn.output_proj",
+      "selected_indices": [
+        1,
+        0,
+        3,
+        2,
+        4,
+        5,
+        7,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9344848990440369,
+      "selected_response_fraction": 0.9857476353645325
+    },
+    {
+      "module": "blocks.17.mlp.layer1",
+      "selected_indices": [
+        1,
+        10,
+        0,
+        6,
+        4,
+        17,
+        15,
+        3
+      ],
+      "selected_operator_energy_fraction": 0.5578180551528931,
+      "selected_response_fraction": 0.6933929920196533
+    },
+    {
+      "module": "blocks.17.mlp.layer2",
+      "selected_indices": [
+        4,
+        0,
+        1,
+        7,
+        2,
+        6,
+        5,
+        14
+      ],
+      "selected_operator_energy_fraction": 0.6792795658111572,
+      "selected_response_fraction": 0.7779494524002075
+    },
+    {
+      "module": "blocks.18.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        7,
+        4,
+        6,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.8414313197135925,
+      "selected_response_fraction": 0.9221686124801636
+    },
+    {
+      "module": "blocks.18.self_attn.k_proj",
+      "selected_indices": [
+        1,
+        0,
+        3,
+        2,
+        7,
+        5,
+        4,
+        16
+      ],
+      "selected_operator_energy_fraction": 0.9391512274742126,
+      "selected_response_fraction": 0.9676077961921692
+    },
+    {
+      "module": "blocks.18.self_attn.v_proj",
+      "selected_indices": [
+        5,
+        0,
+        4,
+        1,
+        2,
+        6,
+        9,
+        16
+      ],
+      "selected_operator_energy_fraction": 0.49626755714416504,
+      "selected_response_fraction": 0.7654850482940674
+    },
+    {
+      "module": "blocks.18.self_attn.output_proj",
+      "selected_indices": [
+        3,
+        0,
+        11,
+        10,
+        6,
+        1,
+        4,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.5818901062011719,
+      "selected_response_fraction": 0.7970365881919861
+    },
+    {
+      "module": "blocks.18.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        2,
+        7,
+        1,
+        4,
+        8,
+        12,
+        3
+      ],
+      "selected_operator_energy_fraction": 0.5800899863243103,
+      "selected_response_fraction": 0.7690808773040771
+    },
+    {
+      "module": "blocks.18.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        2,
+        3,
+        1,
+        5,
+        7,
+        4,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.881023108959198,
+      "selected_response_fraction": 0.9790955185890198
+    },
+    {
+      "module": "blocks.18.mlp.layer1",
+      "selected_indices": [
+        2,
+        3,
+        4,
+        7,
+        10,
+        14,
+        5,
+        0
+      ],
+      "selected_operator_energy_fraction": 0.48459839820861816,
+      "selected_response_fraction": 0.7608487606048584
+    },
+    {
+      "module": "blocks.18.mlp.layer2",
+      "selected_indices": [
+        2,
+        5,
+        9,
+        0,
+        1,
+        11,
+        13,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.6211111545562744,
+      "selected_response_fraction": 0.7577558755874634
+    },
+    {
+      "module": "blocks.19.self_attn.q_proj",
+      "selected_indices": [
+        1,
+        0,
+        4,
+        8,
+        3,
+        2,
+        5,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.8636046051979065,
+      "selected_response_fraction": 0.8786353468894958
+    },
+    {
+      "module": "blocks.19.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        5,
+        3,
+        10,
+        13,
+        11
+      ],
+      "selected_operator_energy_fraction": 0.8634364008903503,
+      "selected_response_fraction": 0.9019281268119812
+    },
+    {
+      "module": "blocks.19.self_attn.v_proj",
+      "selected_indices": [
+        1,
+        4,
+        16,
+        12,
+        14,
+        5,
+        2,
+        24
+      ],
+      "selected_operator_energy_fraction": 0.36588552594184875,
+      "selected_response_fraction": 0.6303203105926514
+    },
+    {
+      "module": "blocks.19.self_attn.output_proj",
+      "selected_indices": [
+        6,
+        5,
+        0,
+        16,
+        10,
+        2,
+        7,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.4531649053096771,
+      "selected_response_fraction": 0.7859973311424255
+    },
+    {
+      "module": "blocks.19.cross_attn.q_proj",
+      "selected_indices": [
+        1,
+        4,
+        0,
+        2,
+        3,
+        10,
+        5,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.6968739628791809,
+      "selected_response_fraction": 0.7628128528594971
+    },
+    {
+      "module": "blocks.19.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        4,
+        3,
+        5,
+        6,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.9216050505638123,
+      "selected_response_fraction": 0.9854916334152222
+    },
+    {
+      "module": "blocks.19.mlp.layer1",
+      "selected_indices": [
+        9,
+        11,
+        12,
+        6,
+        2,
+        13,
+        1,
+        3
+      ],
+      "selected_operator_energy_fraction": 0.4214205741882324,
+      "selected_response_fraction": 0.7101278305053711
+    },
+    {
+      "module": "blocks.19.mlp.layer2",
+      "selected_indices": [
+        2,
+        3,
+        0,
+        8,
+        5,
+        10,
+        4,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.5892805457115173,
+      "selected_response_fraction": 0.8184756636619568
+    },
+    {
+      "module": "blocks.20.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        4,
+        7,
+        3,
+        2,
+        5,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.7937361598014832,
+      "selected_response_fraction": 0.7973935008049011
+    },
+    {
+      "module": "blocks.20.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        6,
+        3,
+        4,
+        5,
+        15
+      ],
+      "selected_operator_energy_fraction": 0.9074999094009399,
+      "selected_response_fraction": 0.8965753316879272
+    },
+    {
+      "module": "blocks.20.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        5,
+        8,
+        1,
+        6,
+        9,
+        2,
+        3
+      ],
+      "selected_operator_energy_fraction": 0.5296726226806641,
+      "selected_response_fraction": 0.6780422925949097
+    },
+    {
+      "module": "blocks.20.self_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        9,
+        6,
+        3,
+        5,
+        2,
+        12
+      ],
+      "selected_operator_energy_fraction": 0.5861949920654297,
+      "selected_response_fraction": 0.8107513189315796
+    },
+    {
+      "module": "blocks.20.cross_attn.q_proj",
+      "selected_indices": [
+        2,
+        9,
+        0,
+        4,
+        7,
+        1,
+        12,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.5818069577217102,
+      "selected_response_fraction": 0.7806347608566284
+    },
+    {
+      "module": "blocks.20.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        4,
+        5,
+        3,
+        7,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.905600905418396,
+      "selected_response_fraction": 0.97958904504776
+    },
+    {
+      "module": "blocks.20.mlp.layer1",
+      "selected_indices": [
+        1,
+        6,
+        0,
+        2,
+        4,
+        8,
+        5,
+        3
+      ],
+      "selected_operator_energy_fraction": 0.6626019477844238,
+      "selected_response_fraction": 0.8576314449310303
+    },
+    {
+      "module": "blocks.20.mlp.layer2",
+      "selected_indices": [
+        0,
+        3,
+        1,
+        7,
+        6,
+        2,
+        8,
+        16
+      ],
+      "selected_operator_energy_fraction": 0.6169582605361938,
+      "selected_response_fraction": 0.8202002048492432
+    },
+    {
+      "module": "blocks.21.self_attn.q_proj",
+      "selected_indices": [
+        2,
+        0,
+        1,
+        9,
+        4,
+        11,
+        3,
+        13
+      ],
+      "selected_operator_energy_fraction": 0.8824074268341064,
+      "selected_response_fraction": 0.8283267021179199
+    },
+    {
+      "module": "blocks.21.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        8,
+        9,
+        6,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.937194287776947,
+      "selected_response_fraction": 0.9837477803230286
+    },
+    {
+      "module": "blocks.21.self_attn.v_proj",
+      "selected_indices": [
+        1,
+        3,
+        0,
+        2,
+        5,
+        8,
+        19,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.6506533622741699,
+      "selected_response_fraction": 0.7350225448608398
+    },
+    {
+      "module": "blocks.21.self_attn.output_proj",
+      "selected_indices": [
+        5,
+        3,
+        1,
+        2,
+        8,
+        4,
+        0,
+        11
+      ],
+      "selected_operator_energy_fraction": 0.6555154323577881,
+      "selected_response_fraction": 0.8212341666221619
+    },
+    {
+      "module": "blocks.21.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        4,
+        2,
+        1,
+        9,
+        11,
+        3,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.5591849684715271,
+      "selected_response_fraction": 0.7812239527702332
+    },
+    {
+      "module": "blocks.21.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        3,
+        2,
+        1,
+        4,
+        6,
+        8,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.8935037851333618,
+      "selected_response_fraction": 0.9633800387382507
+    },
+    {
+      "module": "blocks.21.mlp.layer1",
+      "selected_indices": [
+        1,
+        3,
+        4,
+        0,
+        13,
+        6,
+        5,
+        16
+      ],
+      "selected_operator_energy_fraction": 0.5708151459693909,
+      "selected_response_fraction": 0.8315455317497253
+    },
+    {
+      "module": "blocks.21.mlp.layer2",
+      "selected_indices": [
+        3,
+        1,
+        4,
+        14,
+        0,
+        2,
+        6,
+        17
+      ],
+      "selected_operator_energy_fraction": 0.590846598148346,
+      "selected_response_fraction": 0.8000034689903259
+    },
+    {
+      "module": "blocks.22.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        3,
+        1,
+        5,
+        4,
+        7,
+        8,
+        12
+      ],
+      "selected_operator_energy_fraction": 0.7492806911468506,
+      "selected_response_fraction": 0.9058183431625366
+    },
+    {
+      "module": "blocks.22.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        2,
+        3,
+        4,
+        1,
+        5,
+        11,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.876315712928772,
+      "selected_response_fraction": 0.9470769166946411
+    },
+    {
+      "module": "blocks.22.self_attn.v_proj",
+      "selected_indices": [
+        1,
+        4,
+        7,
+        3,
+        0,
+        5,
+        2,
+        12
+      ],
+      "selected_operator_energy_fraction": 0.5872145891189575,
+      "selected_response_fraction": 0.8226709365844727
+    },
+    {
+      "module": "blocks.22.self_attn.output_proj",
+      "selected_indices": [
+        1,
+        0,
+        4,
+        7,
+        6,
+        2,
+        8,
+        13
+      ],
+      "selected_operator_energy_fraction": 0.6734383702278137,
+      "selected_response_fraction": 0.9182087779045105
+    },
+    {
+      "module": "blocks.22.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        13,
+        16,
+        7,
+        4,
+        20
+      ],
+      "selected_operator_energy_fraction": 0.584476113319397,
+      "selected_response_fraction": 0.8694145679473877
+    },
+    {
+      "module": "blocks.22.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        2,
+        6,
+        5,
+        7,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.8895500302314758,
+      "selected_response_fraction": 0.9823620319366455
+    },
+    {
+      "module": "blocks.22.mlp.layer1",
+      "selected_indices": [
+        1,
+        0,
+        2,
+        4,
+        5,
+        7,
+        3,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.6984897255897522,
+      "selected_response_fraction": 0.904696524143219
+    },
+    {
+      "module": "blocks.22.mlp.layer2",
+      "selected_indices": [
+        1,
+        2,
+        4,
+        0,
+        3,
+        7,
+        5,
+        13
+      ],
+      "selected_operator_energy_fraction": 0.6383665800094604,
+      "selected_response_fraction": 0.8177236914634705
+    },
+    {
+      "module": "blocks.23.self_attn.q_proj",
+      "selected_indices": [
+        6,
+        0,
+        2,
+        12,
+        4,
+        11,
+        1,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.7335782051086426,
+      "selected_response_fraction": 0.8897446990013123
+    },
+    {
+      "module": "blocks.23.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        2,
+        6,
+        7,
+        13,
+        12
+      ],
+      "selected_operator_energy_fraction": 0.8481447100639343,
+      "selected_response_fraction": 0.9554534554481506
+    },
+    {
+      "module": "blocks.23.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        3,
+        4,
+        2,
+        1,
+        9,
+        8,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.5904269814491272,
+      "selected_response_fraction": 0.7964301705360413
+    },
+    {
+      "module": "blocks.23.self_attn.output_proj",
+      "selected_indices": [
+        10,
+        5,
+        14,
+        1,
+        12,
+        16,
+        11,
+        0
+      ],
+      "selected_operator_energy_fraction": 0.4103439748287201,
+      "selected_response_fraction": 0.8134540915489197
+    },
+    {
+      "module": "blocks.23.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        5,
+        6,
+        10,
+        3,
+        1,
+        12,
+        2
+      ],
+      "selected_operator_energy_fraction": 0.6355168223381042,
+      "selected_response_fraction": 0.8394771814346313
+    },
+    {
+      "module": "blocks.23.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        5,
+        4,
+        10,
+        3,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.903190553188324,
+      "selected_response_fraction": 0.9562898874282837
+    },
+    {
+      "module": "blocks.23.mlp.layer1",
+      "selected_indices": [
+        0,
+        4,
+        5,
+        1,
+        2,
+        8,
+        6,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.6333914995193481,
+      "selected_response_fraction": 0.8847019672393799
+    },
+    {
+      "module": "blocks.23.mlp.layer2",
+      "selected_indices": [
+        1,
+        2,
+        0,
+        3,
+        9,
+        5,
+        4,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.5950005054473877,
+      "selected_response_fraction": 0.8461496829986572
+    },
+    {
+      "module": "blocks.24.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        5,
+        4,
+        3,
+        2,
+        1,
+        6,
+        16
+      ],
+      "selected_operator_energy_fraction": 0.8777109980583191,
+      "selected_response_fraction": 0.9311758875846863
+    },
+    {
+      "module": "blocks.24.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        2,
+        6,
+        8,
+        5,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.9106720089912415,
+      "selected_response_fraction": 0.9401081800460815
+    },
+    {
+      "module": "blocks.24.self_attn.v_proj",
+      "selected_indices": [
+        1,
+        2,
+        6,
+        0,
+        11,
+        4,
+        3,
+        12
+      ],
+      "selected_operator_energy_fraction": 0.477787047624588,
+      "selected_response_fraction": 0.7635465264320374
+    },
+    {
+      "module": "blocks.24.self_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        9,
+        2,
+        8,
+        12,
+        25
+      ],
+      "selected_operator_energy_fraction": 0.5432047247886658,
+      "selected_response_fraction": 0.8774043321609497
+    },
+    {
+      "module": "blocks.24.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        2,
+        5,
+        6,
+        3,
+        7,
+        1,
+        16
+      ],
+      "selected_operator_energy_fraction": 0.6417867541313171,
+      "selected_response_fraction": 0.8015933036804199
+    },
+    {
+      "module": "blocks.24.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        3,
+        7,
+        4,
+        2,
+        5,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.9138813018798828,
+      "selected_response_fraction": 0.9905912280082703
+    },
+    {
+      "module": "blocks.24.mlp.layer1",
+      "selected_indices": [
+        0,
+        3,
+        1,
+        5,
+        2,
+        8,
+        10,
+        15
+      ],
+      "selected_operator_energy_fraction": 0.6646744608879089,
+      "selected_response_fraction": 0.900212287902832
+    },
+    {
+      "module": "blocks.24.mlp.layer2",
+      "selected_indices": [
+        0,
+        3,
+        4,
+        1,
+        10,
+        2,
+        6,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.6089308261871338,
+      "selected_response_fraction": 0.6902296543121338
+    },
+    {
+      "module": "blocks.25.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        5,
+        3,
+        8,
+        4,
+        2,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.912834882736206,
+      "selected_response_fraction": 0.9425896406173706
+    },
+    {
+      "module": "blocks.25.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        1,
+        7,
+        5,
+        3,
+        2,
+        6,
+        12
+      ],
+      "selected_operator_energy_fraction": 0.8399969935417175,
+      "selected_response_fraction": 0.9261465072631836
+    },
+    {
+      "module": "blocks.25.self_attn.v_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        4,
+        5,
+        6,
+        3,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.6671916246414185,
+      "selected_response_fraction": 0.8769422173500061
+    },
+    {
+      "module": "blocks.25.self_attn.output_proj",
+      "selected_indices": [
+        1,
+        2,
+        0,
+        4,
+        3,
+        5,
+        6,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.7632868885993958,
+      "selected_response_fraction": 0.8745737075805664
+    },
+    {
+      "module": "blocks.25.cross_attn.q_proj",
+      "selected_indices": [
+        1,
+        0,
+        2,
+        5,
+        6,
+        3,
+        4,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.7056630253791809,
+      "selected_response_fraction": 0.8113676309585571
+    },
+    {
+      "module": "blocks.25.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        4,
+        8,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.9654176235198975,
+      "selected_response_fraction": 0.9962189793586731
+    },
+    {
+      "module": "blocks.25.mlp.layer1",
+      "selected_indices": [
+        1,
+        0,
+        2,
+        3,
+        5,
+        6,
+        8,
+        13
+      ],
+      "selected_operator_energy_fraction": 0.666239321231842,
+      "selected_response_fraction": 0.7110318541526794
+    },
+    {
+      "module": "blocks.25.mlp.layer2",
+      "selected_indices": [
+        1,
+        0,
+        3,
+        8,
+        2,
+        4,
+        5,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.6537285447120667,
+      "selected_response_fraction": 0.7417617440223694
+    },
+    {
+      "module": "blocks.26.self_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        4,
+        7,
+        8,
+        3,
+        6,
+        2
+      ],
+      "selected_operator_energy_fraction": 0.8603394627571106,
+      "selected_response_fraction": 0.9663133025169373
+    },
+    {
+      "module": "blocks.26.self_attn.k_proj",
+      "selected_indices": [
+        1,
+        0,
+        4,
+        2,
+        5,
+        6,
+        3,
+        7
+      ],
+      "selected_operator_energy_fraction": 0.9027222394943237,
+      "selected_response_fraction": 0.9744873046875
+    },
+    {
+      "module": "blocks.26.self_attn.v_proj",
+      "selected_indices": [
+        1,
+        10,
+        8,
+        0,
+        6,
+        3,
+        2,
+        4
+      ],
+      "selected_operator_energy_fraction": 0.5581987500190735,
+      "selected_response_fraction": 0.737198531627655
+    },
+    {
+      "module": "blocks.26.self_attn.output_proj",
+      "selected_indices": [
+        1,
+        0,
+        4,
+        5,
+        3,
+        2,
+        8,
+        6
+      ],
+      "selected_operator_energy_fraction": 0.5746538639068604,
+      "selected_response_fraction": 0.7315599918365479
+    },
+    {
+      "module": "blocks.26.cross_attn.q_proj",
+      "selected_indices": [
+        0,
+        1,
+        8,
+        4,
+        3,
+        6,
+        5,
+        9
+      ],
+      "selected_operator_energy_fraction": 0.5806920528411865,
+      "selected_response_fraction": 0.6623808741569519
+    },
+    {
+      "module": "blocks.26.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        4,
+        3,
+        6,
+        5,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.9487379193305969,
+      "selected_response_fraction": 0.9988527297973633
+    },
+    {
+      "module": "blocks.26.mlp.layer1",
+      "selected_indices": [
+        5,
+        2,
+        3,
+        1,
+        8,
+        7,
+        4,
+        11
+      ],
+      "selected_operator_energy_fraction": 0.4246993362903595,
+      "selected_response_fraction": 0.5737758278846741
+    },
+    {
+      "module": "blocks.26.mlp.layer2",
+      "selected_indices": [
+        1,
+        4,
+        6,
+        2,
+        7,
+        9,
+        0,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.6272755265235901,
+      "selected_response_fraction": 0.6275976300239563
+    },
+    {
+      "module": "blocks.27.self_attn.q_proj",
+      "selected_indices": [
+        1,
+        3,
+        0,
+        4,
+        2,
+        7,
+        6,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.9210878610610962,
+      "selected_response_fraction": 0.9513341784477234
+    },
+    {
+      "module": "blocks.27.self_attn.k_proj",
+      "selected_indices": [
+        0,
+        2,
+        1,
+        4,
+        3,
+        6,
+        7,
+        10
+      ],
+      "selected_operator_energy_fraction": 0.9311291575431824,
+      "selected_response_fraction": 0.9807388782501221
+    },
+    {
+      "module": "blocks.27.self_attn.v_proj",
+      "selected_indices": [
+        1,
+        11,
+        5,
+        7,
+        0,
+        2,
+        3,
+        8
+      ],
+      "selected_operator_energy_fraction": 0.49883556365966797,
+      "selected_response_fraction": 0.624573826789856
+    },
+    {
+      "module": "blocks.27.self_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        7,
+        5,
+        10,
+        14,
+        6,
+        30
+      ],
+      "selected_operator_energy_fraction": 0.41060078144073486,
+      "selected_response_fraction": 0.9006050229072571
+    },
+    {
+      "module": "blocks.27.cross_attn.q_proj",
+      "selected_indices": [
+        1,
+        2,
+        0,
+        4,
+        11,
+        5,
+        14,
+        20
+      ],
+      "selected_operator_energy_fraction": 0.5672809481620789,
+      "selected_response_fraction": 0.9266976714134216
+    },
+    {
+      "module": "blocks.27.cross_attn.output_proj",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        8,
+        7,
+        5
+      ],
+      "selected_operator_energy_fraction": 0.8663906455039978,
+      "selected_response_fraction": 0.9901840090751648
+    },
+    {
+      "module": "blocks.27.mlp.layer1",
+      "selected_indices": [
+        6,
+        2,
+        0,
+        11,
+        12,
+        18,
+        4,
+        27
+      ],
+      "selected_operator_energy_fraction": 0.3644319772720337,
+      "selected_response_fraction": 0.6798506379127502
+    },
+    {
+      "module": "blocks.27.mlp.layer2",
+      "selected_indices": [
+        0,
+        1,
+        2,
+        3,
+        7,
+        8,
+        10,
+        13
+      ],
+      "selected_operator_energy_fraction": 0.7119008302688599,
+      "selected_response_fraction": 0.8678073883056641
+    }
+  ],
+  "image_preprocessing": "1024 square with aspect-preserving neutral gray padding",
+  "arms": [
+    {
+      "name": "native_full",
+      "early": "full",
+      "late": "full",
+      "sample_seconds": 65.60207749999972,
+      "sampler_updates": 30,
+      "estimate_t": 0.7734375,
+      "extra_reference_probe_forwards": 1
+    },
+    {
+      "name": "a_selected_to_full",
+      "early": "selected",
+      "late": "full",
+      "sample_seconds": 62.96056319999843,
+      "sampler_updates": 30,
+      "estimate_t": 0.7734375,
+      "extra_reference_probe_forwards": 0
+    },
+    {
+      "name": "top_singular_to_full",
+      "early": "singular",
+      "late": "full",
+      "sample_seconds": 63.087037500001315,
+      "sampler_updates": 30,
+      "estimate_t": 0.7734375,
+      "extra_reference_probe_forwards": 0
+    },
+    {
+      "name": "remainder_to_full",
+      "early": "remainder",
+      "late": "full",
+      "sample_seconds": 63.06627630000003,
+      "sampler_updates": 30,
+      "estimate_t": 0.7734375,
+      "extra_reference_probe_forwards": 0
+    },
+    {
+      "name": "image_zero_to_full",
+      "early": "zero",
+      "late": "full",
+      "sample_seconds": 60.83499980000124,
+      "sampler_updates": 30,
+      "estimate_t": 0.7734375,
+      "extra_reference_probe_forwards": 0
+    },
+    {
+      "name": "a_selected_constant",
+      "early": "selected",
+      "late": "selected",
+      "sample_seconds": 63.10077219999948,
+      "sampler_updates": 30,
+      "estimate_t": 0.7734375,
+      "extra_reference_probe_forwards": 0
+    }
+  ],
+  "pixel_mae_vs_native_0_255": {
+    "a_selected_to_full": 10.508618672688803,
+    "top_singular_to_full": 8.367512385050455,
+    "remainder_to_full": 34.25258731842041,
+    "image_zero_to_full": 32.30599848429362,
+    "a_selected_constant": 13.231602668762207
+  },
+  "limitations": [
+    "A vs blurred-A may respond to content and edges as well as brush texture.",
+    "Spectral directions are operator components, not proven disentangled style factors.",
+    "Only one B, one A, one seed and one switch boundary were tested.",
+    "No parameter training or learned iterative optimizer is performed."
+  ],
+  "image_module_total": 224,
+  "unprobed_modules_kept_native": [],
+  "selected_overlap_with_top_singular_mean": 6.522321428571429
+}

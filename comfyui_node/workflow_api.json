@@ -1,0 +1,48 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "content_B.png"
+    }
+  },
+  "2": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "style_A.png"
+    }
+  },
+  "3": {
+    "class_type": "AnimaNativeStyleTransfer",
+    "inputs": {
+      "content_B": [
+        "1",
+        0
+      ],
+      "style_A": [
+        "2",
+        0
+      ],
+      "base_model": "ABSOLUTE_PATH_TO_ANIMA_BASE.safetensors",
+      "vae_model": "ABSOLUTE_PATH_TO_QWEN_IMAGE_VAE.safetensors",
+      "text_encoder": "ABSOLUTE_PATH_TO_QWEN_0_6B.safetensors",
+      "lora_file": "ABSOLUTE_PATH_TO_RANK32_LORA.safetensors",
+      "project_code_directory": "",
+      "runtime_directory": "",
+      "device": "cuda:0",
+      "aspect_ratio": "pad",
+      "reload_models": 0,
+      "seed": 20261014,
+      "steps": 30
+    }
+  },
+  "4": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": [
+        "3",
+        0
+      ],
+      "filename_prefix": "anima_style_transfer"
+    }
+  }
+}

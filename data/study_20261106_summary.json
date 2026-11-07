@@ -1,0 +1,42 @@
+{
+  "training": {
+    "updates": 789,
+    "first_step": 10000,
+    "last_step": 10788,
+    "sample_presentations": 12624,
+    "distinct_pair_indices": 12624,
+    "distinct_content_ids": 1675,
+    "distinct_A_paths": 10890,
+    "distinct_style_labels": 140,
+    "A_equal_C_rows": 0,
+    "audited_gradient_steps": 25,
+    "audited_ratio_median": 0.09223130708914844,
+    "ratio_estimated_flags_in_audits": {
+      "True": 25
+    },
+    "lr_used_min": 1e-05,
+    "lr_used_max": 5e-05,
+    "style_weight_min": 0.07683863746477711,
+    "style_weight_max": 0.1211032113934332
+  },
+  "split": {
+    "label_counts": {
+      "train": 140,
+      "val": 30,
+      "test": 37
+    },
+    "train_val_overlap": 0,
+    "train_test_overlap": 0,
+    "val_test_overlap": 0,
+    "scope": "Exact labels only; near duplicates and base-model pretraining exposure were not assessed."
+  },
+  "evaluation_records": 600,
+  "evaluation_files_present": 600,
+  "component_trials": 24,
+  "component_response_rows": 18,
+  "limitations": [
+    "Archived outputs are 600 of 1232 planned; historical inputs used a different preprocessing protocol.",
+    "Image-level and feature-proxy metrics are not verified style success rates.",
+    "Original weights, training dataset and image licenses are not included in this table export."
+  ]
+}

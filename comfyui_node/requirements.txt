@@ -1,0 +1,9 @@
+accelerate
+diffusers
+einops
+numpy
+opencv-python
+Pillow
+safetensors
+sentencepiece
+transformers

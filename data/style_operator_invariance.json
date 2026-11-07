@@ -1,0 +1,19 @@
+{
+  "source": "[local path omitted] reference_police.png",
+  "latent_shape": [
+    1,
+    16,
+    1,
+    128,
+    128
+  ],
+  "loss_self": 0.0,
+  "loss_transposed": 5.955489329771343e-14,
+  "relative_latent_rms_change": 1.1599911451339722,
+  "max_abs_gram_difference_per_scale": [
+    9.5367431640625e-07,
+    4.76837158203125e-07,
+    2.980232238769531e-07
+  ],
+  "interpretation": "Style-loss invariance under spatial transpose; full flow objective is not invariant."
+}

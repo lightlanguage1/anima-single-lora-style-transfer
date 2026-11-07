@@ -1,0 +1,20 @@
+{
+  "code_root": "code",
+  "native_root": "anima_style_resume_from9999_20261018",
+  "eval_root": "anima_representation_measurement_20261016",
+  "data_plan": "data_plan.json",
+  "tar_path": "style_expert40k.tar",
+  "out_dir": "anima_localconv_full140_fromlocal300_20261019",
+  "checkpoint": "local_conv300_step300_adapter.pt",
+  "feature_weights": "local_conv_vgg_features.pt",
+  "preview_cases": "cloud_conv_preview_cases.json",
+  "device": "cuda:0",
+  "updates": 1000,
+  "effective_batch": 16,
+  "preview_every": 100,
+  "save_every": 200,
+  "ram_cache_mb": 32768,
+  "checkpoint_blocks": 28,
+  "seed": 20261019,
+  "plan_only": false
+}

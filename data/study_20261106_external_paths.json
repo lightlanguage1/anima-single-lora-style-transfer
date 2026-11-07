@@ -1,0 +1,104 @@
+{
+  "checkpoint": "lora84_010788.safetensors",
+  "checkpoint_metadata": {
+    "path": "lora84_010788.safetensors",
+    "step": "10788"
+  },
+  "content": "web_content_cat.jpg",
+  "target_reference": "watercolor",
+  "candidate_reference": "etching",
+  "random_reference": "oil",
+  "reference_distances_1168d": [
+    [
+      "etching",
+      0.22382418811321259
+    ],
+    [
+      "poster",
+      0.3006584048271179
+    ],
+    [
+      "woodcut",
+      0.3343174159526825
+    ],
+    [
+      "pastel",
+      0.33546164631843567
+    ],
+    [
+      "ink",
+      0.35840728878974915
+    ],
+    [
+      "oil",
+      0.4341449439525604
+    ],
+    [
+      "cyanotype",
+      0.5161494016647339
+    ],
+    [
+      "pointillism",
+      0.5554152131080627
+    ]
+  ],
+  "candidate_pool": [
+    "cyanotype",
+    "etching",
+    "ink",
+    "pastel",
+    "pointillism",
+    "poster",
+    "oil",
+    "watercolor",
+    "woodcut"
+  ],
+  "candidate_metric_limit": "Prior VAE statistics mix color/content; nearest does not establish style similarity.",
+  "generation_seed": 20261014,
+  "random_reference_seed": 20261104,
+  "steps": 30,
+  "switch_after_step": 15,
+  "sampler": "native Euler, shift=3, BF16",
+  "image_preprocessing": "1024 square, aspect-preserving gray pad",
+  "arms": [
+    {
+      "label": "A_to_A",
+      "first_reference": "watercolor",
+      "second_reference": "watercolor",
+      "calls": 30,
+      "preview_t": 0.7734375,
+      "sample_seconds": 62.607246399998985
+    },
+    {
+      "label": "S_to_A",
+      "first_reference": "etching",
+      "second_reference": "watercolor",
+      "calls": 30,
+      "preview_t": 0.7734375,
+      "sample_seconds": 63.08603719999883
+    },
+    {
+      "label": "R_to_A",
+      "first_reference": "oil",
+      "second_reference": "watercolor",
+      "calls": 30,
+      "preview_t": 0.7734375,
+      "sample_seconds": 63.426465099997586
+    },
+    {
+      "label": "A_to_S",
+      "first_reference": "watercolor",
+      "second_reference": "etching",
+      "calls": 30,
+      "preview_t": 0.7734375,
+      "sample_seconds": 63.49054849999811
+    }
+  ],
+  "pixel_mae_vs_A_to_A_0_255": {
+    "S_to_A": 19.249902089436848,
+    "R_to_A": 29.19246514638265,
+    "A_to_S": 5.5535891850789385
+  },
+  "preview_note": "At solver index 14: z0_hat = x_t - t*v; not a complete 15-step generated image.",
+  "scope": "One B, one external A, one seed. No training; not proof of unseen-style generalization or decomposition."
+}

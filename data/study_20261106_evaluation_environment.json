@@ -1,0 +1,21 @@
+{
+  "torch": "2.12.0+cu130",
+  "cuda": "13.0",
+  "device": "NVIDIA RTX 6000D",
+  "identity": {
+    "joint_checkpoint": {
+      "base_step": 10135,
+      "dynamic_updates": 130,
+      "original_branch_updates": 900
+    },
+    "lora10135": {
+      "path": "adapter_cloud000100_branch000130.pt",
+      "step": null
+    },
+    "lora10788": {
+      "path": "lora84_010788.safetensors",
+      "step": "10788"
+    }
+  },
+  "checkpoint_weights_only": true
+}

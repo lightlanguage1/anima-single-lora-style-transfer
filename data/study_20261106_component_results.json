@@ -1,0 +1,722 @@
+{
+  "checkpoint": {
+    "path": "lora84_010788.safetensors",
+    "step": "10788"
+  },
+  "baseline_file": "native_full_final.png",
+  "baseline_seed": 20261014,
+  "content": "web_content_street.jpg",
+  "reference": "web_style_oil.jpg",
+  "seed": 20261014,
+  "sampler": "native Euler, shift=3, BF16",
+  "steps": 30,
+  "patch_size_unstretched_pixels": 224,
+  "patch_feature_grid": 16,
+  "reference_patch_boxes": [
+    [
+      195,
+      236,
+      419,
+      460
+    ],
+    [
+      605,
+      236,
+      829,
+      460
+    ],
+    [
+      195,
+      562,
+      419,
+      786
+    ],
+    [
+      605,
+      562,
+      829,
+      786
+    ]
+  ],
+  "content_patch_boxes": [
+    [
+      195,
+      273,
+      419,
+      497
+    ],
+    [
+      605,
+      273,
+      829,
+      497
+    ],
+    [
+      195,
+      527,
+      419,
+      751
+    ],
+    [
+      605,
+      527,
+      829,
+      751
+    ]
+  ],
+  "reference_validation": {
+    "self_distances": {
+      "color": 0.0,
+      "direction": 0.0,
+      "texture": 4.109551082365215e-05
+    },
+    "blur_distances": {
+      "color": 0.021907677873969078,
+      "direction": 0.047673504799604416,
+      "texture": 0.4043928384780884
+    },
+    "note": "A blur changes multiple factors; sensitivity is not proof of disentanglement.",
+    "same_image_outer_autocast_distances": {
+      "color": 0.0,
+      "direction": 0.0,
+      "texture": 5.529727786779404e-08
+    }
+  },
+  "baseline_final_parts_proxies": {
+    "color": 0.0438087098300457,
+    "direction": 0.011731535196304321,
+    "texture": 0.11173772811889648
+  },
+  "image_lo_ra_selection_comparison": {
+    "modules": 224,
+    "mean_overlap_of_eight": 8.0,
+    "all_groups_equal": true
+  },
+  "candidate_coefficients": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.35,
+      0.0
+    ],
+    [
+      0.0,
+      0.35
+    ],
+    [
+      0.35,
+      0.35
+    ]
+  ],
+  "component_names": [
+    "color",
+    "direction",
+    "texture"
+  ],
+  "candidate_normalization": "per-component difference divided by same-state native error (floor 1e-6)",
+  "content_guard": "B coarse latent MSE <= 1.05 times same-state native + 1e-8",
+  "arms": [
+    {
+      "schedule": "joint",
+      "sample_seconds": 98.17740039999626,
+      "sampler_updates": 30,
+      "candidate_forwards": 12,
+      "extra_candidate_forwards": 9,
+      "candidate_vae_decodes": 12,
+      "A_blur_probe_extra_forwards": 1,
+      "trials": [
+        {
+          "step_index": 15,
+          "t": 0.75,
+          "active_components": [
+            "color",
+            "direction",
+            "texture"
+          ],
+          "content_limit": 0.055104398296604164,
+          "winner": 3,
+          "candidates": [
+            {
+              "selected": 0.0,
+              "remainder": 0.0,
+              "parts": [
+                0.0414748452603817,
+                0.010493469424545765,
+                0.10430637001991272
+              ],
+              "content_proxy": 0.05248036980628967,
+              "relative_score": 0.0,
+              "allowed": true
+            },
+            {
+              "selected": 0.35,
+              "remainder": 0.0,
+              "parts": [
+                0.04172956943511963,
+                0.009341333992779255,
+                0.09805739670991898
+              ],
+              "content_proxy": 0.053956158459186554,
+              "relative_score": -0.054521204443652084,
+              "allowed": true
+            },
+            {
+              "selected": 0.0,
+              "remainder": 0.35,
+              "parts": [
+                0.0416579470038414,
+                0.009982755407691002,
+                0.10231669247150421
+              ],
+              "content_proxy": 0.052474793046712875,
+              "relative_score": -0.021110085385119156,
+              "allowed": true
+            },
+            {
+              "selected": 0.35,
+              "remainder": 0.35,
+              "parts": [
+                0.041642170399427414,
+                0.00873443204909563,
+                0.09701374173164368
+              ],
+              "content_proxy": 0.05415094643831253,
+              "relative_score": -0.07783757234127238,
+              "allowed": true
+            }
+          ]
+        },
+        {
+          "step_index": 21,
+          "t": 0.5625,
+          "active_components": [
+            "color",
+            "direction",
+            "texture"
+          ],
+          "content_limit": 0.058425183163414,
+          "winner": 3,
+          "candidates": [
+            {
+              "selected": 0.0,
+              "remainder": 0.0,
+              "parts": [
+                0.04177233576774597,
+                0.010461349971592426,
+                0.10039666295051575
+              ],
+              "content_proxy": 0.05564302206039429,
+              "relative_score": 0.0,
+              "allowed": true
+            },
+            {
+              "selected": 0.35,
+              "remainder": 0.0,
+              "parts": [
+                0.042022496461868286,
+                0.00998647790402174,
+                0.09936919063329697
+              ],
+              "content_proxy": 0.05617474764585495,
+              "relative_score": -0.016546153309141637,
+              "allowed": true
+            },
+            {
+              "selected": 0.0,
+              "remainder": 0.35,
+              "parts": [
+                0.041676633059978485,
+                0.010101169347763062,
+                0.09951090067625046
+              ],
+              "content_proxy": 0.05549146234989166,
+              "relative_score": -0.01518111064723835,
+              "allowed": true
+            },
+            {
+              "selected": 0.35,
+              "remainder": 0.35,
+              "parts": [
+                0.0420750193297863,
+                0.00974165927618742,
+                0.09838823229074478
+              ],
+              "content_proxy": 0.0561358779668808,
+              "relative_score": -0.027184709421102748,
+              "allowed": true
+            }
+          ]
+        },
+        {
+          "step_index": 27,
+          "t": 0.25,
+          "active_components": [
+            "color",
+            "direction",
+            "texture"
+          ],
+          "content_limit": 0.059889661462435725,
+          "winner": 3,
+          "candidates": [
+            {
+              "selected": 0.0,
+              "remainder": 0.0,
+              "parts": [
+                0.04252801090478897,
+                0.010912115685641766,
+                0.10033684968948364
+              ],
+              "content_proxy": 0.05703776329755783,
+              "relative_score": 0.0,
+              "allowed": true
+            },
+            {
+              "selected": 0.35,
+              "remainder": 0.0,
+              "parts": [
+                0.04236753284931183,
+                0.010839267633855343,
+                0.09901225566864014
+              ],
+              "content_proxy": 0.057319894433021545,
+              "relative_score": -0.007883608457559532,
+              "allowed": true
+            },
+            {
+              "selected": 0.0,
+              "remainder": 0.35,
+              "parts": [
+                0.042534239590168,
+                0.010770113207399845,
+                0.09975992143154144
+              ],
+              "content_proxy": 0.056963589042425156,
+              "relative_score": -0.0062055796226683805,
+              "allowed": true
+            },
+            {
+              "selected": 0.35,
+              "remainder": 0.35,
+              "parts": [
+                0.042301516979932785,
+                0.01054842583835125,
+                0.09924456477165222
+              ],
+              "content_proxy": 0.05723261833190918,
+              "relative_score": -0.016513644222675487,
+              "allowed": true
+            }
+          ]
+        }
+      ],
+      "final_parts_proxies": {
+        "color": 0.042339302599430084,
+        "direction": 0.009786675684154034,
+        "texture": 0.10036066174507141
+      },
+      "final_content_proxy": 0.05733529478311539
+    },
+    {
+      "schedule": "staged",
+      "sample_seconds": 95.8549450999999,
+      "sampler_updates": 30,
+      "candidate_forwards": 12,
+      "extra_candidate_forwards": 9,
+      "candidate_vae_decodes": 12,
+      "A_blur_probe_extra_forwards": 1,
+      "trials": [
+        {
+          "step_index": 15,
+          "t": 0.75,
+          "active_components": [
+            "color"
+          ],
+          "content_limit": 0.055104398296604164,
+          "winner": 0,
+          "candidates": [
+            {
+              "selected": 0.0,
+              "remainder": 0.0,
+              "parts": [
+                0.0414748452603817,
+                0.010493469424545765,
+                0.10430637001991272
+              ],
+              "content_proxy": 0.05248036980628967,
+              "relative_score": 0.0,
+              "allowed": true
+            },
+            {
+              "selected": 0.35,
+              "remainder": 0.0,
+              "parts": [
+                0.04172956943511963,
+                0.009341333992779255,
+                0.09805739670991898
+              ],
+              "content_proxy": 0.053956158459186554,
+              "relative_score": 0.0061416546135074366,
+              "allowed": true
+            },
+            {
+              "selected": 0.0,
+              "remainder": 0.35,
+              "parts": [
+                0.0416579470038414,
+                0.009982755407691002,
+                0.10231669247150421
+              ],
+              "content_proxy": 0.052474793046712875,
+              "relative_score": 0.004414766162722904,
+              "allowed": true
+            },
+            {
+              "selected": 0.35,
+              "remainder": 0.35,
+              "parts": [
+                0.041642170399427414,
+                0.00873443204909563,
+                0.09701374173164368
+              ],
+              "content_proxy": 0.05415094643831253,
+              "relative_score": 0.004034376451442737,
+              "allowed": true
+            }
+          ]
+        },
+        {
+          "step_index": 21,
+          "t": 0.5625,
+          "active_components": [
+            "color",
+            "direction"
+          ],
+          "content_limit": 0.05779177726937294,
+          "winner": 3,
+          "candidates": [
+            {
+              "selected": 0.0,
+              "remainder": 0.0,
+              "parts": [
+                0.042374592274427414,
+                0.011323093436658382,
+                0.10588175058364868
+              ],
+              "content_proxy": 0.05503977835178375,
+              "relative_score": 0.0,
+              "allowed": true
+            },
+            {
+              "selected": 0.35,
+              "remainder": 0.0,
+              "parts": [
+                0.04218152165412903,
+                0.01076004933565855,
+                0.10366565734148026
+              ],
+              "content_proxy": 0.05541171878576279,
+              "relative_score": -0.027140786164118486,
+              "allowed": true
+            },
+            {
+              "selected": 0.0,
+              "remainder": 0.35,
+              "parts": [
+                0.042285531759262085,
+                0.01089353859424591,
+                0.10445459187030792
+              ],
+              "content_proxy": 0.054852213710546494,
+              "relative_score": -0.020018958628699717,
+              "allowed": true
+            },
+            {
+              "selected": 0.35,
+              "remainder": 0.35,
+              "parts": [
+                0.04237666726112366,
+                0.010218268260359764,
+                0.10247857868671417
+              ],
+              "content_proxy": 0.055303074419498444,
+              "relative_score": -0.04876188280762148,
+              "allowed": true
+            }
+          ]
+        },
+        {
+          "step_index": 27,
+          "t": 0.25,
+          "active_components": [
+            "color",
+            "direction",
+            "texture"
+          ],
+          "content_limit": 0.058943374210426815,
+          "winner": 3,
+          "candidates": [
+            {
+              "selected": 0.0,
+              "remainder": 0.0,
+              "parts": [
+                0.04322493076324463,
+                0.011715891771018505,
+                0.10516029596328735
+              ],
+              "content_proxy": 0.056136537343263626,
+              "relative_score": 0.0,
+              "allowed": true
+            },
+            {
+              "selected": 0.35,
+              "remainder": 0.0,
+              "parts": [
+                0.04312756657600403,
+                0.011404294520616531,
+                0.10386119782924652
+              ],
+              "content_proxy": 0.056367576122283936,
+              "relative_score": -0.01373404119002417,
+              "allowed": true
+            },
+            {
+              "selected": 0.0,
+              "remainder": 0.35,
+              "parts": [
+                0.043243408203125,
+                0.011362403631210327,
+                0.10423547029495239
+              ],
+              "content_proxy": 0.05605161190032959,
+              "relative_score": -0.01284621535095974,
+              "allowed": true
+            },
+            {
+              "selected": 0.35,
+              "remainder": 0.35,
+              "parts": [
+                0.04311635345220566,
+                0.011233394965529442,
+                0.1041424348950386
+              ],
+              "content_proxy": 0.05627836287021637,
+              "relative_score": -0.017791385976133948,
+              "allowed": true
+            }
+          ]
+        }
+      ],
+      "final_parts_proxies": {
+        "color": 0.04320583492517471,
+        "direction": 0.010549351572990417,
+        "texture": 0.10407047718763351
+      },
+      "final_content_proxy": 0.056396208703517914
+    }
+  ],
+  "limitations": [
+    "A components are image-statistic proxies, not learned independent style atoms.",
+    "Color, image edges, semantic content and texture can affect multiple scores.",
+    "The two candidate LoRA response groups are not trained style-specific components.",
+    "Intermediate x0 estimates are approximate; the first two objectives are retained in later stages.",
+    "One B, one A, one seed, one switch schedule; no model weights were trained."
+  ],
+  "pixel_changes_0_255": {
+    "joint_vs_native": {
+      "all": 7.982875823974609,
+      "content_region": 11.777835102201259
+    },
+    "staged_vs_native": {
+      "all": 5.2488053639729815,
+      "content_region": 7.947023531675838
+    },
+    "staged_vs_joint": {
+      "all": 4.6414794921875,
+      "content_region": 6.83843571884827
+    }
+  },
+  "local_proxy_responses": [
+    {
+      "schedule": "joint",
+      "step_index": 15,
+      "strength_increment": 0.35,
+      "component_order": [
+        "color",
+        "direction",
+        "texture"
+      ],
+      "relative_proxy_changes": [
+        [
+          0.0061416546135074366,
+          0.004414766162722904
+        ],
+        [
+          -0.10979547232219462,
+          -0.04866970076265987
+        ],
+        [
+          -0.059909795622269064,
+          -0.019075321555420504
+        ]
+      ],
+      "column_cosine": 0.9914956667518151,
+      "singular_values": [
+        0.13562562311335358,
+        0.006303765184641965
+      ],
+      "interpretation": "Finite differences of three proxies at one sampler state, not independent style factors."
+    },
+    {
+      "schedule": "joint",
+      "step_index": 21,
+      "strength_increment": 0.35,
+      "component_order": [
+        "color",
+        "direction",
+        "texture"
+      ],
+      "relative_proxy_changes": [
+        [
+          0.005988669044345688,
+          -0.0022910547377478067
+        ],
+        [
+          -0.045393000794370836,
+          -0.034429650552503036
+        ],
+        [
+          -0.010234128177399767,
+          -0.008822626651464207
+        ]
+      ],
+      "column_cosine": 0.9811353436611118,
+      "singular_values": [
+        0.05864532135408837,
+        0.005508252978719046
+      ],
+      "interpretation": "Finite differences of three proxies at one sampler state, not independent style factors."
+    },
+    {
+      "schedule": "joint",
+      "step_index": 27,
+      "strength_increment": 0.35,
+      "component_order": [
+        "color",
+        "direction",
+        "texture"
+      ],
+      "relative_proxy_changes": [
+        [
+          -0.003773467229314299,
+          0.00014646077365275796
+        ],
+        [
+          -0.006675887049316814,
+          -0.013013285629730656
+        ],
+        [
+          -0.013201471094047486,
+          -0.005749914011927244
+        ]
+      ],
+      "column_cosine": 0.7468570052000241,
+      "singular_values": [
+        0.019511775801648305,
+        0.007403008288720091
+      ],
+      "interpretation": "Finite differences of three proxies at one sampler state, not independent style factors."
+    },
+    {
+      "schedule": "staged",
+      "step_index": 15,
+      "strength_increment": 0.35,
+      "component_order": [
+        "color",
+        "direction",
+        "texture"
+      ],
+      "relative_proxy_changes": [
+        [
+          0.0061416546135074366,
+          0.004414766162722904
+        ],
+        [
+          -0.10979547232219462,
+          -0.04866970076265987
+        ],
+        [
+          -0.059909795622269064,
+          -0.019075321555420504
+        ]
+      ],
+      "column_cosine": 0.9914956667518151,
+      "singular_values": [
+        0.13562562311335358,
+        0.006303765184641965
+      ],
+      "interpretation": "Finite differences of three proxies at one sampler state, not independent style factors."
+    },
+    {
+      "schedule": "staged",
+      "step_index": 21,
+      "strength_increment": 0.35,
+      "component_order": [
+        "color",
+        "direction",
+        "texture"
+      ],
+      "relative_proxy_changes": [
+        [
+          -0.004556282666934392,
+          -0.0021017432943909644
+        ],
+        [
+          -0.04972528966130258,
+          -0.03793617396300847
+        ],
+        [
+          -0.02092988857808569,
+          -0.01347879786151888
+        ]
+      ],
+      "column_cosine": 0.9978682496337552,
+      "singular_values": [
+        0.06747010908026402,
+        0.002111248883636096
+      ],
+      "interpretation": "Finite differences of three proxies at one sampler state, not independent style factors."
+    },
+    {
+      "schedule": "staged",
+      "step_index": 27,
+      "strength_increment": 0.35,
+      "component_order": [
+        "color",
+        "direction",
+        "texture"
+      ],
+      "relative_proxy_changes": [
+        [
+          -0.0022525007101548,
+          0.00042747182133332596
+        ],
+        [
+          -0.026596118886380377,
+          -0.030171680203004123
+        ],
+        [
+          -0.012353503973537336,
+          -0.00879443767120842
+        ]
+      ],
+      "column_cosine": 0.9845529042945532,
+      "singular_values": [
+        0.042879412129260414,
+        0.0037745897159981935
+      ],
+      "interpretation": "Finite differences of three proxies at one sampler state, not independent style factors."
+    }
+  ]
+}

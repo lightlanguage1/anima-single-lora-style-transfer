@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Anima 单 LoRA 参考画风迁移研究：真实实验图、对照与局限。" name="description"/>
+<title>Anima Style Transfer · 画风迁移研究</title>
+<link href="https://fonts.googleapis.com/css?family=Chewy%7CKaushan+Script&amp;display=swap" rel="stylesheet"/>
+<style>
+:root { color-scheme:dark; --paper:#f4f3f1; --purple:#c788de; --cyan:#40b7d8; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; color:var(--paper); background:#0f0f0f; font-family:"Noto Sans","Microsoft YaHei","PingFang SC",sans-serif; -webkit-font-smoothing:antialiased; }
+a { color:inherit; }
+img { display:block; max-width:100%; }
+.hero { text-align:center; padding:48px 20px 42px; }
+.brand { display:flex; align-items:center; justify-content:center; gap:12px; min-height:76px; }
+.brand-mark { width:65px; height:65px; flex:none; }
+.brand-name { font:700 58px/1.2 "Kaushan Script","Comic Sans MS",cursive; background:linear-gradient(90deg,#cf81e8,#45b9df); color:transparent; background-clip:text; -webkit-background-clip:text; }
+.hero h1 { max-width:1000px; margin:22px auto 0; font:700 clamp(30px,4.6vw,40px)/1.3 Chewy,"Arial Rounded MT Bold","Trebuchet MS",sans-serif; letter-spacing:1.3px; }
+.style-word { color:var(--purple); } .content-word { color:var(--cyan); }
+.project-meta { margin:24px auto 0; color:#a5a5aa; font-size:16px; line-height:1.8; letter-spacing:.03em; }
+.project-meta strong { font-weight:600; color:#c2c2c5; }
+.publication-links { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin:26px auto 0; }
+.publication-links a { display:inline-flex; align-items:center; justify-content:center; gap:7px; min-height:36px; padding:7px 17px; border-radius:999px; background:#363636; color:#fff; font-size:14px; text-decoration:none; white-space:nowrap; transition:background .18s ease; }
+.publication-links a:hover,.publication-links a:focus-visible { background:#545454; }
+.button-icon { font-size:17px; line-height:1; }
+.hero-gallery,.compare-track,.ablation-track { display:flex; overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; scrollbar-color:#555 transparent; cursor:grab; }
+.hero-gallery:active,.compare-track:active,.ablation-track:active { cursor:grabbing; }
+.hero-gallery { gap:5px; width:100%; }
+.hero-gallery figure { flex:0 0 clamp(200px,30vw,400px); margin:0; background:#161616; }
+.hero-gallery img { width:100%; aspect-ratio:1; object-fit:contain; }
+.gallery-hint { text-align:center; margin:13px 15px 0; color:#858589; font-size:12px; letter-spacing:.04em; }
+section { scroll-margin-top:24px; }
+.intro { max-width:960px; margin:86px auto 72px; padding:0 25px; text-align:center; }
+.section-title { margin:0; text-align:center; font:400 clamp(27px,3vw,36px)/1.4 "Noto Sans","Microsoft YaHei",sans-serif; letter-spacing:.01em; }
+.section-subtitle { margin:14px auto 0; max-width:760px; color:#b9b9be; font-size:15px; line-height:1.9; }
+.example-section { padding-top:16px; }
+.context-line { display:flex; align-items:center; justify-content:center; gap:12px; margin:30px 20px 20px; color:#bcbcc0; font-size:13px; line-height:1.6; }
+.context-line img { width:62px; height:62px; object-fit:contain; border:2px solid var(--cyan); border-radius:6px; background:#222; }
+.compare-track { gap:9px; padding:0 max(20px,calc((100vw - 1350px) / 2)); }
+.example-pair { flex:0 0 clamp(380px,47vw,650px); min-width:0; }
+.pair-images { display:grid; grid-template-columns:1fr 1fr; gap:4px; }
+.pair-images figure,.ablation-track figure { position:relative; margin:0; min-width:0; }
+.pair-images img,.ablation-track img { width:100%; aspect-ratio:1; object-fit:contain; background:#171717; }
+.pair-images figcaption,.ablation-track figcaption { position:absolute; bottom:0; left:0; right:0; padding:22px 9px 7px; color:#fff; font-size:12px; background:linear-gradient(transparent,rgba(0,0,0,.68)); }
+.case-label { margin:10px 0 0; color:#c7c7cc; font-size:13px; }
+.caption { max-width:970px; margin:20px auto 0; padding:0 24px; color:#a9a9ad; font-size:13px; line-height:1.9; }
+.abstract,.method,.evidence,.ablation-section { max-width:1000px; margin:100px auto 0; padding:0 26px; }
+.reading { max-width:890px; margin:24px auto 0; color:#c8c8cc; font-size:15px; line-height:2; text-align:justify; }
+.ablation-case { margin:40px auto 0; }
+.ablation-case h3 { margin:0; font-size:17px; font-weight:500; }
+.ablation-case > p { margin:9px 0 14px; color:#a9a9ad; font-size:13px; line-height:1.7; }
+.ablation-track { gap:4px; }
+.ablation-track figure { flex:0 0 calc((100% - 12px) / 4); }
+.flow { display:flex; justify-content:center; align-items:center; flex-wrap:wrap; gap:12px; margin:35px auto 0; color:#e4e4e7; font-size:14px; text-align:center; }
+.flow span { padding:10px 13px; background:#292929; border-radius:999px; }
+.flow b { color:#999; font-size:18px; font-weight:400; }
+.equation { margin:24px 0 0; color:#e4e4e7; text-align:center; font:16px/1.8 Georgia,serif; }
+.metrics { max-width:680px; margin:30px auto 0; }
+.metric { display:grid; grid-template-columns:138px 1fr 45px; align-items:center; gap:14px; margin:15px 0; color:#c9c9cf; font-size:13px; }
+.metric .bar { height:8px; background:#303030; border-radius:5px; overflow:hidden; }
+.metric .bar span { display:block; height:100%; background:#a984ca; border-radius:5px; }
+.metric:nth-child(2) .bar span { background:#5aaec6; } .metric:nth-child(3) .bar span { background:#aaaebc; }
+.resource-links { display:flex; justify-content:center; flex-wrap:wrap; gap:10px 20px; max-width:900px; margin:25px auto 0; font-size:13px; }
+.resource-links a { color:#b6cde1; text-underline-offset:3px; }
+footer { margin:100px 0 0; padding:32px 24px 45px; border-top:1px solid #333; text-align:center; color:#929298; font-size:12px; line-height:1.9; }
+footer a { color:#b8b8bd; text-underline-offset:3px; }
+:focus-visible { outline:2px solid #76c4dd; outline-offset:3px; }
+@media(max-width:650px) {
+ .hero { padding:35px 15px 34px; } .brand-mark { width:52px; height:52px; } .brand-name { font-size:49px; }
+ .hero h1 { margin-top:20px; line-height:1.25; } .project-meta { margin-top:20px; font-size:14px; }
+ .publication-links { gap:7px; margin-top:22px; } .publication-links a { padding:7px 13px; font-size:13px; }
+ .hero-gallery figure { flex-basis:60vw; } .intro { margin:65px auto 52px; } .example-pair { flex-basis:88vw; }
+ .ablation-track figure { flex-basis:42%; } .abstract,.method,.evidence,.ablation-section { margin-top:75px; padding:0 20px; }
+ .metric { grid-template-columns:112px 1fr 40px; gap:9px; font-size:12px; }
+}
+@media(prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+
+/* Layout and motion aligned with the referenced project-page structure. */
+.hero { background:#0a0a0a; }
+.hero-gallery { background:#070707; gap:10px; scrollbar-width:none; }
+.hero-gallery::-webkit-scrollbar { display:none; }
+.hero-gallery figure { flex:0 0 min(480px,66vw); }
+.hero-gallery img { height:auto; }
+.intro { margin:42px auto 60px; }
+.intro .section-subtitle { max-width:890px; text-align:center; }
+.compare-shell,.same-style-shell { position:relative; }
+.context-line,.fixed-style-reference { position:absolute; z-index:2; top:12px; left:20px; width:108px; margin:0; padding:7px; display:flex; flex-direction:column; align-items:center; gap:5px; color:#e7edf0; text-align:center; font-size:11px; line-height:1.35; background:rgba(15,15,15,.86); border-radius:7px; }
+.context-line img,.fixed-style-reference img { width:92px; height:92px; object-fit:contain; border:2px solid #40b7d8; border-radius:5px; background:#171717; }
+.compare-track { padding-left:max(145px,calc((100vw - 1350px) / 2)); }
+.row-heading { margin:55px 20px 20px; text-align:center; color:#e6e6e9; font-size:20px; font-weight:400; }
+.same-style-track { display:flex; gap:5px; overflow-x:auto; overscroll-behavior-x:contain; scrollbar-width:thin; scrollbar-color:#555 transparent; cursor:grab; padding-left:max(145px,calc((100vw - 1350px) / 2)); padding-right:20px; }
+.same-style-track:active { cursor:grabbing; }
+.same-style-item { position:relative; flex:0 0 clamp(270px,30vw,420px); min-width:0; margin:0; }
+.same-style-item > img:first-child { width:100%; aspect-ratio:1; object-fit:contain; background:#171717; }
+.same-style-item .content-thumbnail { position:absolute; top:10px; right:10px; width:70px; height:70px; object-fit:contain; background:#171717; border:2px solid #c788de; border-radius:5px; }
+.same-style-item figcaption { position:absolute; bottom:0; left:0; right:0; padding:22px 9px 7px; color:#fff; font-size:12px; background:linear-gradient(transparent,rgba(0,0,0,.68)); }
+@media(max-width:650px) {
+ .hero-gallery figure { flex-basis:min(480px,66vw); }
+ .context-line,.fixed-style-reference { top:7px; left:10px; width:84px; padding:5px; }
+ .context-line img,.fixed-style-reference img { width:72px; height:72px; }
+ .compare-track,.same-style-track { padding-left:105px; }
+ .same-style-item { flex-basis:66vw; }
+ .same-style-item .content-thumbnail { width:55px; height:55px; }
+}
+
+.at-a-glance { max-width:1000px; margin:0 auto 85px; padding:0 25px; display:grid; grid-template-columns:repeat(4,1fr); gap:20px; text-align:center; }
+.at-a-glance div { border-top:1px solid #454545; padding-top:18px; }
+.at-a-glance strong { display:block; font:600 30px/1.2 "Noto Sans",sans-serif; color:#d8c5e9; }
+.at-a-glance span { display:block; margin-top:8px; color:#a7a7ac; font-size:12px; line-height:1.6; }
+.research-section { max-width:1100px; margin:100px auto 0; padding:0 28px; }
+.research-section .section-kicker { max-width:780px; margin:12px auto 34px; text-align:center; color:#b7b7bc; font-size:15px; line-height:1.8; }
+.research-copy { max-width:890px; margin:32px auto; color:#c9c9ce; font-size:15px; line-height:1.95; }
+.research-copy h3 { margin:35px 0 10px; color:#f0f0f2; font-size:19px; font-weight:600; }
+.research-copy a,.source-line a,.research-figures a,.wide-figure a { color:#9dc9e1; text-underline-offset:3px; }
+.pipeline-grid { max-width:1040px; margin:35px auto 8px; display:flex; align-items:stretch; justify-content:center; gap:7px; flex-wrap:wrap; }
+.pipeline-grid div { flex:1 1 125px; min-width:125px; padding:15px 12px; text-align:center; background:#202020; border-top:2px solid #aa83bf; }
+.pipeline-grid small,.pipeline-grid strong,.pipeline-grid span { display:block; }
+.pipeline-grid small { color:#919198; font-size:10px; letter-spacing:.09em; }
+.pipeline-grid strong { margin:8px 0; color:#f4f3f1; font-size:14px; }
+.pipeline-grid span { color:#aeafb4; font-size:11px; line-height:1.5; }
+.pipeline-grid b { align-self:center; color:#777; font-weight:400; }
+.operator-list { max-width:890px; margin:50px auto 0; }
+.operator-list article { padding:25px 0; border-top:1px solid #343434; }
+.operator-number { color:#bd96d3; font-size:11px; letter-spacing:.14em; }
+.operator-list h3 { color:#f0f0f2; font-size:19px; margin:10px 0 12px; }
+.operator-list p { color:#c7c7cc; font-size:14px; line-height:1.9; }
+.operator-list .operator-note { color:#a9a9ae; font-size:13px; }
+.math-block { margin:18px 0; padding:18px 20px; overflow-x:auto; background:#1b1b1b; border-left:3px solid #9071a4; color:#f1f0f2; font:15px/2 Georgia,"Times New Roman",serif; }
+.source-line { max-width:890px; margin:30px auto 0; color:#95959d; font-size:12px; line-height:1.8; }
+.timeline { max-width:890px; margin:0 auto; border-left:1px solid #555; }
+.timeline article { position:relative; margin-left:22px; padding:0 0 26px 4px; }
+.timeline article:before { content:""; position:absolute; top:7px; left:-29px; width:9px; height:9px; border-radius:50%; background:#bd96d3; }
+.time-tag { color:#bd96d3; font-size:11px; letter-spacing:.12em; }
+.timeline h3,.lesson-list h3 { color:#ededf0; font-size:17px; line-height:1.5; margin:7px 0; }
+.timeline p,.lesson-list p { color:#b7b7bd; font-size:14px; line-height:1.85; margin:0; }
+.research-figures { max-width:1000px; margin:45px auto 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+.research-figures figure { min-width:0; margin:0; }
+.research-figures img,.wide-figure img { width:100%; height:auto; object-fit:contain; background:#fff; }
+.research-figures figcaption,.wide-figure p { margin:13px 0 0; color:#b4b4ba; font-size:12px; line-height:1.8; }
+.wide-figure { max-width:760px; margin:55px auto 0; }
+.lesson-list { max-width:890px; margin:0 auto; }
+.lesson-list article { padding:22px 0; border-top:1px solid #343434; }
+.lesson-list p b { color:#d7c1e5; }
+@media(max-width:650px) { .at-a-glance { grid-template-columns:repeat(2,1fr); margin-bottom:65px; } .research-section { margin-top:75px; padding:0 20px; } .research-figures { grid-template-columns:1fr; gap:35px; } .pipeline-grid b { display:none; } .pipeline-grid div { flex-basis:calc(50% - 7px); } .math-block { font-size:13px; } }
+
+.image-credits {max-width:890px;margin:38px auto 0;color:#aaaab0;font-size:13px;line-height:1.8}.image-credits summary {color:#eee;cursor:pointer}.image-credits a {color:#9dc9e1}.image-credits li {margin:5px 0}
+
+.research-appendix{max-width:1000px;margin:45px auto 0;color:#bcbcc3;font-size:13px;line-height:1.8}.research-appendix summary{cursor:pointer;color:#e3e3e8;font-size:15px}.research-appendix .research-figures{margin-top:25px}
+
+/* Training and reproducibility follow the existing research-page layout. */
+.run-grid { max-width:890px; margin:35px auto 0; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:22px; }
+.run-grid article { min-width:0; padding:20px 0 5px; border-top:1px solid #444; }
+.run-grid h3 { margin:0 0 12px; font-size:17px; color:#f0f0f2; }
+.run-grid p,.run-grid li { color:#bbbcc2; font-size:14px; line-height:1.85; }
+.run-grid ul,.run-grid ol { padding-left:21px; }
+.run-grid a,.run-note a { color:#9dc9e1; text-underline-offset:3px; }
+.run-grid code,.run-note code { color:#e8d5f0; overflow-wrap:anywhere; }
+.run-note { max-width:890px; margin:20px auto 0; color:#a9a9ae; font-size:13px; line-height:1.9; }
+.record-strip { max-width:890px; display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin:30px auto; }
+.record-strip div { padding:16px 0; border-top:1px solid #454545; }
+.record-strip strong,.record-strip span { display:block; }
+.record-strip strong { font-size:22px; color:#e1d2eb; }
+.record-strip span { margin-top:8px; color:#aaaab2; font-size:13px; line-height:1.7; }
+.result-table { width:100%; border-collapse:collapse; color:#d9d9de; font-size:14px; text-align:right; }
+.result-table th,.result-table td { padding:12px 9px; border-bottom:1px solid #383838; }
+.result-table th:first-child,.result-table td:first-child { text-align:left; }
+.result-table th { color:#bcbcc3; font-weight:500; }
+.result-wrap { max-width:890px; margin:26px auto; overflow-x:auto; }
+@media(max-width:650px) { .run-grid { grid-template-columns:1fr; gap:8px; } .record-strip { grid-template-columns:1fr; gap:0; } }
+
+</style>
+</head>
+<body>
+<main>
+<header class="hero">
+<div aria-label="Anima 画风迁移研究" class="brand"><svg aria-hidden="true" class="brand-mark" viewbox="0 0 80 80"><defs><lineargradient id="mark" x1="0" x2="1" y1="1" y2="0"><stop stop-color="#cb7de8"></stop><stop offset="1" stop-color="#35bddc"></stop></lineargradient></defs><path d="M40 6 71 64H56L40 32 24 64H9z" fill="url(#mark)"></path><circle cx="61" cy="18" fill="#e7bfeb" r="5"></circle><circle cx="19" cy="18" fill="#79d8e3" r="3"></circle></svg><span class="brand-name">Anima</span></div>
+<h1>Reference <span class="style-word">Style</span> and <span class="content-word">Content</span><br/>Transfer with a Single LoRA</h1>
+<p class="project-meta"><strong>参考画风与内容保持</strong><br/>Anima · 单 LoRA · 探索性研究</p>
+<nav aria-label="研究资料与页面导航" class="publication-links"><a href="Anima_Single_LoRA_Research.pdf"><span aria-hidden="true" class="button-icon">▤</span>论文 PDF</a><a href="main.tex"><span aria-hidden="true" class="button-icon">▤</span>论文源码</a><a href="README.md"><span aria-hidden="true" class="button-icon">▧</span>项目说明</a><a href="#examples"><span aria-hidden="true" class="button-icon">▣</span>效果展示</a><a href="#experiments"><span aria-hidden="true" class="button-icon">◫</span>分支对照</a><a href="#method"><span aria-hidden="true" class="button-icon">✧</span>研究方法</a><a href="#training"><span aria-hidden="true" class="button-icon">▦</span>数据与训练</a><a href="#usage"><span aria-hidden="true" class="button-icon">⌘</span>代码与节点</a><a href="#evidence"><span aria-hidden="true" class="button-icon">▥</span>实验数据</a><a href="#history"><span aria-hidden="true" class="button-icon">◷</span>实验历程</a></nav>
+</header>
+<div aria-label="现有 LoRA 10788 图片，可横向浏览" class="hero-gallery" tabindex="0"><figure title="猫内容 × 木刻参考"><img alt="LoRA 10788：猫内容 × 木刻参考" decoding="async" loading="lazy" src="images/result-10788-cat-woodcut.png"/></figure><figure title="城市内容 × 水彩参考"><img alt="LoRA 10788：城市内容 × 水彩参考" decoding="async" loading="lazy" src="images/result-10788-city-watercolor.png"/></figure><figure title="猫内容 × 水彩参考"><img alt="LoRA 10788：猫内容 × 水彩参考" decoding="async" loading="lazy" src="images/result-10788-cat-watercolor.png"/></figure><figure title="人像内容 × 水墨参考"><img alt="LoRA 10788：人像内容 × 水墨参考" decoding="async" loading="lazy" src="images/result-10788-portrait-ink.png"/></figure><figure title="猫内容 × 蓝晒参考"><img alt="LoRA 10788：猫内容 × 蓝晒参考" decoding="async" loading="lazy" src="images/result-10788-cat-cyanotype.png"/></figure><figure title="猫内容 × 油画参考"><img alt="LoRA 10788：猫内容 × 油画参考" decoding="async" loading="lazy" src="images/result-10788-cat-oil.png"/></figure></div>
+<p class="gallery-hint">✦ 滑动或拖动查看更多真实输出 · LoRA 10788 · 选取案例</p>
+<div class="intro"><p class="section-subtitle">让同一张内容图保持主体与构图，同时尝试从不同参考图中迁移画风。下面既展示出现响应的结果，也展示笔触与材质仍然失配的案例。</p></div><section aria-label="研究规模" class="at-a-glance">
+<div><strong>789</strong><span>次续训更新<br/>9999 → 10788</span></div><div><strong>138</strong><span>张匹配输出<br/>3 内容 × 23 参考 × 2 种子</span></div><div><strong>174</strong><span>次受控单步前向<br/>含零 LoRA 控制</span></div><div><strong>280</strong><span>个 LoRA 更新矩阵<br/>28 层 × 10 个投影</span></div>
+</section>
+<section aria-labelledby="examples-title" class="example-section" id="examples">
+<h2 class="section-title" id="examples-title">What can Anima do?</h2>
+<p class="section-subtitle" style="text-align:center;padding:0 20px">固定内容图与随机种子，依次替换画风参考 A；左右滑动，直接比较参考与输出。</p>
+<div class="compare-shell"><div class="context-line"><img alt="固定的猫内容图 B" decoding="async" loading="lazy" src="images/content-cat-display.webp"/><span>固定内容 B：同一张猫图<br/>LoRA 10788 · seed 20261014</span></div><div aria-label="四组画风参考和输出，可横向浏览" class="compare-track" tabindex="0"><article class="example-pair"><div class="pair-images"><figure><img alt="木刻参考，画风参考 A" decoding="async" loading="lazy" src="images/style-woodcut.webp"/><figcaption>A · 画风参考</figcaption></figure><figure><img alt="木刻参考，LoRA 10788 输出" decoding="async" loading="lazy" src="images/result-10788-cat-woodcut.png"/><figcaption>输出 · LoRA 10788</figcaption></figure></div><p class="case-label">木刻参考</p></article><article class="example-pair"><div class="pair-images"><figure><img alt="油画参考，画风参考 A" decoding="async" loading="lazy" src="images/style-oil.webp"/><figcaption>A · 画风参考</figcaption></figure><figure><img alt="油画参考，LoRA 10788 输出" decoding="async" loading="lazy" src="images/result-10788-cat-oil.png"/><figcaption>输出 · LoRA 10788</figcaption></figure></div><p class="case-label">油画参考</p></article><article class="example-pair"><div class="pair-images"><figure><img alt="水彩参考，画风参考 A" decoding="async" loading="lazy" src="images/style-watercolor.webp"/><figcaption>A · 画风参考</figcaption></figure><figure><img alt="水彩参考，LoRA 10788 输出" decoding="async" loading="lazy" src="images/result-10788-cat-watercolor.png"/><figcaption>输出 · LoRA 10788</figcaption></figure></div><p class="case-label">水彩参考</p></article><article class="example-pair"><div class="pair-images"><figure><img alt="蓝晒参考，画风参考 A" decoding="async" loading="lazy" src="images/style-cyanotype.webp"/><figcaption>A · 画风参考</figcaption></figure><figure><img alt="蓝晒参考，LoRA 10788 输出" decoding="async" loading="lazy" src="images/result-10788-cat-cyanotype.png"/><figcaption>输出 · LoRA 10788</figcaption></figure></div><p class="case-label">蓝晒参考</p></article></div></div>
+<p class="caption">观察：参考图变化会带来颜色、线条与柔和度变化，但厚涂笔触、水彩晕染和蓝晒媒介并不稳定。这是选出的定性案例，不代表总体成功率。原始输入在生成时曾被缩放为正方形；本页按原比例展示，不改变已有输出。</p>
+<h3 class="row-heading">同一参考，不同内容</h3><div class="same-style-shell"><div class="fixed-style-reference"><img alt="固定的木刻画风参考 A" decoding="async" loading="lazy" src="images/style-woodcut.webp"/><span>固定画风 A</span></div><div aria-label="固定木刻参考，切换猫、城市和人像内容" class="same-style-track" tabindex="0"><figure class="same-style-item"><img alt="木刻参考 A 与猫内容 B 的 LoRA 10788 实际输出" decoding="async" loading="lazy" src="images/result-10788-cat-woodcut.png"/><img alt="猫的内容原图 B" class="content-thumbnail" decoding="async" loading="lazy" src="images/content-cat-original.jpg"/><figcaption>猫内容 B · 输出</figcaption></figure><figure class="same-style-item"><img alt="木刻参考 A 与城市内容 B 的 LoRA 10788 实际输出" decoding="async" loading="lazy" src="images/result-10788-city-woodcut.png"/><img alt="城市的内容原图 B" class="content-thumbnail" decoding="async" loading="lazy" src="images/content-city-original.jpg"/><figcaption>城市内容 B · 输出</figcaption></figure><figure class="same-style-item"><img alt="木刻参考 A 与人像内容 B 的 LoRA 10788 实际输出" decoding="async" loading="lazy" src="images/result-10788-portrait-woodcut.png"/><img alt="人像的内容原图 B" class="content-thumbnail" decoding="async" loading="lazy" src="images/content-portrait-original.jpg"/><figcaption>人像内容 B · 输出</figcaption></figure></div></div><p class="caption">固定木刻参考 A 与 seed 20261014，切换三张内容 B；每张输出右上角为对应的 B 原图。结果用于观察内容保持与画风响应，不代表泛化成功率。</p></section>
+<section aria-labelledby="abstract-title" class="abstract"><h2 class="section-title" id="abstract-title">Abstract</h2><div class="reading"><p>本项目探索将参考画风 A 与内容 B 分开输入 Anima，并通过单个 LoRA 调整画风迁移行为。已有实验表明，替换参考图会改变生成图像；但“参考产生响应”并不等于真实笔触已经迁移，也不证明内容与画风在内部表示中完全解耦。</p><p>现阶段我们同时展示有效响应和失败情况，结合受控条件、图像对照与特征空间统计检查模型行为。不同特征代理得到的结果可能不一致，需要以实际生成图和进一步的独立评估共同判断。</p></div></section>
+<section aria-labelledby="method-title" class="method research-section" id="method">
+<h2 class="section-title" id="method-title">How does it work?</h2>
+<p class="section-kicker">训练数据、条件路径与实际算子</p>
+<div class="research-copy"><p>目标是让输出保留<strong>内容 B</strong>的主体和构图，并响应<strong>画风参考 A</strong>。训练时另有配对目标 C：参考 A 与 C 选自同一风格标签、不同内容组，并要求 A ≠ C；这个选取规则并不能保证语义完全独立。</p></div>
+<div aria-label="训练和推理路径" class="pipeline-grid"><div><small>INPUT 01</small><strong>B · 内容</strong><span>主体 / 构图</span></div><div><small>INPUT 02</small><strong>A · 画风参考</strong><span>参考条件</span></div><div><small>TRAIN ONLY</small><strong>C · 配对目标</strong><span>VAE 编码与监督</span></div><b>→</b><div><small>BACKBONE</small><strong>冻结 Anima</strong><span>目标 / B / A 三槽联合注意力</span></div><b>→</b><div><small>ADAPTER</small><strong>单个 LoRA</strong><span>28 层 × 10 个投影</span></div><b>→</b><div><small>OUTPUT</small><strong>速度预测</strong><span>Euler 采样 → VAE 解码</span></div></div>
+<p class="caption">推理时没有 C；目标槽从噪声开始，结合 B、A 与固定任务提示词进行多步采样。输入分槽不等于内部表征已被证明解耦。</p>
+<figure class="wide-figure"><img alt="训练路径：B 与 C 配对，同风格异内容的 A 作为参考；VAE 编码并加入噪声，目标、B、A 联合进入冻结 Anima 和单个 LoRA，输出用于 flow 与画风统计两项损失" loading="lazy" src="figures/training_route.png"/><figcaption class="run-note"><b>训练数据流。</b>A 提供条件；画风统计损失直接比较预测 latent 与配对目标 C。训练提示词和具体算子见下方说明。</figcaption></figure>
+<div class="operator-list"><article><span class="operator-number">01 / FLOW MATCHING</span><h3>生成目标：从噪声预测速度</h3><p>把 C 编码成 latent，与随机噪声按 t 混合。模型接收带噪目标、B 和 A，拟合目标速度；训练时再由单步预测构造画风监督。</p><div class="math-block">z<sub>C</sub> = E(C),   ε ∼ N(0, I)<br/>z<sub>t</sub> = (1 − t) z<sub>C</sub> + t ε,   v* = ε − z<sub>C</sub><br/>ẑ<sub>0</sub> = z<sub>t</sub> − t v<sub>θ</sub>,   L<sub>flow</sub> = mean[(v<sub>θ</sub> − v*)²]</div><p class="operator-note">t 的采样：g ∼ N(0, 1)，u = sigmoid(g)，t = 3u / (1 + 2u)。ẑ<sub>0</sub> 是训练中的单步估计，不是最终多步生成图。</p></article>
+<article><span class="operator-number">02 / STYLE STATISTICS</span><h3>画风目标：多尺度相关性与边缘统计</h3><p>对 latent 在 1、2、4 三个尺度做平均池化；Gram 比较前按通道中心化和标准化；均值与标准差在原池化 latent 上计算，另比较水平／垂直一阶差分统计。ρ 表示 Smooth L1 均值。</p><div class="math-block">G<sub>s</sub>(z) = F̃<sub>s</sub>(z) F̃<sub>s</sub>(z)<sup>T</sup> / N<sub>s</sub><br/>L<sub>style</sub> = Σ<sub>s</sub> w<sub>s</sub> [ ρ(G<sub>s</sub>(ẑ<sub>0</sub>), G<sub>s</sub>(z<sub>C</sub>)) + 0.25 (ρ(μ̂<sub>s</sub>, μ<sub>C,s</sub>) + ρ(σ̂<sub>s</sub>, σ<sub>C,s</sub>)) ] + 0.10 L<sub>edge</sub><br/>w = (1, 0.7, 0.4)</div><p class="operator-note"><strong>监督的直接比较对象是 ẑ<sub>0</sub> 与 C，不是输出与 A 的局部笔触逐块对齐。</strong>边缘项还包含差分特征 Gram，以及绝对均值、平方均值和标准差的比较。</p></article>
+<article><span class="operator-number">03 / LOW-RANK UPDATE</span><h3>一条 LoRA 与总损失</h3><div class="math-block">W′x = Wx + U(Dx),   ΔW = U D,   rank(ΔW) ≤ 32<br/>L = λ<sub>flow</sub> L<sub>flow</sub> + λ<sub>style</sub> L<sub>style</sub></div><p>9999 续训配置中 λ<sub>flow</sub> = 1.25，λ<sub>style</sub> 初始配置为 0.08；恢复控制器后首个记录值约 0.08087。<strong>0.15 是加权风格梯度范数／加权 flow 梯度范数的控制目标，不是固定画风 loss 权重。</strong>梯度只在部分审计步与选中样本上测量，实际比值不保证每步达到该目标。</p></article></div>
+<p class="source-line">实现与公式依据：<a href="main.tex">论文源码 Method</a> · 理论背景：<a href="https://arxiv.org/abs/2210.02747">Flow Matching</a> · <a href="https://arxiv.org/abs/2106.09685">LoRA</a> · <a href="https://arxiv.org/abs/1508.06576">神经画风统计</a></p>
+
+</section><section aria-labelledby="training-title" class="research-section" id="training">
+<h2 class="section-title" id="training-title">Data &amp; training</h2>
+<p class="section-kicker">一轮续训的数据如何组成，参数如何落地</p>
+<div class="research-copy"><p>训练配置指向本地 <code>style_expert40k.tar</code>；项目作者提供的 <a href="https://huggingface.co/datasets/HH-LG/StyleExpert">StyleExpert 数据集页面</a>将数据描述为内容、参考与风格化结果的集合。我们尚未独立核验本地归档的来源及确切版本，不能把公开数据卡的总量直接当作本地使用量。数据卡标注 CC BY-NC 4.0，公开使用时应核对全部相关条款与素材许可。</p></div>
+<div aria-label="数据计划与已记录采样范围" class="record-strip">
+<div><strong>46,046</strong><span>训练风格初始配对数<br/>内容组留出之前</span></div>
+<div><strong>41,513</strong><span>留出内容组后的训练池<br/>计划清单中的配对数</span></div>
+<div><strong>12,624</strong><span>本次日志实际呈现<br/>789 更新 × 16 条</span></div>
+</div>
+<div class="run-grid">
+<article><h3>样本怎样配对</h3><p>一条训练记录由内容 B、配对目标 C 和参考 A 构成；A 与 C 使用同一个画风标签、不同内容组，且 A ≠ C。A 作为条件参与预测，流匹配和风格统计项的直接监督目标来自 C。相同标签不等于笔触完全一致，也不保证内容与风格独立。</p><p>清单按风格标签划分 train / validation / test：<b>140 / 30 / 37</b>；名称没有交集。像素级查重检查在这轮代码中处于关闭状态，近重复、视觉相似风格和底模预训练见过的图片均未排除。</p></article>
+<article><h3>一次更新如何运行</h3><p>从 global step 9999 继续训练单个 rank-32 LoRA，底模冻结。1024 分辨率，等效 batch 16、microbatch 1，使用 7 个 checkpoint blocks；AdamW 参数为 β=(0.9, 0.999)、ε=10⁻⁸、weight decay=0。历史训练图像按 1024×1024 直接缩放，可能改变宽高比。</p><p>学习率由 1×10⁻⁵ 预热至 5×10⁻⁵；配置最多更新 1000 次，现有日志记录 789 次，结束于 10788。配置为每 100 次预览、每 200 次保存；这是配置，不代表每次执行都一定产物完整。</p></article>
+<article><h3>实际预览与训练限制</h3><p>归档中有 9999 基线、10099 和 10499 等训练预览，固定计划包含训练锚点以及留出内容／标签案例。总览保留 B、C、A 和对应输出；标签或内容被计划留出，并不证明底模从未见过相似画风。</p><p>预览原图包含人物与训练参考，来源和公开权限还需逐图核对，未放进当前网页发布目录。下方训练曲线和示例图均来自已留存结果。</p></article>
+<article><h3>设备与运行时间</h3><p>9999 续训预检记录 GPU 为 <b>NVIDIA RTX 6000D</b>，可见显存约 83.05 GiB；PyTorch 2.12.0+cu130、CUDA 13.0。配置的显存预算为 76 GiB，它不是实际已用显存。</p><p>789 条训练日志中，单次更新的记录耗时中位数约 <b>36.20 秒</b>；该计时覆盖样本准备和更新，不包括额外的预览及保存开销。单步 PyTorch 峰值已分配显存最高约 39.06 GiB，不等于整机占用。CPU 和操作系统型号尚未核实。</p></article>
+</div>
+<p class="run-note">依据：本地训练计划 <code>data_plan.json</code>、<code>report_84g.json</code> 与逐步日志；可查看本项目内<a href="data/study_20261106_training_configuration.json">配置摘录</a>、<a href="data/study_20261106_summary.json">记录汇总</a>、<a href="data/study_20261106_training_steps.csv">逐步数据</a>和<a href="comfyui_node/runtime/anima_native_style_response_from9280_local.py">保留的运行时代码</a>。上述原始归档尚未随网页公开。</p>
+</section><section aria-labelledby="history-title" class="history research-section" id="history">
+<h2 class="section-title" id="history-title">The research journey</h2><p class="section-kicker">我们实际训练过什么、得到什么、又排除了什么</p>
+<div class="timeline">
+<article><span class="time-tag">早期阶段</span><h3>6000 → 6280 → 7280 → 8280</h3><p>历史记录包含多轮单 LoRA 强化和外部交叉预测。早期 checkpoint、输出和训练增量没有完整留存，不能将每一阶段的视觉变化归因于某一次改动。</p></article>
+<article><span class="time-tag">主线续训</span><h3>9999 → 10788：计划 1000，日志记录 789 次更新</h3><p>分辨率 1024，等效 batch 16，rank 32；LoRA 学习率由 1×10⁻⁵ 预热至 5×10⁻⁵。主 loss 与画风 loss 分开记录；分段曲线不能代替生成图质量。</p></article>
+<article><span class="time-tag">局部卷积</span><h3>本地累计 300 + 云端 600 次更新</h3><p>原 LoRA 冻结。云端记录 9600 次样本呈现、140 个风格标签；云端 0／400／600 步（累计 300／700／900 步）预览未建立稳定的外部笔触改善，部分案例有内容漂移。</p></article>
+<article><span class="time-tag">动态增量</span><h3>本地 30 + 云端 100 次更新</h3><p>在 LoRA 10135 和已有卷积分支上继续训练，12 组 B／A 各比较增量 OFF／ON，一个种子。粉彩边缘、水墨纸感有局部响应；点彩、蓝晒仍不忠实。未建立动态增量的稳定额外收益。</p></article>
+<article><span class="time-tag">两组小试</span><h3>参考排序 / 配对纹理差：每组 control 与实验各 15 步</h3><p>排序项仅在 3／15 步激活；配对纹理干预也只触发 3 次。少量预览未建立可靠改善，但不足以否定整个方法方向。</p></article>
+<article><span class="time-tag">测量反例</span><h3>优化代理分数，不等于图像更好</h3><p>3 张图各做 60 次像素空间优化，StyleShot 相关距离下降约 80%–87%，视觉复核均未通过。该实验中 Anima 和 LoRA 更新次数为 0。</p></article>
+</div>
+<div class="research-figures"><figure><img alt="9999 到 10788 的两项未加权训练损失，按 100 步分组" src="figures/training.png"/><figcaption><b>训练记录。</b>每点为 100 次更新均值，末组为 89 次；两张图的纵轴不同。损失曲线不是画风保真分数。</figcaption></figure><figure><img alt="280 个 LoRA 更新矩阵达到百分之九十能量所需方向数" src="figures/lora_rank.png"/><figcaption><b>LoRA 更新结构。</b>72／122／86 个矩阵分别需要 ≤4、5–15、≥16 个方向覆盖 90% 能量；结构集中不等于已经证明欠拟合。</figcaption></figure></div>
+<p class="caption">综合评测原计划 1232 条，本地档案记录 600 条；本页只报告实际留存的记录和明确标记的子集。</p>
+</section><section aria-labelledby="experiments-title" class="ablation-section" id="experiments"><h2 class="section-title" id="experiments-title">Branch comparison</h2><p class="section-subtitle" style="text-align:center">历史 LoRA 10135 分支对照：同一 B、A 与种子下，比较动态增量 OFF / ON。</p><article class="ablation-case"><h3>粉彩参考 × 双犬内容</h3><p>输出可见局部粉彩感；动态增量带来的额外改善尚未建立。</p><div aria-label="粉彩参考 × 双犬内容四图对照" class="ablation-track" tabindex="0"><figure><img alt="粉彩参考 × 双犬内容，B · 内容图" decoding="async" loading="lazy" src="images/content-dogs.webp"/><figcaption>B · 内容图</figcaption></figure><figure><img alt="粉彩参考 × 双犬内容，A · 画风参考" decoding="async" loading="lazy" src="images/style-pastel.webp"/><figcaption>A · 画风参考</figcaption></figure><figure><img alt="粉彩参考 × 双犬内容，动态增量 OFF" decoding="async" loading="lazy" src="images/result-dogs-dynamic-off.png"/><figcaption>动态增量 OFF</figcaption></figure><figure><img alt="粉彩参考 × 双犬内容，动态增量 ON" decoding="async" loading="lazy" src="images/result-dogs-dynamic-on.png"/><figcaption>动态增量 ON</figcaption></figure></div></article><article class="ablation-case"><h3>蓝晒参考 × 咖啡内容</h3><p>输出仍保留多种颜色，未忠实复现参考图的蓝晒媒介。</p><div aria-label="蓝晒参考 × 咖啡内容四图对照" class="ablation-track" tabindex="0"><figure><img alt="蓝晒参考 × 咖啡内容，B · 内容图" decoding="async" loading="lazy" src="images/content-coffee.webp"/><figcaption>B · 内容图</figcaption></figure><figure><img alt="蓝晒参考 × 咖啡内容，A · 画风参考" decoding="async" loading="lazy" src="images/style-cyanotype.webp"/><figcaption>A · 画风参考</figcaption></figure><figure><img alt="蓝晒参考 × 咖啡内容，动态增量 OFF" decoding="async" loading="lazy" src="images/result-coffee-dynamic-off.png"/><figcaption>动态增量 OFF</figcaption></figure><figure><img alt="蓝晒参考 × 咖啡内容，动态增量 ON" decoding="async" loading="lazy" src="images/result-coffee-dynamic-on.png"/><figcaption>动态增量 ON</figcaption></figure></div></article><p class="caption" style="padding:0">两组均为 seed 20261014、30 次采样。OFF 仅关闭新的动态增量；原 LoRA、旧卷积分支与参考条件两边均保留。完整历史对照有 12 组，这里为事后选取的示例。历史推理时输入曾被拉伸为正方形；此处仅按原比例展示原图。</p><p class="caption">另有四组历史合图；其中植物照片来源尚未核实，合图暂不公开，原始研究档案仍保留。</p></section>
+<section aria-labelledby="evidence-title" class="evidence" id="evidence"><h2 class="section-title" id="evidence-title">What did we observe?</h2><div class="reading"><p>在已记录的 3 个内容、23 张参考和 2 个种子组成的 138 张输出中，固定内容与种子后更换 A 会改变输出特征。下图是同一 VAE 特征空间的匹配条件距离中位数，仅表示特征变化大小，不是风格成功率或解耦率。</p></div><div aria-label="VAE 特征距离中位数：更换画风 0.347，更换内容 0.727，更换随机种子 0.383" class="metrics" role="img"><div class="metric"><span>更换画风 A</span><div class="bar"><span style="width:34.7%"></span></div><strong>0.347</strong></div><div class="metric"><span>更换内容 B</span><div class="bar"><span style="width:72.7%"></span></div><strong>0.727</strong></div><div class="metric"><span>更换随机种子</span><div class="bar"><span style="width:38.3%"></span></div><strong>0.383</strong></div></div><p class="caption">特征包含颜色、主体及构图；保留内容本来也是目标。匹配对照共享图像，不能当作独立样本；不同测量模型的数值尺度不能直接比较。对同一蓝晒参考，VGG 与 StyleShot 兼容编码器给出的相对匹配方向相反。缺少严格封存测试集及独立盲评，暂不能报告泛化胜率。</p><div class="resource-links"><a href="data/tensor_behavior_summary.json">匹配对照数据</a><a href="data/vgg19_reference_distribution_summary.json">VGG 补测数据</a><a href="data/styleshot_auxiliary_summary.json">StyleShot 补测数据</a><a href="data/activation_qa_summary.json">内部张量统计</a></div></section><section aria-labelledby="diagnostics-title" class="diagnostics research-section" id="diagnostics">
+<h2 class="section-title" id="diagnostics-title">Inside the model</h2><p class="section-kicker">从生成图、参数和中间状态三个层面检查</p>
+<div class="research-copy"><h3>参考图 A 有影响，但不等于笔触迁移成功</h3><p>历史 2×2 单步干预中，固定 B、C、噪声和 t = 0.85，分别替换正确／错误参考。四组“错误 A 的 flow MSE − 正确 A 的 flow MSE”均为正：0.001882、0.006778、0.001610、0.005724。这个小实验支持条件响应存在，不能证明画风已迁移。</p></div>
+<div class="research-figures"><figure><img alt="两内容乘两风格四组替换参考的 flow MSE 差" src="figures/condition.png"/><figcaption><b>2×2 参考交换。</b>仅四组单步结果，不是成功率。<a href="data/heldout_2x2_flow_diagnostic.json">查看数据</a></figcaption></figure><figure><img alt="固定其他条件分别替换参考、内容和种子时的特征距离" src="figures/responses.png"/><figcaption><b>生成输出如何变化。</b>138 张图，配对样本共享图像并不独立；VAE 特征包含颜色和内容，距离大只表示变化大。<a href="data/tensor_behavior_summary.json">查看数据</a></figcaption></figure></div>
+<div class="research-copy"><h3>统计损失的一个具体盲区</h3><p>把空间位置展平后，令 P 为置换矩阵。通道 Gram 对空间重排不敏感：</p><div class="math-block">G(FP) = F̃ P P<sup>T</sup> F̃<sup>T</sup> / N = F̃ F̃<sup>T</sup> / N = G(F)</div><p>一个实际的方形 latent 转置实验中，相对 RMS 变化为 <strong>1.16</strong>，现有 style loss 却只有 <strong>5.96 × 10⁻¹⁴</strong>。这证明该测试中的统计量对这种结构变化不敏感；latent 转置不是现实图像旋转，flow loss 也不一定不变，不能将它当成泛化失败的唯一原因。<a href="data/style_operator_invariance.json">查看原始汇总</a></p></div>
+<div class="research-figures"><figure><img alt="蓝晒和水彩参考在两种特征代理下的比较方向相反" src="figures/proxy_disagreement.png"/><figcaption><b>两种代理会给出相反判断。</b>每种画风只用一张参考，配 3 个内容和 2 个生成种子；两种方法的尺度和裁剪不同。<a href="data/vgg19_reference_distribution_summary.json">VGG 数据</a> · <a href="data/styleshot_auxiliary_summary.json">StyleShot 兼容编码器数据</a></figcaption></figure><figure><img alt="28 层各投影的 LoRA 更新和底模权重范数比例" src="figures/lora_updates_full.png"/><figcaption><b>全部 280 个 LoRA 更新。</b>更新／底模范数比例中位数为 8.25%，这是参数结构统计，不是输出质量百分比。<a href="data/weights_summary.json">查看汇总</a></figcaption></figure></div>
+<div class="wide-figure"><img alt="两个噪声时刻下目标、内容和参考槽在 28 层的激活分布" src="figures/activation_full.png"/><p><b>28 层状态分布。</b>总共执行 174 个单步条件；本图每个 t 面板只汇总 69 个外部条件。各层归一化分母不同，不能用末层曲线较低推断“画风被覆盖”。<a href="data/activation_qa_summary.json">查看分箱审计汇总</a></p></div>
+<details class="research-appendix"><summary>展开：向量图、完整特征分布及 LoRA 对照</summary>
+<div class="research-figures"><figure><img alt="现有参考、内容及输出在两个主成分中的投影" src="figures/style_pca.png"/><figcaption><b>现有图片统计向量的 PCA 投影。</b>前两维解释约 26.3% 和 15.8% 的方差；该空间混合颜色、内容和构图，二维距离不能证明两个风格可以相加或线性迁移。</figcaption></figure><figure><img alt="458 条图像路径乘 1168 维 VAE 统计特征的完整分布" src="figures/tensor_distribution.png"/><figcaption><b>458 × 1168 图像特征。</b>包含 176 条去重输入路径与 282 条输出路径，逐特征标准化并在 ±3 截色；它不是模型所有内部激活，也不是泛化成功率。</figcaption></figure><figure><img alt="10788 与内存置零 LoRA 条件下 28 层交换参考的响应" src="figures/zero_lora_control.png"/><figcaption><b>LoRA 开关控制。</b>“zero LoRA”只在内存清零 LoRA，并保留三槽输入；它不是普通的无条件底模。</figcaption></figure><figure><img alt="9999 与 10788 之间的逐层更新幅度和方向变化" src="figures/checkpoint_change.png"/><figcaption><b>9999 → 10788 的参数变化。</b>这两个 checkpoint 跨训练阶段，不能将差异归因于某一个单独改动。</figcaption></figure></div></details></section><section aria-labelledby="future-title" class="future research-section" id="future">
+<h2 class="section-title" id="future-title">One reference, multiple steps</h2>
+<p class="section-kicker">在同一个 LoRA 内尝试目标分解与阶段拟合</p>
+<div class="research-copy"><p>我们用一张油画 A 作为参考、一张城市 B 作为内容，在同一个 LoRA 的一次采样轨迹内，比较原始生成、联合拟合与阶段拟合。颜色直方图、灰度 VGG 方向变化和局部特征距离作为三个参考代理；它们可能混入主体轮廓和亮度，<b>不是已证实可以独立拼接的画风原子</b>。</p><p>在 15、21、27 三个采样位置，使用同一组候选调整两个互补谱分量；联合路径每次考虑三个代理，阶段路径逐步加入代理。两条路径使用相同 A、B、seed 和 30 步采样；每条额外执行 9 次候选前向和 12 次 VAE 解码，原始基线计算量更低。没有更新训练参数。</p></div>
+<div class="wide-figure"><img alt="油画参考的笔触细节、城市内容，以及原始 LoRA、联合拟合和阶段拟合的输出局部" loading="lazy" src="figures/a_parts_detail.png"/><p><b>真实局部对照。</b>上排是油画笔触局部、城市内容局部、油画另一局部；下排依次是原始 LoRA、联合拟合、阶段拟合。视觉上未清楚重现参考的厚涂弯曲笔触，且重绘了一些城市细节。</p></div>
+<div class="result-wrap"><table class="result-table"><thead><tr><th scope="col">路径</th><th scope="col">颜色误差</th><th scope="col">方向误差</th><th scope="col">纹理代理误差</th></tr></thead><tbody><tr><th scope="row">原始</th><td>0.04381</td><td>0.01173</td><td>0.11174</td></tr><tr><th scope="row">联合</th><td>0.04234</td><td>0.00979</td><td>0.10036</td></tr><tr><th scope="row">阶段</th><td>0.04321</td><td>0.01055</td><td>0.10407</td></tr></tbody></table></div>
+<p class="run-note">值越低只表示对应代理更接近参考；不是画风成功率。两个谱分量多数被同时加 0.35，近似于图像侧 LoRA 统一放大 1.35 倍，阶段差别主要是介入时间；这个单例不能证明学到了独立画风基底。<a href="data/study_20261106_component_results.json">查看实验记录</a> · <a href="figures/a_parts_comparison.png">查看完整图与阶段估计</a></p>
+<div class="research-copy"><h3>下一步怎样验证</h3><p>先验证局部描述符是否能让“同风格、不同内容”比“同内容、不同风格”更接近；再固定 B、A、种子和计算预算，对单 LoRA 的训练方法做配对实验。保留完整图和原尺寸笔触裁片，区分视觉观察与代理分数；当前没有足够证据称该设想已经成功。</p></div>
+</section><section aria-labelledby="usage-title" class="research-section" id="usage">
+<h2 class="section-title" id="usage-title">Code &amp; ComfyUI</h2>
+<p class="section-kicker">研究代码与本地节点，按真实运行路径使用</p>
+<div class="run-grid">
+<article><h3>准备所需内容</h3><ol><li>将 <a href="comfyui_node/README.md">ComfyUI 节点目录</a>完整放入 <code>custom_nodes/AnimaSingleLoRA/</code>，保留 <code>runtime/</code> 和 <code>native_support/</code>，重启后在 <code>Anima/Research</code> 分类查找节点。</li><li>自行准备兼容的 Anima 底模、Qwen Image VAE、Qwen 0.6B 文本编码器、项目 rank-32 LoRA，权重不随仓库发布，当前没有公开 LoRA 下载地址。节点已附兼容推理代码与 tokenizer。</li><li>使用已安装 PyTorch、transformers、accelerate、safetensors、Pillow、NumPy 的 CUDA 环境；精确依赖和项目代码目录要求见<a href="comfyui_node/README.md">节点说明</a>。</li></ol></article>
+<article><h3>连接和推理</h3><p><code>LoadImage (B) → content_B</code><br/><code>LoadImage (A) → style_A</code><br/><code>AnimaNativeStyleTransfer → SaveImage</code></p><p>节点使用 <code>target + B + A</code> 原生三槽路径，不是普通 LoRA Loader。选择 <code>pad</code> 等比补灰边或 <code>center_crop</code> 等比裁剪；输出 1024 × 1024、不拉伸。默认 30 步、seed 20261014；当前固定任务提示词用于保持第一参考的内容并迁移第二参考的画风，不支持任意文本输入。</p></article>
+<article><h3>已有运行记录</h3><p>本地 ComfyUI 在 RTX 3080 20 GiB 上加载 10788 权重，完成 1024×1024、30 步推理；2026-11-07 这次执行约 99.8 秒，包含冷加载。这证明该环境的一次流程可执行，不代表其他设备的速度或画风质量。</p><p><a href="comfyui_node/workflow.json">画布工作流</a> · <a href="comfyui_node/workflow_api.json">API 工作流</a>。运行前请按节点说明更换两张输入图与四个模型路径；项目代码目录可留空。</p></article>
+<article><h3>代码和数据的边界</h3><p><a href="comfyui_node/__init__.py">节点实现</a> · <a href="comfyui_node/runtime/anima_native_style_response_from9280_local.py">原生训练／推理运行时</a> · <a href="data/build_evidence.py">数据整理代码</a> · <a href="data/README.md">实验数据说明</a> · <a href="training/README.md">训练代码与配置</a> · <a href="MODEL_PROVENANCE.md">模型 SHA-256 附录</a>。</p><p>本目录不包含完整训练集、底模和 LoRA 权重，不能单独复现训练。原创代码与第三方资料适用各自的<a href="THIRD_PARTY_NOTICES.md">授权条款</a>；已运行不等于画风完全解耦。</p></article>
+</div>
+</section><section aria-labelledby="lessons-title" class="lessons research-section" id="lessons">
+<h2 class="section-title" id="lessons-title">Lessons &amp; next steps</h2><p class="section-kicker">从已经踩过的坑，明确下一轮如何避免重复</p>
+<div class="lesson-list"><article><h3>01　只盯 loss，容易优化到错误目标</h3><p><b>已观察：</b>像素优化可显著降低代理距离，但三例视觉复核失败。<br/><b>下一步：</b>同时固定种子看完整生成图和局部裁片，分别记录内容保持、笔触与颜色；把特征分数作为辅助。</p></article><article><h3>02　参考条件存在，不代表传递了细节</h3><p><b>已观察：</b>换 A 会改变单步状态和输出，但某些结果主要改变颜色或粗线条。<br/><b>下一步：</b>固定 B 与种子切换 A，再固定 A 与种子切换 B；继续做同画风异内容、同内容异画风的匹配实验。</p></article><article><h3>03　统计匹配可能忽略空间结构</h3><p><b>已观察：</b>多尺度 Gram 与统计项在特定转置反例上接近不变。<br/><b>下一步：</b>先验证局部特征能否区分画风与内容，再考虑把有效表征接入训练；这仍是待验证方案。</p></article><article><h3>04　分支消融必须说清楚开关</h3><p><b>已观察：</b>动态增量 OFF 仍保留旧卷积和 LoRA；12 对输出的逐像素 RGB 绝对差的平均值为 0.572／255。<br/><b>下一步：</b>区分“无旧分支”和“仅关动态增量”，固定输入、种子与采样参数，不能把像素差解释为质量提升。</p></article><article><h3>05　预处理会改变测试结论</h3><p><b>已观察：</b>历史综合生成把输入拉伸成方形；部分后续探针使用等比缩放与灰边。<br/><b>下一步：</b>训练与测试分别记录缩放、裁剪和填充；页面展示按原比例，比较时只在相同预处理下归因。</p></article><article><h3>06　计划数、留出集与基准不能混写</h3><p><b>已观察：</b>1232 是原计划，已记录 600；138 是匹配子集；底模是否见过这些风格未知。<br/><b>下一步：</b>先封存按内容与画风独立划分的测试集，再做独立盲评和同协议外部方法比较。</p></article></div>
+<div class="research-copy"><h3>相关工作与资料</h3><p><a href="https://arxiv.org/abs/1508.06576">Gatys 等：神经画风表示</a> · <a href="https://arxiv.org/abs/2106.09685">Hu 等：LoRA</a> · <a href="https://arxiv.org/abs/2210.02747">Lipman 等：Flow Matching</a> · <a href="https://arxiv.org/abs/2407.01414">StyleShot</a> · <a href="https://arxiv.org/abs/2508.18966">USO</a></p><p>与 USO 或其他公开方法尚无同任务、同数据、同推理条件的公平重跑；本页不作模型胜负比较。</p></div>
+<details class="image-credits"><summary>图片来源与公开使用说明</summary><p>内容图及画风参考来自以下原始来源；本记录用于追溯，正式公开前仍需逐项核对授权与署名要求。</p><ul><li>内容 · cat：<a href="https://www.pexels.com/photo/white-and-grey-kitten-on-brown-and-black-leopard-print-textile-45201/">Kitten photograph</a> — Pixabay / Pexels</li><li>内容 · city：<a href="https://www.pexels.com/photo/empire-state-building-new-york-466685/">City photograph</a> — Pexels 466685</li><li>画风参考 · woodcut：<a href="https://www.metmuseum.org/art/collection/search/45434">Under the Wave off Kanagawa</a> — Katsushika Hokusai</li><li>画风参考 · watercolor：<a href="https://www.metmuseum.org/art/collection/search/12388">A Basket of Clams</a> — Winslow Homer</li><li>画风参考 · oil：<a href="https://www.metmuseum.org/art/collection/search/436535">Wheat Field with Cypresses</a> — Vincent van Gogh</li><li>内容 · portrait：<a href="https://www.pexels.com/photo/man-in-brown-button-up-shirt-3785079/">https://www.pexels.com/photo/man-in-brown-button-up-shirt-3785079/</a></li><li>内容 · dogs：<a href="https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/">https://www.pexels.com/photo/two-yellow-labrador-retriever-puppies-1108099/</a></li><li>内容 · coffee：<a href="https://www.pexels.com/photo/person-performing-coffee-art-302899/">https://www.pexels.com/photo/person-performing-coffee-art-302899/</a></li><li>画风参考 · pastel：<a href="https://www.metmuseum.org/art/collection/search/437379">Bouquet of Flowers</a> — Odilon Redon</li><li>画风参考 · ink：<a href="https://www.metmuseum.org/art/collection/search/53601">Landscape with Pavilion and Willows</a> — Shen Zhou</li><li>画风参考 · cyanotype：<a href="https://www.metmuseum.org/art/collection/search/285421">Spiraea aruncus (Tyrol)</a> — Anna Atkins</li><li>内容 · landscape：<a href="https://www.pexels.com/photo/lake-and-mountain-417074/">https://www.pexels.com/photo/lake-and-mountain-417074/</a></li><li>内容 · plant：<a href="https://www.pexels.com/photo/1084199/">https://www.pexels.com/photo/1084199/</a></li><li>画风参考 · pointillism：<a href="https://www.metmuseum.org/art/collection/search/437654">Circus Sideshow (Parade de cirque)</a></li></ul></details></section>
+</main>
+<footer>研究草稿 · 图像与统计来自已保存的本地实验<br/>页面排版参考 <a href="https://bytedance.github.io/USO/">USO 项目页面</a>；本项目与该项目的结果和结论相互独立。</footer>
+<script>
+(() => {
+  function enableDragging(panel) {
+    let active = false, start = 0, origin = 0;
+    panel.addEventListener('pointerdown', event => {
+      if (event.pointerType !== 'mouse' || event.button !== 0) return;
+      active = true; start = event.clientX; origin = panel.scrollLeft;
+      panel.setPointerCapture(event.pointerId);
+    });
+    panel.addEventListener('pointermove', event => { if (active) panel.scrollLeft = origin - (event.clientX - start); });
+    panel.addEventListener('pointerup', () => { active = false; });
+    panel.addEventListener('pointercancel', () => { active = false; });
+    panel.addEventListener('dragstart', event => event.preventDefault());
+    panel.addEventListener('keydown', event => {
+      if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+      event.preventDefault();
+      panel.scrollBy({left: (event.key === 'ArrowRight' ? 1 : -1) * panel.clientWidth * .6, behavior: 'auto'});
+    });
+  }
+  function startTeaser(panel) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || panel.scrollWidth <= panel.clientWidth) return;
+    const originals = Array.from(panel.children), firstCopyIndex = originals.length;
+    for (const original of originals) {
+      const copy = original.cloneNode(true); copy.setAttribute('aria-hidden', 'true'); panel.appendChild(copy);
+    }
+    let paused = false, interacting = false, last = 0, position = panel.scrollLeft;
+    panel.addEventListener('mouseenter', () => { paused = true; });
+    panel.addEventListener('mouseleave', () => { paused = false; });
+    panel.addEventListener('focusin', () => { paused = true; });
+    panel.addEventListener('focusout', () => { paused = false; });
+    panel.addEventListener('pointerdown', () => { interacting = true; });
+    panel.addEventListener('pointerup', () => { interacting = false; });
+    panel.addEventListener('pointercancel', () => { interacting = false; });
+    function advance(time) {
+      const delta = last ? Math.min(time - last, 50) : 0; last = time;
+      const boundary = panel.children[firstCopyIndex].offsetLeft - panel.children[0].offsetLeft;
+      if (paused || interacting || document.hidden || boundary <= 0) position = panel.scrollLeft;
+      else { position = (position + delta * .035) % boundary; panel.scrollLeft = position; }
+      window.requestAnimationFrame(advance);
+    }
+    window.requestAnimationFrame(advance);
+  }
+  for (const panel of document.querySelectorAll('.hero-gallery, .compare-track, .ablation-track, .same-style-track')) enableDragging(panel);
+  const teaser = document.querySelector('.hero-gallery');
+  if (teaser) window.requestAnimationFrame(() => startTeaser(teaser));
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+{
+  "records": 174,
+  "by_model": {
+    "lora10788": 150,
+    "zero_lora": 24
+  },
+  "timesteps": [
+    0.35,
+    0.85
+  ],
+  "seed": 20261014,
+  "histogram_shape": [
+    174,
+    28,
+    3,
+    128
+  ],
+  "histogram_range": [
+    -16.0,
+    16.0
+  ],
+  "outside_range_fraction": 0.3410116645584487,
+  "hook_parity": {
+    "relative_rms": 0.0,
+    "max_abs": 0.0
+  },
+  "scope": "Fixed target state from the cat content and common noise. Every 28-layer histogram includes all 4096x2048 values per target/B/A stream; spatial comparisons use 8x8 target pooling. Zero LoRA is only a 3B x 4A subset on the same custom route.",
+  "limits": [
+    "Fixed anchor is an intervention, not full sampling trajectories or model success.",
+    "Paired references differ in subject, color and layout; A responses are not pure style.",
+    "Block outputs contain all previous residual updates; layerwise changes are cumulative.",
+    "8x8 averaging can hide fine detail; gray input padding may affect activations.",
+    "Histograms summarize all values only within the reported fixed range."
+  ]
+}

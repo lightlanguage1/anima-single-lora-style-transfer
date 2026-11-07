@@ -1,0 +1,24 @@
+{
+  "records": 174,
+  "shape": [
+    174,
+    28,
+    3,
+    192
+  ],
+  "bins": 192,
+  "transform": "sign(x) * log10(1 + abs(x))",
+  "transformed_range": [
+    -6,
+    6
+  ],
+  "covered_original_range": [
+    -999999,
+    999999
+  ],
+  "total_values": 122607894528,
+  "outside_global_fraction": 0.0,
+  "outside_worst_layer_stream_fraction": 0.0,
+  "hook_relative_rms": 0.0,
+  "note": "Every element was counted on these controlled inputs; histograms are not raw hidden tensor storage or a measure of style disentanglement."
+}
