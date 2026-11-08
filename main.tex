@@ -1,18 +1,18 @@
-\documentclass[10pt,twocolumn]{article}
+\documentclass[10pt,letterpaper]{article}
 \usepackage[letterpaper,margin=1in]{geometry}
 \usepackage{amsmath,amssymb,graphicx,booktabs}
 \usepackage[hidelinks]{hyperref}
 \usepackage{url}
 \usepackage{fontspec}
-% Three-glyph subset of Noto Sans CJK SC; see figures/Noto-OFL.txt.
+% Author-name subset of Noto Sans CJK SC; see figures/Noto-OFL.txt.
 \newfontfamily\authorcjk[Path=figures/]{author-cjk-subset.otf}
-\hypersetup{pdfauthor={Guanrong Chen}}
+\hypersetup{pdfauthor={Guanrong Chen, Sixian Wang}}
 \setlength{\columnsep}{0.23in}
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\dbltopfraction}{0.85}
 \renewcommand{\textfraction}{0.1}
 \title{Reference-Guided Style Transfer with a Single LoRA:\\A Diagnostic Study of Texture Generalization}
-\author{Guanrong Chen\quad{\authorcjk 陈冠融}\\\small\href{mailto:207878932@qq.com}{207878932@qq.com}}
+\author{Guanrong Chen\quad{\authorcjk 陈冠融}\qquad Sixian Wang\quad{\authorcjk 王思贤}\\[0.5em]\small Correspondence: \href{mailto:207878932@qq.com}{207878932@qq.com}}
 \date{}
 
 \begin{document}
@@ -90,7 +90,7 @@ The training configuration names a local archive \texttt{style\_expert40k.tar}. 
 \subsection{Data assembly and quality controls}
 The source archive was consumed as a pre-existing StyleExpert-style dataset, not a corpus for which this project has a documented human annotation protocol. The parser recognizes source names of the form \texttt{<content>\_src\_<id>} and stylized targets of the form \texttt{extra\_<content>\_<id>\_<style>}. It joins them by content key, uses the suffix as a style label, rejects duplicate member names or ambiguous matches, and records targets without a matching source as orphans. A training row supplies source $B$ and styled target $C$; $A$ is sampled from another row with the same style label and a different content key. These programmatic labels are not evidence of manual image-level annotation or semantic independence.
 
-The recorded label split contains 140/30/37 train/validation/test styles and respectively 46,046/9,766/12,346 raw matched pairs. A 10\% content-key holdout removed 4,533 training-style pairs, leaving a 41,513-pair training pool; the 789 updates presented 12,624 row instances, not the entire pool. Duplicate names and ambiguous joins are checked, and reference/target paths differ in the audited rows. However, the pixel-split routine explicitly reports \texttt{disabled=true}; it did not establish pixel-level or near-duplicate independence. No independent human quality audit, semantic-leakage audit, or per-image licensing review is documented. The archived source tar was later deleted at the owner's request; the \href{https://huggingface.co/datasets/HH-LG/StyleExpert}{official dataset page} is available, but equivalence of a future download to the deleted local revision is unverified. Fixed seeds alone do not reproduce the content split: the code converts a set to a list before seeded shuffling and the original run did not record a fixed \texttt{PYTHONHASHSEED}. Use the retained data plan rather than claiming seed-only reproducibility.
+The recorded label split contains 140/30/37 train/validation/test styles and 46,046, 9,766, and 12,346 raw matched pairs, respectively. A 10\% content-key holdout removed 4,533 training-style pairs, leaving a 41,513-pair training pool; the 789 updates presented 12,624 row instances, not the entire pool. Duplicate names and ambiguous joins are checked, and reference/target paths differ in the audited rows. However, the pixel-split routine explicitly reports \texttt{disabled=true}; it did not establish pixel-level or near-duplicate independence. No independent human quality audit, semantic-leakage audit, or per-image licensing review is documented. The archived source tar was later deleted at the owner's request; the \href{https://huggingface.co/datasets/HH-LG/StyleExpert}{official dataset page} is available, but equivalence of a future download to the deleted local revision is unverified. Fixed seeds alone do not reproduce the content split: the code converts a set to a list before seeded shuffling and the original run did not record a fixed \texttt{PYTHONHASHSEED}. Use the retained data plan rather than claiming seed-only reproducibility.
 
 The local archive records 600 outputs from a larger 1,232-output plan; the plan is not treated as completed. The principal balanced subset contains 3 content images, 23 references, and 2 generation seeds, for 138 checkpoint-10788 outputs. A reference label corresponds to one image, and the examples were not reserved as a new sealed benchmark. Repeated content, references, and seeds create correlated observations. The base model's prior exposure to these images and styles is unknown.
 
