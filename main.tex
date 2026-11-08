@@ -227,7 +227,7 @@ A useful next experiment should first test whether a proposed local descriptor r
 Selected source code, the ComfyUI node and workflow, experiment records, and research figures are available in the \href{https://github.com/lightlanguage1/anima-single-lora-style-transfer}{project repository}. The 10788 LoRA checkpoint and its applicable license notices are available on \href{https://huggingface.co/lightlanguang/Anima-Single-LoRA-Style-Transfer-10788}{Hugging Face}. The local evidence index also records the 600 archived output records, operator analyses, and reference-decomposition pilots; the complete local archive has not been publicly deposited. The original training archive was deleted, its exact upstream revision is unverified, and full independent reproduction has not been established. Rights for individual source images require review before reuse.
 
 \section*{Image sources}
-The cat photograph is credited to Pixabay / Pexels (\href{https://www.pexels.com/photo/white-and-grey-kitten-on-brown-and-black-leopard-print-textile-45201/}{image 45201}); the dogs photograph is from \href{https://www.pexels.com/photo/1108099/}{Pexels 1108099}; the city photograph is credited to Lukas Kloeppel / \href{https://www.pexels.com/photo/empire-state-building-new-york-466685/}{Pexels 466685}. The pictured art references are Hokusai, \emph{Under the Wave off Kanagawa} (The Met \href{https://www.metmuseum.org/art/collection/search/45434}{45434}); van Gogh, \emph{Wheat Field with Cypresses} (\href{https://www.metmuseum.org/art/collection/search/436535}{436535}); Homer, \emph{A Basket of Clams} (\href{https://www.metmuseum.org/art/collection/search/12388}{12388}); and Redon, \emph{Bouquet of Flowers} (\href{https://www.metmuseum.org/art/collection/search/437379}{437379}). The Met marks the cited van Gogh work as public domain. Source attribution alone does not establish that all publication permissions have been cleared.
+The cat photograph is credited to Pixabay / Pexels (\href{https://www.pexels.com/photo/white-and-grey-kitten-on-brown-and-black-leopard-print-textile-45201/}{image 45201}); the dogs photograph is from \href{https://www.pexels.com/photo/1108099/}{Pexels 1108099}; the city photograph is credited to Lukas Kloeppel / \href{https://www.pexels.com/photo/empire-state-building-new-york-466685/}{Pexels 466685}. The pictured art references are Hokusai, \emph{Under the Wave off Kanagawa} (The Met \href{https://www.metmuseum.org/art/collection/search/45434}{45434}); van Gogh, \emph{Wheat Field with Cypresses} (\href{https://www.metmuseum.org/art/collection/search/436535}{436535}); Homer, \emph{A Basket of Clams} (\href{https://www.metmuseum.org/art/collection/search/12388}{12388}); and Redon, \emph{Bouquet of Flowers} (\href{https://www.metmuseum.org/art/collection/search/437379}{437379}). The Met identifies all four cited works as public domain. The pictured sources visually match the cited pages; visual matching does not establish the exact historical downloaded files or clear all reuse rights.
 
 \begin{thebibliography}{11}
 \bibitem{gatys2015} L.~A.~Gatys, A.~S.~Ecker, and M.~Bethge. A neural algorithm of artistic style. \href{https://arxiv.org/abs/1508.06576}{arXiv:1508.06576}, 2015.
@@ -274,23 +274,31 @@ The style controller probes four sampled rows every 32 updates, with target weig
 
 \subsection{SHA-256 of available local model files}
 Table~\ref{tab:model-digests} lists complete SHA-256 digests measured on the currently available local files on 7 November 2026. These identify the bytes of those files; the 10788 training contract recorded the base/VAE digests as disabled, so the table does not by itself establish their identity to the files loaded in that run. The LoRA is this project's checkpoint, not an upstream base model. The VGG19 and StyleShot-compatible probe weights' exact local origin or file identity was not established here; no digest is asserted for them. Tokenizer revisions and the deleted dataset archive digest are likewise unavailable. The official Anima model card and StyleExpert dataset page provide upstream access and licensing; local filenames alone do not prove upstream revision.
-\begin{table*}[t]
+\begin{table}[t]
 \centering
-\caption{SHA-256 identifiers measured on available local files; not asserted as the missing 10788 training-time file digests.}
+\caption{SHA-256 identifiers measured on available local files; not asserted as the missing 10788 training-time digests. Each digest continues on the next line.}
 \label{tab:model-digests}
-\normalsize
-\setlength{\tabcolsep}{2pt}
-\begin{tabular}{ll}
+\footnotesize
+\setlength{\tabcolsep}{0pt}
+\begin{tabular}{l}
 \toprule
-Local file & SHA-256 \\
+Local file; SHA-256 on the following line \\
 \midrule
-\textnormal{anima\_baseV10.safetensors} & \textnormal{bd43b7cffe1ed1153d9c41e7beb2f18cb1273eafbaa3af3edd6a173dc90a006e} \\
-\textnormal{qwen\_image\_vae.safetensors} & \textnormal{a70580f0213e67967ee9c95f05bb400e8fb08307e017a924bf3441223e023d1f} \\
-\textnormal{qwen\_3\_06b\_base.safetensors} & \textnormal{cd2a512003e2f9f3cd3c32a9c3573f820bb28c940f73c57b1ddaa983d9223eba} \\
-\textnormal{lora84\_010788.safetensors} & \textnormal{20ab06331e98cc99d02132a84dbb20c9570c0499bb603ea669a42aa289a7fa24} \\
+\texttt{anima\_baseV10.safetensors} \\
+\texttt{bd43b7cffe1ed1153d9c41e7beb2f18c} \\
+\texttt{b1273eafbaa3af3edd6a173dc90a006e} \\
+\texttt{qwen\_image\_vae.safetensors} \\
+\texttt{a70580f0213e67967ee9c95f05bb400e} \\
+\texttt{8fb08307e017a924bf3441223e023d1f} \\
+\texttt{qwen\_3\_06b\_base.safetensors} \\
+\texttt{cd2a512003e2f9f3cd3c32a9c3573f82} \\
+\texttt{0bb28c940f73c57b1ddaa983d9223eba} \\
+\texttt{lora84\_010788.safetensors} \\
+\texttt{20ab06331e98cc99d02132a84dbb20c9} \\
+\texttt{570c0499bb603ea669a42aa289a7fa24} \\
 \bottomrule
 \end{tabular}
-\end{table*}
+\end{table}
 
 
 \section{Experiment Inventory}
