@@ -97,4 +97,4 @@ python -m pip install -r /path/to/ComfyUI/custom_nodes/AnimaSingleLoRA/requireme
 
 ## Citation
 
-研究稿与代码可在引用时链接至本仓库及 [Research PDF](Anima_Single_LoRA_Research.pdf)。作者、单位与正式论文引用信息尚未填写；请勿将本项目误标为已发表论文。
+研究稿与代码可在引用时链接至本仓库及 [Research PDF](Anima_Single_LoRA_Research.pdf)。作者为陈冠融（Guanrong Chen）；单位与正式论文引用信息尚未填写，请勿将本项目误标为已发表论文。

@@ -3,12 +3,16 @@
 \usepackage{amsmath,amssymb,graphicx,booktabs}
 \usepackage[hidelinks]{hyperref}
 \usepackage{url}
+\usepackage{fontspec}
+% Three-glyph subset of Noto Sans CJK SC; see figures/Noto-OFL.txt.
+\newfontfamily\authorcjk[Path=figures/]{author-cjk-subset.otf}
+\hypersetup{pdfauthor={Guanrong Chen}}
 \setlength{\columnsep}{0.23in}
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\dbltopfraction}{0.85}
 \renewcommand{\textfraction}{0.1}
 \title{Reference-Guided Style Transfer with a Single LoRA:\\A Diagnostic Study of Texture Generalization}
-\author{}
+\author{Guanrong Chen\quad{\authorcjk 陈冠融}\\\small\href{mailto:207878932@qq.com}{207878932@qq.com}}
 \date{}
 
 \begin{document}
@@ -220,7 +224,7 @@ The evidence supports a conditional response to $A$ and some qualitative stylist
 A useful next experiment should first test whether a proposed local descriptor ranks same-style/different-content patches closer than same-content/different-style patches. With that behavior established, matched single-LoRA training arms should be evaluated using fixed inputs, seeds, full-resolution crops, and a separately held-out assessment. The present evidence is insufficient to select a larger rank, a higher style coefficient, or more training steps as a stand-alone remedy.
 
 \section*{Data and code availability}
-The logs, comparison images, analysis tables, and scripts are retained in the local project archive but are not yet publicly deposited. The local evidence index records the locations and scopes of the 600 archived output records, the 789-update log, operator analyses, and the later reference-decomposition pilots. The source and image licenses, author names, and a public reproducibility package must be resolved before any submission. This working draft makes no claim that these resources are publicly available.
+Selected source code, the ComfyUI node and workflow, experiment records, and research figures are available in the \href{https://github.com/lightlanguage1/anima-single-lora-style-transfer}{project repository}. The 10788 LoRA checkpoint and its applicable license notices are available on \href{https://huggingface.co/lightlanguang/Anima-Single-LoRA-Style-Transfer-10788}{Hugging Face}. The local evidence index also records the 600 archived output records, operator analyses, and reference-decomposition pilots; the complete local archive has not been publicly deposited. The original training archive was deleted, its exact upstream revision is unverified, and full independent reproduction has not been established. Rights for individual source images require review before reuse.
 
 \section*{Image sources}
 The cat photograph is credited to Pixabay / Pexels (\href{https://www.pexels.com/photo/white-and-grey-kitten-on-brown-and-black-leopard-print-textile-45201/}{image 45201}); the dogs photograph is from \href{https://www.pexels.com/photo/1108099/}{Pexels 1108099}; the city photograph is credited to Lukas Kloeppel / \href{https://www.pexels.com/photo/empire-state-building-new-york-466685/}{Pexels 466685}. The pictured art references are Hokusai, \emph{Under the Wave off Kanagawa} (The Met \href{https://www.metmuseum.org/art/collection/search/45434}{45434}); van Gogh, \emph{Wheat Field with Cypresses} (\href{https://www.metmuseum.org/art/collection/search/436535}{436535}); Homer, \emph{A Basket of Clams} (\href{https://www.metmuseum.org/art/collection/search/12388}{12388}); and Redon, \emph{Bouquet of Flowers} (\href{https://www.metmuseum.org/art/collection/search/437379}{437379}). The Met marks the cited van Gogh work as public domain. Source attribution alone does not establish that all publication permissions have been cleared.
