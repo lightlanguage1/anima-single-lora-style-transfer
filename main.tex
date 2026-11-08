@@ -1,13 +1,24 @@
 \documentclass[10pt,letterpaper]{article}
 \usepackage[letterpaper,margin=1in]{geometry}
 \usepackage{amsmath,amssymb,graphicx,booktabs}
+\usepackage{newtxtext,newtxmath}
+\usepackage{setspace,fancyhdr,float}
 \usepackage[hidelinks]{hyperref}
 \usepackage{url}
 \usepackage{fontspec}
 % Author-name subset of Noto Sans CJK SC; see figures/Noto-OFL.txt.
 \newfontfamily\authorcjk[Path=figures/]{author-cjk-subset.otf}
 \hypersetup{pdfauthor={Guanrong Chen, Sixian Wang}}
-\setlength{\columnsep}{0.23in}
+\setstretch{1.18}
+\setlength{\headheight}{14pt}
+\setcounter{secnumdepth}{1}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small Chen and Wang: Reference-Guided Style Transfer}
+\fancyhead[R]{\small Research Manuscript}
+\fancyfoot[C]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\abstractname}{Abstract}
 \renewcommand{\topfraction}{0.85}
 \renewcommand{\dbltopfraction}{0.85}
 \renewcommand{\textfraction}{0.1}
@@ -17,44 +28,45 @@
 
 \begin{document}
 \maketitle
+\thispagestyle{fancy}
 
 \begin{abstract}
 Reference-guided style transfer must preserve the content of one image while adopting the appearance of another. We examine an Anima-based system that conditions a frozen generator on a content image and a style reference through a single low-rank adapter. Rather than claiming a new state of the art, we reconstruct the implemented training objective and investigate why some references change color or coarse rendering without consistently transferring brushwork. We analyze all 560 LoRA factor tensors, 280 induced update matrices, 138 matched generated images, and 174 controlled single-step forwards. Switching references changes the target hidden state and predicted velocity, establishing a conditional response but not successful disentanglement. An exact spatial-permutation property of the implemented latent Gram statistics yields a counterexample: in one latent-transpose test, relative latent change was 1.16 while the style loss was $5.96\times10^{-14}$. VGG19 and StyleShot-compatible feature probes disagree for particular references. In a subsequent single-case experiment, joint and staged fitting of three reference-derived proxies reduced those proxies but did not visibly reproduce the reference's impasto brushwork. These observations identify measurement and supervision limitations; they establish neither a unique failure mechanism nor a generalization rate.
 \end{abstract}
+\begin{center}
+\small\textbf{Keywords:} reference-guided style transfer; LoRA; texture generalization; diffusion models
+\end{center}
+\clearpage
 
 \section{Introduction}
 Transferring artistic style from a reference while retaining a separate content image is a conditional generation problem with two competing requirements: the output must preserve the content's structure and respond to the reference's rendering. Classical neural style transfer uses feature correlations as a representation of appearance~\cite{gatys2015}. Recent systems explore style-specific encoders and joint subject--style conditioning~\cite{styleshot2024,uso2025}. These approaches motivate our diagnostics, but we do not compare our system against their reported results under a matched protocol.
 
 Our system keeps an Anima generator frozen~\cite{anima_model_card} and uses one rank-32 LoRA~\cite{lora2021}. Its input contains three token groups: a noisy target, content $B$, and reference $A$. Joint attention allows these groups to exchange information. Separate input slots therefore do not by themselves establish a disentangled representation. The local base file is named \texttt{anima\_baseV10.safetensors}; its exact upstream revision was not independently verified.
 
-This paper makes three limited contributions. First, it documents the actual conditioning and loss operators, including the role of the paired training target. Second, it reports model-level, output-level, and intervention measurements alongside positive and negative visual examples. Third, it exposes a concrete invariance of the style loss and tests reference-derived, jointly or progressively fitted proxies. The findings are diagnostic observations for the investigated checkpoint, not a claim of a novel general-purpose transfer method.
+Figure~\ref{fig:examples} shows representative outputs. This paper makes three limited contributions. First, it documents the actual conditioning and loss operators, including the role of the paired training target. Second, it reports model-level, output-level, and intervention measurements alongside positive and negative visual examples. Third, it exposes a concrete invariance of the style loss and tests reference-derived, jointly or progressively fitted proxies. The findings are diagnostic observations for the investigated checkpoint, not a claim of a novel general-purpose transfer method.
 
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{figures/cats_styles.png}
+\includegraphics[width=0.70\textwidth,height=0.55\textheight,keepaspectratio]{figures/cats_styles.png}
 \caption{Retrospectively selected examples from checkpoint 10788. Columns show content $B$, reference $A$, and output; rows use woodcut, oil, and watercolor references. Rendering changes, but faithful replication of the reference medium is not established. Generation used seed 20261014 and 30 Euler steps. Historical generation inputs were square-stretched; displayed references preserve their aspect ratio.}
 \label{fig:examples}
-\end{figure*}
-
-\begin{figure}[t]
-\centering
-\includegraphics[width=\columnwidth]{figures/dogs_ablation.png}
-\caption{A separately trained dynamic residual, retrospectively selected example. The off condition retains LoRA 10135, the old convolutional branch, and reference conditioning. Generation used seed 20261014 and 30 Euler steps; historical inputs were square-stretched.}
-\label{fig:dynamic}
 \end{figure}
+
+
 
 \section{Method}
 Figure~\ref{fig:training-route} summarizes the actual training path. It separates the reference condition from the paired target used by the style loss.
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=\textwidth]{figures/training_route.png}
 \caption{Training path of the audited single-LoRA run. Content $B$, reference $A$, and paired target $C$ are VAE encoded; only $C$ is noised. The joint route feeds the noisy target and both reference latents into Anima. The velocity and style-statistic losses are supervised against $C$; a separate image-space patch loss against $A$ is not present.}
 \label{fig:training-route}
-\end{figure*}
+\end{figure}
 \subsection{Inputs and flow objective}
 Let $B$ denote content, $A$ a reference, and $C$ the paired target used during training. The data loader chooses $A$ from the same style label as $C$, from a different content group, with $A\ne C$; this label rule does not guarantee semantic independence. Let $z_C=E(C)$ be the VAE encoding and $\epsilon\sim\mathcal N(0,I)$. The training code draws $g\sim\mathcal N(0,1)$, $u=\operatorname{sigmoid}(g)$ and $t=3u/(1+2u)$. It forms
 \begin{align}
- z_t &= (1-t)z_C+t\epsilon, & v^*&=\epsilon-z_C,\\
+ z_t &= (1-t)z_C+t\epsilon,\\
+ v^*&=\epsilon-z_C,\\
  \widehat z_0&=z_t-t\,v_\theta(z_t,t;B,A,\text{text}),\label{eq:zhat}\\
  \mathcal L_{\mathrm{flow}}&=\operatorname{mean}\!\left[(v_\theta-v^*)^2\right].
  \label{eq:flow}
@@ -102,19 +114,13 @@ The VGG probe uses aspect-preserving resize and a 224-pixel center crop; the Sty
 
 We also performed 174 local single-step forwards: $3B\times23A\times2t=138$ external conditions, six author-reference pairs at two $t$ values, and 24 matched controls with LoRA temporarily zeroed in memory. The three-slot route remains present in the zero-LoRA control. The noisy target is anchored to the same cat latent even when $B$ changes, which can put non-cat conditions outside the usual generation distribution. New probe inputs were aspect-preserving and gray-padded. These interventions are not full denoising trajectories.
 
-\begin{figure*}[t]
-\centering
-\includegraphics[width=0.47\textwidth]{figures/training.png}\hfill
-\includegraphics[width=0.47\textwidth]{figures/lora_rank.png}
-\caption{Left: 789 logged updates from step 9999 to 10788, averaged in successive windows of 100 updates, except the final window of 89. The two unweighted losses use separate axes and are not perceptual scores. Right: counts of the 280 LoRA update matrices grouped by the number of singular directions needed for 90\% of their energy. Formal rank is at most 32.}
-\label{fig:training-rank}
-\end{figure*}
+
 
 \section{Results}
 \subsection{Output and proxy behavior}
 The median VAE-statistic distance was 0.3469 when swapping $A$ with fixed $B$ and seed (1,518 correlated pairs), 0.7268 when swapping $B$ (138 pairs), and 0.3831 when swapping the seed (69 pairs). The first two changes mix appearance with semantic and spatial differences; stronger sensitivity to $B$ can also reflect the desired preservation of content. These quantities cannot be interpreted as causal contributions or significance tests.
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \caption{Matched VAE-descriptor output distances. Pair counts are correlated.}
 \label{tab:swaps}
@@ -134,13 +140,13 @@ Under the VGG proxy, the per-output reference advantage had median $+0.1007$; it
 
 A previous image-space optimization illustrates the same measurement risk: for three images, 60 pixel updates reduced a StyleShot-derived distance by approximately 80--87\%, yet the recorded visual review did not pass. Anima and LoRA received zero updates in that test. It is a counterexample for the tested loss and inputs, not a proof that every style encoder fails.
 
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
 \includegraphics[width=0.47\textwidth]{figures/responses.png}\hfill
 \includegraphics[width=0.47\textwidth]{figures/proxy_disagreement.png}
 \caption{Left: median output changes measured by one weighted VAE-statistic descriptor; bigger means more change, not better transfer. Right: reference-advantage medians for two references using a VGG19 Gram proxy and a StyleShot-compatible encoder (SS-compat.; weight origin unverified). Each reference is one image evaluated with three contents and two seeds. The proxies use different distances and crops; signs describe only their respective fixed-pool comparisons.}
 \label{fig:outputs}
-\end{figure*}
+\end{figure}
 
 \subsection{Weights and conditional activations}
 The median $\lVert\Delta W\rVert_F/\lVert W\rVert_F$ across the 280 adapted projections was 8.25\%, and the median entropy effective rank was 7.35 out of 32. The number of directions needed for 90\% of update energy was at most 4 for 72 projections, 5--15 for 122, and at least 16 for 86. Comparing checkpoints 9999 and 10788, the median relative update change was 15.97\% and the median direction cosine was 0.98765. These are structural statistics, not percentages of generated-image influence; the checkpoints also span different training phases.
@@ -149,21 +155,36 @@ The 174 controlled forwards produced $174\times28\times3=14{,}616$ condition--la
 
 A second, historical $2\times2$ matched intervention fixed $B$, $C$, noise, and $t=0.85$ within each pair. Across two contents and two style labels, wrong-reference minus matched-reference flow MSE was 0.001882, 0.006778, 0.001610, and 0.005724 (Fig.~\ref{fig:condition}). All were positive, supporting conditional influence in these cases, not successful visual transfer.
 
-\begin{figure}[t]
+\begin{figure}[H]
 \centering
-\includegraphics[width=\columnwidth]{figures/condition.png}
+\includegraphics[width=0.62\textwidth,height=0.55\textheight,keepaspectratio]{figures/condition.png}
 \caption{Historical $2\times2$ single-step intervention. Each bar is wrong-reference minus matched-reference flow MSE; style 1 is HeavyMetal and style 2 is geosketch. Positive values indicate lower matched-reference error for these four cases at $t=0.85$, not a transfer success rate.}
 \label{fig:condition}
 \end{figure}
 
 \subsection{Training and branch trials}
-Earlier project records refer to steps 6000, 6280, 7280, and 8280; the available material does not support a causal reconstruction of each stage. The original step-6000 checkpoint was previously reported missing, but its status across all storage locations was not verified. The 9999-resume run was configured for at most 1,000 updates, but the available log ends at local update 789, global step 10788. It used 1024 resolution and effective batch size 16; the recorded LoRA learning rate warmed from $10^{-5}$ to $5\times10^{-5}$. Windowed unweighted flow and style losses showed no clear monotonic decrease (Fig.~\ref{fig:training-rank}); neither loss alone establishes visual improvement.
+The 9999-resume run was configured for at most 1,000 updates, but the available log ends at local update 789, global step 10788. It used 1024 resolution and effective batch size 16; the recorded LoRA learning rate warmed from $10^{-5}$ to $5\times10^{-5}$. Windowed unweighted flow and style losses showed no clear monotonic decrease (Fig.~\ref{fig:training-rank}); neither loss alone establishes visual improvement.
+
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.47\textwidth]{figures/training.png}\hfill
+\includegraphics[width=0.47\textwidth]{figures/lora_rank.png}
+\caption{Left: 789 logged updates from step 9999 to 10788, averaged in successive windows of 100 updates, except the final window of 89. The two unweighted losses use separate axes and are not perceptual scores. Right: counts of the 280 LoRA update matrices grouped by the number of singular directions needed for 90\% of their energy. Formal rank is at most 32.}
+\label{fig:training-rank}
+\end{figure}
 
 A separate local-convolution branch received 30 local updates, then 270 additional local updates (300 cumulative), followed by 600 cloud updates (900 cumulative), with the original LoRA frozen. The 600-update record reports 9,600 distinct sampled pairs across 140 style labels. The cloud 0/400/600-update previews (300/700/900 cumulative updates) did not establish stable improvement of external brushwork. Four fixed reference crops covered 25\% of the image area and missed the central $256\times256$ region. One branch output projection had 99.29\% of its energy in four singular directions; this is one projection at one checkpoint, not a statement about all LoRA layers.
 
-A later dynamic residual received 30 local and 100 cloud updates on top of LoRA 10135 and the existing branch. Twelve content/reference pairs were examined with the new residual off and on, using one seed. The recorded review observed some pastel-like edges and ink/paper response, alongside failure to reproduce pointillism or cyanotype and visible content drift. The average on/off RGB absolute change was 0.572 on an 8-bit scale; this is a pixel difference, not a quality score. The test did not establish a stable added visual benefit from the dynamic residual.
+A later dynamic residual received 30 local and 100 cloud updates on top of LoRA 10135 and the existing branch. Twelve content/reference pairs were examined with the new residual off and on, using one seed. The recorded review observed some pastel-like edges and ink/paper response, alongside failure to reproduce pointillism or cyanotype and visible content drift. The average on/off RGB absolute change was 0.572 on an 8-bit scale; this is a pixel difference, not a quality score. The test did not establish a stable added visual benefit from the dynamic residual (Fig.~\ref{fig:dynamic}).
 
-Two other pilots each used 15 updates per arm: a reference-ranking term activated on 3 of 15 updates, and a paired-texture condition intervened at three endpoint updates. Their small historical previews did not establish a reliable improvement. Neither pilot is sufficient to reject its entire method class.
+\begin{figure}[H]
+\centering
+\includegraphics[width=0.62\textwidth,height=0.55\textheight,keepaspectratio]{figures/dogs_ablation.png}
+\caption{A separately trained dynamic residual, retrospectively selected example. The off condition retains LoRA 10135, the old convolutional branch, and reference conditioning. Generation used seed 20261014 and 30 Euler steps; historical inputs were square-stretched.}
+\label{fig:dynamic}
+\end{figure}
+
+Two other pilots each used 15 updates per arm: a reference-ranking term activated on 3 of 15 updates, and a paired-texture condition intervened at three endpoint updates. Their small historical previews did not establish a reliable improvement. Neither pilot is sufficient to reject its entire method class. A reference-cache implementation also differed from full forward evaluation by relative RMS 0.00826--0.01071. In a fixed-state test, adding high-frequency reference velocity increased flow MSE at all three sampled noise levels. These results apply only to the tested implementations and conditions.
 
 \subsection{Reference components and staged inference}
 To test a decomposition hypothesis, we construct three reference-derived targets from one oil-painting image $A$: a 16-bin per-channel RGB histogram; grayscale VGG19 feature variation across four directions and two offsets; and symmetric nearest-neighbor distances between spatially pooled grayscale VGG19 patch features. Each representation uses four $224\times224$ crops within the valid image region. These are coupled proxies: direction also responds to object contours, while local features can reflect content and color-derived luminance. They are not learned or verified independent style atoms. Prior work has studied decomposed style features~\cite{styledecomp2018} and compositional diffusion factors~\cite{decompdiff2024}; neither establishes that our existing adapter learns such a basis.
@@ -177,7 +198,7 @@ The text key/value projections remain unchanged. The two spectral groups are not
 
 Each path executes 30 sampler updates, nine additional candidate forwards, one additional blurred-reference probe, and twelve candidate VAE decodes. Their computed budget is matched to each other; the earlier unmodified baseline is cheaper. The paths selected exactly the same spectral sets in all 224 image-token modules during the probe. Intermediate panels are estimates of $\widehat z_0$, not completed half-trajectory images. The experiment involves one $A$, one $B$, one seed, and no parameter updates.
 
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \caption{Final reference-proxy errors for the single oil/city case; lower is closer only under each proxy. They are not perceptual success rates.}
 \label{tab:parts}
@@ -193,12 +214,12 @@ Staged & 0.04321 & 0.01055 & 0.10407 \\
 \end{tabular}
 \end{table}
 
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/a_parts_detail.png}
+\includegraphics[width=0.88\textwidth,height=0.58\textheight,keepaspectratio]{figures/a_parts_detail.png}
 \caption{Single-case reference-decomposition experiment: oil reference details, city content, and matched native/joint/staged output crops. All generation outputs are 1024-pixel square with aspect-preserving padding. Both fitted paths preserve the broad skyline but redraw details and fail to reproduce the reference's raised, curved brushwork. Reference and output crops show different subjects; color, directional, and VGG proxies cannot independently establish faithful brush transfer.}
 \label{fig:parts}
-\end{figure*}
+\end{figure}
 
 The joint path selected $(0.35,0.35)$ at all three decisions; the staged path selected $(0,0)$, then $(0.35,0.35)$ twice. In exact arithmetic, equal additions to complementary spectral parts scale the image-token LoRA update by 1.35; BF16 evaluation introduces rounding differences. Thus the observed path difference is largely the onset time of this near-uniform increase, not evidence that three components were separately reconstructed. Although all three final proxies decreased relative to the saved native image (Table~\ref{tab:parts}), visual inspection did not find the target's impasto or curved strokes (Fig.~\ref{fig:parts}). All candidates passed the coarse content guard at the recorded decision points, which does not guarantee final content preservation.
 
@@ -213,9 +234,7 @@ For a flattened feature matrix $F\in\mathbb R^{C\times N}$ and spatial permutati
 \end{equation}
 In the measured square-latent transpose case, the tested pooling scales commute with transposition and the concatenated horizontal/vertical edge statistics are also rearranged without changing their aggregate. The relative RMS change of the latent was 1.16, whereas the implemented style loss between it and its transpose was $5.96\times10^{-14}$. This demonstrates a specific invariance. A latent transpose is not a rotation of a real image, spatial invariance can be intentional, and the flow loss need not share it. Consequently this observation does not establish the unique cause of failed texture transfer.
 
-A simple reference-cache implementation yielded relative RMS differences of approximately 0.00826--0.01071 from full forward evaluation. In one fixed-state test, directly adding a high-frequency component to the reference velocity difference increased flow MSE at all three sampled $t$ values. These results reject the tested implementations under their tested conditions; they do not rule out all caching or high-frequency methods.
-
-\subsection{Prior Reference Adapters}
+\section{Prior Reference Adapters}
 The public Anima reference adapter is designed mainly to preserve a character and some appearance from one reference while a prompt changes the scene. Its authors also report weak style-slot behavior in their particular two-slot and style-only experiments~\cite{animaadapter2026}. Our task instead uses separate content and style images. Six aspect-preserving runs used cropped images from the adapter's showcase as references, but we did not rerun that adapter on matched inputs. USO explicitly studies joint subject/style conditioning with alignment and disentanglement objectives~\cite{uso2025}; its reported results are not a matched baseline for our experiments. No superiority claim follows from these comparisons.
 
 \section{Limitations and Conclusion}
@@ -274,7 +293,7 @@ The style controller probes four sampled rows every 32 updates, with target weig
 
 \subsection{SHA-256 of available local model files}
 Table~\ref{tab:model-digests} lists complete SHA-256 digests measured on the currently available local files on 7 November 2026. These identify the bytes of those files; the 10788 training contract recorded the base/VAE digests as disabled, so the table does not by itself establish their identity to the files loaded in that run. The LoRA is this project's checkpoint, not an upstream base model. The VGG19 and StyleShot-compatible probe weights' exact local origin or file identity was not established here; no digest is asserted for them. Tokenizer revisions and the deleted dataset archive digest are likewise unavailable. The official Anima model card and StyleExpert dataset page provide upstream access and licensing; local filenames alone do not prove upstream revision.
-\begin{table}[t]
+\begin{table}[H]
 \centering
 \caption{SHA-256 identifiers measured on available local files; not asserted as the missing 10788 training-time digests. Each digest continues on the next line.}
 \label{tab:model-digests}
@@ -303,7 +322,7 @@ Local file; SHA-256 on the following line \\
 
 \section{Experiment Inventory}
 Table~\ref{tab:inventory} separates archived results from planned evaluations. The local evidence index supplies record-level paths and sample definitions; the material is not yet an independently reproducible public release.
-\begin{table}[h]
+\begin{table}[H]
 \centering
 \caption{Available experiment scopes, not independent estimates of performance.}
 \label{tab:inventory}
@@ -328,32 +347,32 @@ Joint/staged A proxies & 2 paths, 1 case \\
 \section{Full Distributions}
 \label{sec:full_distributions}
 Figures~\ref{fig:full-distributions} and~\ref{fig:activation-distributions} present the full $28\times10$ array of adapted-matrix norm ratios and the signed-log hidden-value histograms. Each noise-time panel in the latter figure aggregates the 69 external conditions with active LoRA; author-reference and zero-LoRA controls are not included in that displayed aggregation. The full archived histograms cover all 174 conditions. These views describe the measured parameters and states, not a universal style distribution.
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/lora_updates_full.png}
+\includegraphics[width=0.88\textwidth,height=0.58\textheight,keepaspectratio]{figures/lora_updates_full.png}
 \caption{Update-norm ratios $\lVert\Delta W\rVert_F/\lVert W\rVert_F$ for all 280 adapted projections across 28 blocks. The color scale is logarithmic.}
 \label{fig:full-distributions}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/activation_full.png}
+\includegraphics[width=0.88\textwidth,height=0.58\textheight,keepaspectratio]{figures/activation_full.png}
 \caption{Signed-log histograms for the target, $B$, and $A$ slots over 28 blocks at two noise times. Each panel aggregates 69 external active-LoRA conditions.}
 \label{fig:activation-distributions}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/a_parts_comparison.png}
+\includegraphics[width=0.88\textwidth,height=0.58\textheight,keepaspectratio]{figures/a_parts_comparison.png}
 \caption{Reference-decomposition paths. Top row, left to right: content $B$, reference $A$, reference detail. Middle row: native, joint, staged outputs. Bottom row: VAE-decoded staged $\widehat z_0$ estimates at solver indices 15, 21, and 27; these are not completed intermediate outputs.}
 \label{fig:parts-supplement}
-\end{figure*}
+\end{figure}
 
-\begin{figure*}[t]
+\begin{figure}[H]
 \centering
-\includegraphics[width=0.9\textwidth]{figures/a_parts_reference.png}
+\includegraphics[width=0.88\textwidth,height=0.58\textheight,keepaspectratio]{figures/a_parts_reference.png}
 \caption{Reference-derived targets. Top row: full reference and two local patches; middle row: two more patches and the RGB histogram; bottom: gray-VGG directional proxy. These coupled descriptors are not verified independent style atoms.}
 \label{fig:parts-reference}
-\end{figure*}
+\end{figure}
 
 \end{document}
